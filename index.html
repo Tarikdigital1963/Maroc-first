@@ -69,7 +69,7 @@ function setLanguage(lang){
  document.querySelectorAll('[data-fr][data-ar]').forEach(el=>{el.textContent=el.dataset[lang]});
  langButton.textContent=lang==='fr'?'العربية':'Français';
  document.getElementById('article-title').placeholder=lang==='fr'?'Titre clair et précis':'عنوان واضح ودقيق';
- document.getElementById('article-content').placeholder=lang==='fr?'Rédige ton article ici…':'اكتب مقالك هنا…';
+ document.getElementById('article-content').placeholder=lang==='fr'?'Rédige ton article ici…':'اكتب مقالك هنا…';
  document.getElementById('article-source').placeholder=lang==='fr'?'https://…':'رابط المصدر https://…';
 }
 langButton.addEventListener('click',()=>setLanguage(currentLang==='fr'?'ar':'fr'));
