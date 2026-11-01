@@ -67,67 +67,108 @@ body[dir="rtl"]{text-align:right}body[dir="rtl"] nav{flex-direction:row-reverse}
 document.getElementById('year').textContent=new Date().getFullYear();
 let currentLang='fr';
 const langButtons=document.querySelectorAll('.lang-choice');
+const translations={
+en:{
+'Le journal numérique bilingue · Actualité, société et analyses':'The trilingual digital newspaper · News, society and analysis',
+'Le journal numérique trilingue · Actualité, société et analyses':'The trilingual digital newspaper · News, society and analysis',
+'Accueil':'Home','Articles':'Articles','Vidéos':'Videos','Actualités':'News','Ajouter un article':'Add an article','Publicité':'Advertising','Réserver un espace':'Book ad space',
+'Le regard de la rédaction':'The editorial perspective','Comprendre l’actualité, au-delà des titres':'Understanding the news beyond the headlines',
+'Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés E.T.':'Maroc First covers Moroccan news, social issues and regional affairs. Articles are signed E.T.',
+'Les informations doivent être vérifiées et les sources clairement indiquées avant publication.':'Information must be verified and sources clearly cited before publication.',
+'Derniers articles':'Latest articles','Actualité marocaine : les faits et leur contexte':'Moroccan news: facts and context',
+'Présenter les faits confirmés, les sources disponibles et les différents points de vue.':'Present confirmed facts, available sources and different points of view.',
+'Les initiatives qui font évoluer le quotidien':'Initiatives changing everyday life',
+'Reportages et dossiers consacrés aux initiatives locales et aux enjeux de société.':'Reports and features on local initiatives and social issues.',
+'Décrypter les relations régionales':'Understanding regional relations',
+'Une approche factuelle qui distingue les informations confirmées des éléments à vérifier.':'A fact-based approach that separates confirmed information from claims needing verification.',
+'Espace rédaction':'Editorial workspace','Titre de l’article':'Article title','Rubrique':'Category','Contenu de l’article':'Article text',
+'Source ou lien de référence (facultatif)':'Source or reference link (optional)','Signature':'Byline','Prévisualiser et publier ici':'Preview and publish here','Effacer le formulaire':'Clear form',
+'Vidéos et reportages':'Videos and reports','Actualités du Maroc':'Morocco news','Lecteur vidéo intégré. Si YouTube bloque cette recherche intégrée, utilisez le lien direct ci-dessous.':'Embedded video player. If YouTube blocks this search, use the direct link below.',
+'Reportages et actualités MAP':'MAP reports and news','Deuxième lecteur intégré, avec un lien de secours vers les vidéos.':'A second embedded player, with a backup video link.',
+'Veille en direct':'Live news monitoring','Chargement des dernières actualités…':'Loading latest news…',
+'Les titres apparaîtront ici si le service RSS relais répond.':'Headlines will appear here if the RSS relay is available.',
+'Les titres et liens proviennent d’un flux Google Actualités. Vérifie chaque article à sa source avant de le reprendre.':'Headlines and links come from Google News. Verify each story at its original source before reusing it.',
+'Voir les actualités du Sahara marocain sur Google Actualités':'See Western Sahara news on Google News','Ouvrir le flux RSS source':'Open the original RSS feed','Portail national du Maroc':'Morocco’s national portal',
+'Espace publicitaire':'Advertising space','Bannière partenaire':'Partner banner','Bannière partenaire fournie par l’éditeur.':'Partner banner supplied by the publisher.',
+'Partenariats':'Partnerships','Réserver un espace publicitaire':'Book advertising space',
+'Vous souhaitez présenter une marque, un service ou une initiative ? Préparez une demande avec le format souhaité et vos coordonnées.':'Want to promote a brand, service or initiative? Prepare a request with your preferred format and contact details.',
+'Demander une réservation':'Request a booking','Adresse provisoire : remplacez-la par l’adresse officielle avant publication.':'Temporary email address: replace it with the official address before publishing.',
+'Journal numérique bilingue':'Trilingual digital newspaper','Rédaction :':'Editorial team:',
+'Réduire le texte':'Smaller text','Agrandir le texte':'Larger text','Contraste renforcé':'High contrast','Lire la page à voix haute':'Read page aloud','Arrêter la lecture':'Stop reading',
+'Par E.T · Signature de l’auteur':'By E.T · Author signature'
+},
+ar:{
+'Accueil':'الرئيسية','Articles':'المقالات','Vidéos':'الفيديوهات','Actualités':'آخر الأخبار','Ajouter un article':'إضافة مقال','Publicité':'الإعلانات','Réserver un espace':'حجز مساحة إعلانية',
+'Le regard de la rédaction':'رؤية هيئة التحرير','Comprendre l’actualité, au-delà des titres':'فهم الأخبار، أبعد من العناوين',
+'Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés E.T.':'ماروك فيرست مساحة للقراءة تهتم بالأخبار المغربية وقضايا المجتمع والعلاقات الإقليمية. المقالات موقعة باسم E.T.',
+'Les informations doivent être vérifiées et les sources clairement indiquées avant publication.':'يجب التحقق من المعلومات وذكر المصادر بوضوح قبل النشر.',
+'Derniers articles':'أحدث المقالات','Actualité marocaine : les faits et leur contexte':'الأخبار المغربية: الوقائع وسياقها',
+'Présenter les faits confirmés, les sources disponibles et les différents points de vue.':'عرض الوقائع المؤكدة والمصادر المتاحة ووجهات النظر المختلفة.',
+'Les initiatives qui font évoluer le quotidien':'مبادرات تُغيّر الحياة اليومية',
+'Reportages et dossiers consacrés aux initiatives locales et aux enjeux de société.':'تقارير وملفات حول المبادرات المحلية وقضايا المجتمع.',
+'Décrypter les relations régionales':'قراءة في العلاقات الإقليمية',
+'Une approche factuelle qui distingue les informations confirmées des éléments à vérifier.':'مقاربة موضوعية تميز بين المعلومات المؤكدة والعناصر التي تحتاج إلى تحقق.',
+'Espace rédaction':'مساحة التحرير','Titre de l’article':'عنوان المقال','Rubrique':'القسم','Contenu de l’article':'محتوى المقال',
+'Source ou lien de référence (facultatif)':'المصدر أو رابط مرجعي (اختياري)','Signature':'التوقيع','Prévisualiser et publier ici':'معاينة ونشر هنا','Effacer le formulaire':'مسح النموذج',
+'Vidéos et reportages':'الفيديوهات والتقارير','Actualités du Maroc':'أخبار المغرب','Lecteur vidéo intégré. Si YouTube bloque cette recherche intégrée, utilisez le lien direct ci-dessous.':'مشغل فيديو مدمج. إذا منع يوتيوب عرض البحث هنا، استخدم الرابط المباشر أدناه.',
+'Reportages et actualités MAP':'تقارير وأخبار MAP','Deuxième lecteur intégré, avec un lien de secours vers les vidéos.':'مشغل مدمج ثانٍ مع رابط احتياطي للفيديوهات.',
+'Veille en direct':'متابعة الأخبار','Chargement des dernières actualités…':'جارٍ تحميل آخر الأخبار…',
+'Les titres apparaîtront ici si le service RSS relais répond.':'ستظهر العناوين هنا إذا استجاب وسيط خدمة RSS.',
+'Les titres et liens proviennent d’un flux Google Actualités. Vérifie chaque article à sa source avant de le reprendre.':'تأتي العناوين والروابط من موجز أخبار Google. تحقق من المصدر الأصلي قبل إعادة نشر أي خبر.',
+'Voir les actualités du Sahara marocain sur Google Actualités':'عرض أخبار الصحراء المغربية على أخبار Google','Ouvrir le flux RSS source':'فتح موجز RSS الأصلي','Portail national du Maroc':'البوابة الوطنية للمغرب',
+'Espace publicitaire':'مساحة إعلانية','Bannière partenaire':'إعلان شريك','Bannière partenaire fournie par l’éditeur.':'إعلان شريك مقدم من الناشر.',
+'Partenariats':'الشراكات','Réserver un espace publicitaire':'حجز مساحة إعلانية',
+'Vous souhaitez présenter une marque, un service ou une initiative ? Préparez une demande avec le format souhaité et vos coordonnées.':'هل ترغب في عرض علامة تجارية أو خدمة أو مبادرة؟ أرسل طلبًا يتضمن المساحة المطلوبة ومعلومات الاتصال.',
+'Demander une réservation':'طلب حجز','Adresse provisoire : remplacez-la par l’adresse officielle avant publication.':'عنوان مؤقت: يرجى استبداله بعنوان البريد الرسمي قبل النشر.',
+'Journal numérique bilingue':'جريدة رقمية بثلاث لغات','Rédaction :':'هيئة التحرير:',
+'Réduire le texte':'تصغير النص','Agrandir le texte':'تكبير النص','Contraste renforcé':'تباين قوي','Lire la page à voix haute':'قراءة الصفحة بصوت مرتفع','Arrêter la lecture':'إيقاف القراءة',
+'Par E.T · Signature de l’auteur':'بقلم E.T · توقيع الكاتب'
+}};
+const originalTexts=new Map();
+document.querySelectorAll('body *').forEach(el=>{if(el.children.length===0){originalTexts.set(el,el.textContent);}});
 function setLanguage(lang){
- currentLang=lang;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.dir=lang==='ar'?'rtl':'ltr';
- document.querySelectorAll('[data-fr],[data-en],[data-ar]').forEach(el=>{const value=el.dataset[lang]||el.dataset.fr||el.dataset.en||el.dataset.ar;if(value!==undefined)el.textContent=value});
+ currentLang=lang;
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ document.body.dir=lang==='ar'?'rtl':'ltr';
  document.querySelectorAll('.lang-choice').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));
- document.getElementById('article-title').placeholder=lang==='fr'?'Titre clair et précis':lang==='en'?'A clear, precise title':'عنوان واضح ودقيق';\n document.getElementById('article-category').options[0].text=lang==='fr'?'Actualité':lang==='en'?'News':'أخبار';
- document.getElementById('article-content').placeholder=lang==='fr'?'Rédige ton article ici…':lang==='en'?'Write your article here…':'اكتب مقالك هنا…';\n document.getElementById('article-source').previousElementSibling.textContent=lang==='fr'?'Source ou lien de référence (facultatif)':lang==='en'?'Source or reference link (optional)':'المصدر أو رابط مرجعي (اختياري)';
- document.getElementById('article-source').placeholder='https://…';
+ originalTexts.forEach((original,el)=>{
+   if(!el.isConnected)return;
+   const source=el.dataset.fr||original;
+   let translated=source;
+   if(lang==='fr') translated=el.dataset.fr||original;
+   else translated=el.dataset[lang]||translations[lang][source]||translations[lang][original]||source;
+   if(translated!==undefined && el.tagName!=='OPTION') el.textContent=translated;
+ });
+ document.getElementById('article-title').placeholder=lang==='fr'?'Titre clair et précis':lang==='en'?'A clear, precise title':'عنوان واضح ودقيق';
+ document.getElementById('article-content').placeholder=lang==='fr'?'Rédige ton article ici…':lang==='en'?'Write your article here…':'اكتب مقالك هنا…';
+ document.getElementById('article-source').previousElementSibling.textContent=lang==='fr'?'Source ou lien de référence (facultatif)':lang==='en'?'Source or reference link (optional)':'المصدر أو رابط مرجعي (اختياري)';
+ document.getElementById('article-category').options[0].text=lang==='fr'?'Actualité':lang==='en'?'News':'أخبار';
 }
 langButtons.forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-const languageText={
- ar:{
-  'Derniers articles':'أحدث المقالات','Actualité marocaine : les faits et leur contexte':'الأخبار المغربية: الوقائع وسياقها',
-  'Présenter les faits confirmés, les sources disponibles et les différents points de vue.':'عرض الوقائع المؤكدة والمصادر المتاحة ووجهات النظر المختلفة.',
-  'Les initiatives qui font évoluer le quotidien':'مبادرات تُغيّر الحياة اليومية',
-  'Reportages et dossiers consacrés aux initiatives locales et aux enjeux de société.':'تقارير وملفات حول المبادرات المحلية وقضايا المجتمع.',
-  'Décrypter les relations régionales':'قراءة في العلاقات الإقليمية',
-  'Une approche factuelle qui distingue les informations confirmées des éléments à vérifier.':'مقاربة موضوعية تميز بين المعلومات المؤكدة والعناصر التي تحتاج إلى تحقق.',
-  'Titre de l’article':'عنوان المقال','Rubrique':'القسم','Contenu de l’article':'محتوى المقال',
-  'Source ou lien de référence (facultatif)':'المصدر أو رابط مرجعي (اختياري)','Signature':'التوقيع',
-  'Prévisualiser et publier ici':'معاينة ونشر هنا','Effacer le formulaire':'مسح النموذج',
-  'Le regard de la rédaction':'رؤية هيئة التحرير','Comprendre l’actualité, au-delà des titres':'فهم الأخبار، أبعد من العناوين',
-  'Vidéos et reportages':'الفيديوهات والتقارير','Actualités du Maroc':'أخبار المغرب',
-  'Espace rédaction':'مساحة التحرير','Ajouter un article':'إضافة مقال',
-  'Espace publicitaire':'مساحة إعلانية','Bannière partenaire':'إعلان شريك',
-  'Partenariats':'الشراكات','Réserver un espace publicitaire':'حجز مساحة إعلانية',
-  'Demander une réservation':'طلب حجز','Rédaction :':'هيئة التحرير:'
- }
-};
-function applyArabicText(){
- if(currentLang!=='ar')return;
- document.querySelectorAll('body *').forEach(el=>{
-  if(el.children.length===0 && el.textContent.trim() && languageText.ar[el.textContent.trim()]) el.textContent=languageText.ar[el.textContent.trim()];
- });
-}
-const originalSetLanguage=setLanguage;
-setLanguage=function(lang){originalSetLanguage(lang);if(lang==='ar')applyArabicText();};
 setLanguage('fr');
-const accessTextSize=['','large-text','xlarge-text'];
-let accessTextIndex=0;
+const accessTextSize=['','large-text','xlarge-text'];let accessTextIndex=0;
 document.getElementById('text-larger').addEventListener('click',()=>{accessTextIndex=Math.min(2,accessTextIndex+1);document.body.classList.remove('large-text','xlarge-text');if(accessTextSize[accessTextIndex])document.body.classList.add(accessTextSize[accessTextIndex]);});
 document.getElementById('text-smaller').addEventListener('click',()=>{accessTextIndex=Math.max(0,accessTextIndex-1);document.body.classList.remove('large-text','xlarge-text');if(accessTextSize[accessTextIndex])document.body.classList.add(accessTextSize[accessTextIndex]);});
-document.getElementById('contrast-toggle').addEventListener('click',()=>{document.body.classList.toggle('high-contrast');});
-document.getElementById('read-page').addEventListener('click',()=>{if(!('speechSynthesis' in window)){alert(currentLang==='fr'?'La lecture vocale n’est pas disponible dans ce navigateur.':currentLang==='en'?'Text-to-speech is not available in this browser.':'القراءة الصوتية غير متاحة في هذا المتصفح.');return;}window.speechSynthesis.cancel();const text=document.querySelector('main').innerText;const utterance=new SpeechSynthesisUtterance(text);utterance.lang=currentLang==='ar'?'ar':currentLang==='en'?'en-US':'fr-FR';window.speechSynthesis.speak(utterance);});
-document.getElementById('stop-reading').addEventListener('click',()=>{if('speechSynthesis' in window)window.speechSynthesis.cancel();});
+document.getElementById('contrast-toggle').addEventListener('click',()=>document.body.classList.toggle('high-contrast'));
+document.getElementById('read-page').addEventListener('click',()=>{if(!('speechSynthesis'in window)){alert('Text-to-speech is not available in this browser.');return;}window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(document.querySelector('main').innerText);utterance.lang=currentLang==='ar'?'ar':currentLang==='en'?'en-US':'fr-FR';window.speechSynthesis.speak(utterance);});
+document.getElementById('stop-reading').addEventListener('click',()=>{if('speechSynthesis'in window)window.speechSynthesis.cancel();});
 const form=document.getElementById('article-form'),articleList=document.getElementById('article-list'),publishStatus=document.getElementById('publish-status');
 function addArticleCard(article){
  const card=document.createElement('article');card.className='card';
  const cat=document.createElement('p');cat.className='eyebrow';cat.textContent=article.category;card.appendChild(cat);
  const title=document.createElement('h3');title.textContent=article.title;card.appendChild(title);
  const body=document.createElement('p');body.style.whiteSpace='pre-wrap';body.textContent=article.content;card.appendChild(body);
- if(article.source){const p=document.createElement('p'),a=document.createElement('a');a.href=article.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent=currentLang==='fr'?'Consulter la source':'عرض المصدر';p.appendChild(a);card.appendChild(p)}
- const by=document.createElement('p');by.className='byline';by.textContent=(currentLang==='fr'?'Par ':'بقلم ')+article.signature;card.appendChild(by);
- articleList.prepend(card);
+ if(article.source){const p=document.createElement('p'),a=document.createElement('a');a.href=article.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent=currentLang==='fr'?'Consulter la source':currentLang==='en'?'View source':'عرض المصدر';p.appendChild(a);card.appendChild(p);}
+ const by=document.createElement('p');by.className='byline';by.textContent=(currentLang==='fr'?'Par ':currentLang==='en'?'By ':'بقلم ')+article.signature;card.appendChild(by);articleList.prepend(card);
 }
 try{const saved=JSON.parse(localStorage.getItem('marocFirstDraftArticles')||'[]');saved.forEach(addArticleCard)}catch(e){}
 form.addEventListener('submit',function(event){
  event.preventDefault();
- const article={title:document.getElementById('article-title').value.trim(),category:document.getElementById('article-category').value,content:document.getElementById('article-content').value.trim(),source:document.getElementById('article-source').value.trim(),signature:document.getElementById('article-signature').value.trim()};
- if(!article.title||!article.content||!article.signature){publishStatus.textContent=currentLang==='fr'?'Complète le titre, le contenu et la signature.':'أكمل العنوان والمحتوى والتوقيع.';return}
+ const article={title:document.getElementById('article-title').value.trim(),category:document.getElementById('article-category').value,content:document.getElementById('article-content').value.trim(),source:document.getElementById('article-source').value.trim(),signature:'E.T'};
+ if(!article.title||!article.content){publishStatus.textContent=currentLang==='fr'?'Complète le titre et le contenu.':currentLang==='en'?'Please complete the title and article text.':'يرجى إدخال العنوان ومحتوى المقال.';return;}
  addArticleCard(article);
- try{const saved=JSON.parse(localStorage.getItem('marocFirstDraftArticles')||'[]');saved.unshift(article);localStorage.setItem('marocFirstDraftArticles',JSON.stringify(saved.slice(0,30)))}catch(e){}
+ try{const saved=JSON.parse(localStorage.getItem('marocFirstDraftArticles')||'[]');saved.unshift(article);localStorage.setItem('marocFirstDraftArticles',JSON.stringify(saved.slice(0,30)));}catch(e){}
  publishStatus.textContent=currentLang==='fr'?'Article affiché et enregistré dans ce navigateur. Il n’est pas encore publié pour tous les visiteurs.':currentLang==='en'?'Article displayed and saved in this browser. It is not published for all visitors yet.':'تم عرض المقال وحفظه في هذا المتصفح. لم يُنشر بعد لجميع الزوار.';
  form.reset();document.getElementById('article-signature').value='E.T';
 });
@@ -136,17 +177,14 @@ form.addEventListener('submit',function(event){
  const feed='https://news.google.com/rss/search?q=Maroc&hl=fr&gl=MA&ceid=MA:fr';
  try{
   const response=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(feed));
-  if(!response.ok)throw new Error('RSS indisponible');
+  if(!response.ok)throw new Error('RSS unavailable');
   const xml=new DOMParser().parseFromString(await response.text(),'text/xml');
   const items=Array.from(xml.querySelectorAll('item')).slice(0,8);
-  if(!items.length)throw new Error('Aucun article RSS reçu');
+  if(!items.length)throw new Error('No RSS items');
   list.replaceChildren();
-  for(const item of items){const li=document.createElement('li'),a=document.createElement('a');a.href=item.querySelector('link')?.textContent?.trim()||feed;a.textContent=item.querySelector('title')?.textContent?.trim()||'Lire l’article';a.target='_blank';a.rel='noopener noreferrer';li.appendChild(a);list.appendChild(li)}
+  for(const item of items){const li=document.createElement('li'),a=document.createElement('a');a.href=item.querySelector('link')?.textContent?.trim()||feed;a.textContent=item.querySelector('title')?.textContent?.trim()||'Lire l’article';a.target='_blank';a.rel='noopener noreferrer';li.appendChild(a);list.appendChild(li);}
   status.textContent=currentLang==='fr'?'Derniers titres chargés depuis Google Actualités.':currentLang==='en'?'Latest headlines loaded from Google News.':'تم تحميل أحدث العناوين من أخبار Google.';
- }catch(e){
-  status.textContent=currentLang==='fr'?'Le flux automatique est momentanément indisponible. Utilise le lien source ci-dessous.':currentLang==='en'?'The automatic feed is temporarily unavailable. Use the source link below.':'الموجز التلقائي غير متاح مؤقتًا. استخدم رابط المصدر أدناه.';
-  list.replaceChildren();const li=document.createElement('li'),a=document.createElement('a');a.href=feed;a.target='_blank';a.rel='noopener noreferrer';a.textContent=currentLang==='fr'?'Consulter les actualités sur Google Actualités':currentLang==='en'?'View news on Google News':'عرض الأخبار على أخبار Google';li.appendChild(a);list.appendChild(li);
- }
+ }catch(e){status.textContent=currentLang==='fr'?'Le flux automatique est momentanément indisponible. Utilise le lien source ci-dessous.':currentLang==='en'?'The automatic feed is temporarily unavailable. Use the source link below.':'الموجز التلقائي غير متاح مؤقتًا. استخدم رابط المصدر أدناه.';list.replaceChildren();const li=document.createElement('li'),a=document.createElement('a');a.href=feed;a.target='_blank';a.rel='noopener noreferrer';a.textContent=currentLang==='fr'?'Consulter les actualités sur Google Actualités':currentLang==='en'?'View news on Google News':'عرض الأخبار على أخبار Google';li.appendChild(a);list.appendChild(li);}
 })();
 </script>
 </body></html>
