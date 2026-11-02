@@ -47,6 +47,10 @@ body[dir="rtl"]{text-align:right}body[dir="rtl"] nav{flex-direction:row-reverse}
 .small-note{color:var(--muted);font-size:.92rem}
 .btn-link{display:inline-block;padding:9px 13px;background:var(--gold);color:#10151d;border-radius:8px;text-decoration:none;font-weight:bold}
 
+/* Raccourci radio sportif fixé à droite */
+.radio-mars-float{position:fixed;right:12px;top:42%;z-index:900;display:flex;align-items:center;gap:8px;max-width:180px;padding:11px 13px;background:#c61f32;color:#fff;border:2px solid #f0c65b;border-radius:14px;text-decoration:none;font-weight:800;box-shadow:0 4px 16px #0009}
+.radio-mars-float>span:first-child{font-size:1.8rem}.radio-mars-label{line-height:1.2}.radio-mars-label small{font-size:.78rem;font-weight:600}
+@media(max-width:520px){.radio-mars-float{top:auto;bottom:16px;right:10px;padding:9px 11px}.radio-mars-label{font-size:.88rem}}
 /* Menu latéral compact pour navigation et accessibilité */
 .menu-toggle{position:fixed;top:14px;left:14px;z-index:1002;width:54px;height:54px;border-radius:50%;padding:0;background:#f0c65b;color:#10151d;border:2px solid #fff;font-size:27px;line-height:1;box-shadow:0 3px 14px #0008}
 .side-menu{position:fixed;top:0;left:0;bottom:0;z-index:1001;width:min(310px,86vw);overflow-y:auto;padding:82px 16px 24px;background:#101923;border-right:2px solid var(--gold);box-shadow:8px 0 28px #0008;transform:translateX(-110%);transition:transform .22s ease}
@@ -70,11 +74,16 @@ body.menu-open{overflow:hidden}
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Fin Google Tag Manager (noscript) -->
 
+
+<!-- Accès rapide à la radio sportive Radio Mars -->
+<a class="radio-mars-float" href="https://radiomars.ma/radio-live/" target="_blank" rel="noopener noreferrer" aria-label="Écouter Radio Mars en direct" title="Radio Mars en direct">
+ <span aria-hidden="true">📻</span><span class="radio-mars-label">RADIO MARS<br><small>Sport en direct</small></span>
+</a>
 <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="side-menu" title="Ouvrir le menu">☰</button>
 <div class="menu-backdrop" id="menu-backdrop" hidden></div>
 <aside class="side-menu" id="side-menu" aria-label="Menu principal" aria-hidden="true">
 <p class="menu-heading">📍 Navigation</p>
-<nav aria-label="Navigation principale"><a href="#accueil" aria-label="Accueil" title="Accueil">🏠 <span data-fr="Accueil" data-en="Home" data-ar="الرئيسية">Accueil</span></a><a href="#articles" aria-label="Articles" title="Articles">📰 <span data-fr="Articles" data-en="Articles" data-ar="المقالات">Articles</span></a><a href="#videos" aria-label="Vidéos" title="Vidéos">▶️ <span data-fr="Vidéos" data-en="Videos" data-ar="الفيديوهات">Vidéos</span></a><a href="#rss" aria-label="Actualités" title="Actualités">🌍 <span data-fr="Actualités" data-en="News feed" data-ar="آخر الأخبار">Actualités</span></a><a href="#meteo" aria-label="Météo" title="Météo">🌤️ <span data-fr="Météo" data-en="Weather" data-ar="الطقس">Météo</span></a><a href="#ebooks" aria-label="Bibliothèque" title="Bibliothèque">📚 <span data-fr="Bibliothèque" data-en="Library" data-ar="المكتبة">Bibliothèque</span></a><a href="#medias" aria-label="Autres médias" title="Autres médias">📡 <span data-fr="Médias" data-en="Media" data-ar="وسائل الإعلام">Médias</span></a><a href="#ajouter" aria-label="Ajouter un article" title="Ajouter un article">✍️ <span data-fr="Écrire" data-en="Write" data-ar="اكتب">Écrire</span></a><a href="#reservation" aria-label="Partenariats" title="Partenariats">🤝 <span data-fr="Partenariats" data-en="Partners" data-ar="الشراكات">Partenariats</span></a></nav>
+<nav aria-label="Navigation principale"><a href="#accueil" aria-label="Accueil" title="Accueil">🏠 <span data-fr="Accueil" data-en="Home" data-ar="الرئيسية">Accueil</span></a><a href="#articles" aria-label="Articles" title="Articles">📰 <span data-fr="Articles" data-en="Articles" data-ar="المقالات">Articles</span></a><a href="#videos" aria-label="Vidéos" title="Vidéos">▶️ <span data-fr="Vidéos" data-en="Videos" data-ar="الفيديوهات">Vidéos</span></a><a href="#rss" aria-label="Actualités" title="Actualités">🌍 <span data-fr="Actualités" data-en="News feed" data-ar="آخر الأخبار">Actualités</span></a><a href="#meteo" aria-label="Météo" title="Météo">🌤️ <span data-fr="Météo" data-en="Weather" data-ar="الطقس">Météo</span></a><a href="#localisation" aria-label="Localisation et carte" title="Localisation">📍 <span data-fr="Carte" data-en="Map" data-ar="الخريطة">Carte</span></a><a href="#ebooks" aria-label="Bibliothèque" title="Bibliothèque">📚 <span data-fr="Bibliothèque" data-en="Library" data-ar="المكتبة">Bibliothèque</span></a><a href="#medias" aria-label="Autres médias" title="Autres médias">📡 <span data-fr="Médias" data-en="Media" data-ar="وسائل الإعلام">Médias</span></a><a href="#ajouter" aria-label="Ajouter un article" title="Ajouter un article">✍️ <span data-fr="Écrire" data-en="Write" data-ar="اكتب">Écrire</span></a><a href="#reservation" aria-label="Partenariats" title="Partenariats">🤝 <span data-fr="Partenariats" data-en="Partners" data-ar="الشراكات">Partenariats</span></a></nav>
 <p class="menu-heading">♿ Accessibilité</p>
 <div class="access-tools" aria-label="Accessibilité"><button type="button" class="secondary" id="text-smaller" aria-label="Réduire le texte" title="Réduire le texte">A−</button><button type="button" class="secondary" id="text-larger" aria-label="Agrandir le texte" title="Agrandir le texte">A+</button><button type="button" class="secondary" id="contrast-toggle" aria-label="Contraste renforcé" title="Contraste renforcé">◐</button></div>
 </aside>
@@ -91,7 +100,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p data-fr="Choisis une ville pour consulter les conditions météo actuelles et les prévisions des prochains jours." data-en="Choose a city to see current weather conditions and the forecast for the next days." data-ar="اختر مدينة للاطلاع على حالة الطقس الحالية وتوقعات الأيام المقبلة.">Choisis une ville pour consulter les conditions météo actuelles et les prévisions des prochains jours.</p>
 <label for="weather-city" data-fr="Ville" data-en="City" data-ar="المدينة">Ville</label>
 <select id="weather-city" class="field-control">
-<option value="33.9716,-6.8498">Rabat</option><option value="33.895,-5.5547">Khémisset</option><option value="33.5731,-7.5898">Casablanca</option><option value="34.0331,-5.0003">Fès</option><option value="31.6295,-7.9811">Marrakech</option><option value="35.7595,-5.834">Tanger</option><option value="34.0209,-6.8416">Salé</option><option value="30.4278,-9.5981">Agadir</option>
+<optgroup label="Maroc"><option value="33.9716,-6.8498">Rabat</option><option value="33.895,-5.5547">Khémisset</option><option value="33.5731,-7.5898">Casablanca</option><option value="34.0331,-5.0003">Fès</option><option value="31.6295,-7.9811">Marrakech</option><option value="35.7595,-5.834">Tanger</option><option value="34.0209,-6.8416">Salé</option><option value="30.4278,-9.5981">Agadir</option><option value="33.2316,-8.5007">El Jadida</option><option value="34.2610,-6.5802">Kénitra</option><option value="33.5731,-5.1050">Meknès</option><option value="34.6814,-1.9086">Oujda</option><option value="30.9335,-6.9370">Ouarzazate</option><option value="23.6848,-15.9570">Dakhla</option></optgroup><optgroup label="Monde"><option value="48.8566,2.3522">Paris</option><option value="40.7128,-74.0060">New York</option><option value="51.5072,-0.1276">Londres</option><option value="34.0522,-118.2437">Los Angeles</option><option value="35.6762,139.6503">Tokyo</option><option value="25.2048,55.2708">Dubaï</option><option value="41.0082,28.9784">Istanbul</option><option value="-33.8688,151.2093">Sydney</option><option value="-23.5505,-46.6333">São Paulo</option><option value="30.0444,31.2357">Le Caire</option></optgroup>
 </select>
 <div class="weather-grid" aria-live="polite">
 <div class="weather-panel"><div data-fr="Conditions actuelles" data-en="Current conditions" data-ar="الحالة الحالية">Conditions actuelles</div><div id="weather-current" class="weather-value">--°C</div><div id="weather-description" class="weather-status">Chargement…</div></div>
@@ -99,6 +108,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="weather-panel"><div data-fr="Prévisions sur 3 jours" data-en="3-day forecast" data-ar="توقعات 3 أيام">Prévisions sur 3 jours</div><div id="weather-forecast" class="weather-status">Chargement des prévisions…</div></div>
 </div>
 <p id="weather-updated" class="small-note">Données fournies par Open-Meteo.</p>
+<div id="localisation" class="weather-panel" style="margin-top:18px">
+ <p class="eyebrow" data-fr="Localisation" data-en="Location" data-ar="الموقع">Localisation</p>
+ <h3 data-fr="Carte de la ville sélectionnée" data-en="Map of the selected city" data-ar="خريطة المدينة المختارة">Carte de la ville sélectionnée</h3>
+ <p class="small-note" data-fr="La carte suit automatiquement la ville choisie dans le menu météo, au Maroc ou ailleurs dans le monde." data-en="The map automatically follows the city selected in the weather menu, in Morocco or anywhere in the world." data-ar="تتبع الخريطة تلقائيًا المدينة المختارة في قائمة الطقس، في المغرب أو في أي مكان في العالم.">La carte suit automatiquement la ville choisie dans le menu météo, au Maroc ou ailleurs dans le monde.</p>
+ <div style="width:100%;height:300px;border-radius:10px;overflow:hidden;background:#080d13"><iframe id="location-map" title="Carte de localisation" src="https://maps.google.com/maps?q=33.9716,-6.8498&z=10&output=embed" width="100%" height="300" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+ <p><a id="map-open-link" class="btn-link" href="https://www.google.com/maps?q=33.9716,-6.8498" target="_blank" rel="noopener noreferrer" data-fr="Ouvrir la carte en grand" data-en="Open full map" data-ar="فتح الخريطة كاملة">Ouvrir la carte en grand</a></p>
+</div>
 </section>
 <section id="articles"><h2 data-fr="Derniers articles" data-en="Latest articles" data-ar="أحدث المقالات">Derniers articles</h2><div id="article-list" class="grid">
 <article class="card"><p class="eyebrow" data-fr="Analyse" data-ar="تحليل">Analyse</p><h3 data-fr="Actualité marocaine : les faits et leur contexte" data-ar="الأخبار المغربية: الوقائع وسياقها">Actualité marocaine : les faits et leur contexte</h3><p data-fr="Présenter les faits confirmés, les sources disponibles et les différents points de vue." data-en="Present confirmed facts, available sources and different points of view." data-ar="عرض الوقائع المؤكدة والمصادر المتاحة ووجهات النظر المختلفة.">Présenter les faits confirmés, les sources disponibles et les différents points de vue.</p><p class="byline">Par <span class="signature">E.T</span> · <span class="signature">Signature de l’auteur</span></p></article>
@@ -302,8 +318,15 @@ async function loadWeather(){
   updated.textContent=(currentLang==='en'?'Updated from Open-Meteo.':currentLang==='ar'?'البيانات من Open-Meteo.':'Données actualisées via Open-Meteo.')+' '+new Date(c.time).toLocaleString(currentLang==='ar'?'ar':currentLang==='en'?'en':'fr');
  }catch(e){current.textContent='--°C';wind.textContent='--';desc.textContent=currentLang==='en'?'Weather data temporarily unavailable.':currentLang==='ar'?'بيانات الطقس غير متاحة مؤقتًا.':'Météo momentanément indisponible.';forecast.textContent='';updated.textContent='Open-Meteo';}
 }
-document.getElementById('weather-city').addEventListener('change',loadWeather);
+function updateLocationMap(){
+ const coords=document.getElementById('weather-city').value;
+ const map=document.getElementById('location-map'),link=document.getElementById('map-open-link');
+ if(map) map.src='https://maps.google.com/maps?q='+encodeURIComponent(coords)+'&z=10&output=embed';
+ if(link) link.href='https://www.google.com/maps?q='+encodeURIComponent(coords);
+}
+document.getElementById('weather-city').addEventListener('change',()=>{loadWeather();updateLocationMap();});
 loadWeather();
+updateLocationMap();
 
 /* La fiche d'e-book est une prévisualisation locale, sans téléversement permanent. */
 document.getElementById('book-form').addEventListener('submit',function(event){
