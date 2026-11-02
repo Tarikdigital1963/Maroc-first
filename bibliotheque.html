@@ -17,7 +17,7 @@ main{padding:24px 0}.panel{background:var(--panel);border:1px solid var(--line);
 .eyebrow{color:var(--gold);font-weight:bold;letter-spacing:.07em;text-transform:uppercase;font-size:.9rem}
 .muted{color:var(--muted)}.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
 .book{border:1px solid var(--line);background:#111b28;border-radius:14px;padding:18px;display:flex;flex-direction:column;min-height:280px}
-.cover{height:150px;border:1px dashed #718096;border-radius:10px;display:grid;place-items:center;text-align:center;padding:12px;color:var(--muted);background:#0d141e;margin-bottom:14px}
+.cover{min-height:190px;border:1px dashed #718096;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;color:var(--muted);background:#0d141e;margin-bottom:14px;gap:10px}.cover img{display:block;max-width:100%;max-height:300px;object-fit:contain;border-radius:6px}.upload-label{display:inline-block;padding:10px 14px;border-radius:9px;background:#26364a;color:#fff;border:1px solid #718096;font-weight:bold;cursor:pointer}.upload-label input{display:none}.upload-status{font-size:.85rem;color:var(--muted);margin:0}
 .button{display:inline-block;padding:11px 15px;border-radius:9px;background:var(--gold);color:#10151d;text-decoration:none;font-weight:bold;margin:6px 8px 6px 0}
 .button.secondary{background:#26364a;color:var(--text);border:1px solid var(--line)}
 .note{border-left:4px solid var(--gold);padding:12px 16px;background:#111923;color:var(--muted)}
@@ -40,7 +40,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}
 <p class="note">Les quatre emplacements ci-dessous sont prêts à être complétés. Les titres, couvertures et liens d’achat n’ont pas encore été ajoutés afin de ne pas inventer de renseignements sur vos livres.</p>
 </section>
 <section class="books" aria-label="Livres de l’auteur">
-<article class="book"><div class="cover" aria-label="Couverture à ajouter">📘<br>Couverture à ajouter</div><h3>Livre 1 · ASIN B0H2N3Z5FF</h3><p class="muted">Titre et présentation à compléter après vérification de la fiche Amazon.</p><p><a class="button" href="https://www.amazon.com/dp/B0H2N3Z5FF" target="_blank" rel="noopener noreferrer">Voir le livre sur Amazon</a></p></article>
+<article class="book"><div class="cover" id="cover-frame-1" aria-label="Cadre de couverture du livre 1"><span id="cover-placeholder-1">📘<br>Couverture du livre à ajouter</span><label class="upload-label">Choisir une image<input id="cover-upload-1" type="file" accept="image/*" aria-label="Choisir la couverture du livre 1"></label><p class="upload-status" id="cover-status-1">Choisis une image dans les photos de ton téléphone.</p></div><h3>Initiative de l’autonomie du Sahara marocain</h3><p class="muted">Édition française · Couverture sélectionnée depuis ton téléphone.</p><p><a class="button" href="https://www.amazon.com/dp/B0H2N3Z5FF" target="_blank" rel="noopener noreferrer">Voir le livre sur Amazon</a></p></article>
 <article class="book"><div class="cover" aria-label="Couverture à ajouter">📗<br>Couverture du livre 2 à ajouter</div><h3>Livre 2</h3><p class="muted">Titre et présentation à ajouter.</p><p class="muted">Lien Amazon KDP à ajouter.</p></article>
 <article class="book"><div class="cover" aria-label="Couverture à ajouter">📙<br>Couverture du livre 3 à ajouter</div><h3>Livre 3</h3><p class="muted">Titre et présentation à ajouter.</p><p class="muted">Lien Amazon KDP à ajouter.</p></article>
 <article class="book"><div class="cover" aria-label="Couverture à ajouter">📕<br>Couverture du livre 4 à ajouter</div><h3>Livre 4</h3><p class="muted">Titre et présentation à ajouter.</p><p class="muted">Lien Amazon KDP à ajouter.</p></article>
@@ -51,6 +51,31 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}
 <a class="button" href="index.html">Revenir à l’actualité</a>
 </section>
 </main>
+<script>
+(function(){
+ const input=document.getElementById('cover-upload-1');
+ if(!input) return;
+ input.addEventListener('change',function(){
+   const file=input.files && input.files[0];
+   if(!file) return;
+   if(!file.type || !file.type.startsWith('image/')){
+     document.getElementById('cover-status-1').textContent='Choisis un fichier image (JPG, PNG ou WebP).';
+     return;
+   }
+   const reader=new FileReader();
+   reader.onload=function(){
+     const frame=document.getElementById('cover-frame-1');
+     const placeholder=document.getElementById('cover-placeholder-1');
+     let img=document.getElementById('book-cover-preview-1');
+     if(!img){img=document.createElement('img');img.id='book-cover-preview-1';img.alt='Couverture du livre 1';frame.insertBefore(img,placeholder);}
+     img.src=reader.result;
+     if(placeholder) placeholder.style.display='none';
+     document.getElementById('cover-status-1').textContent='Aperçu affiché dans cette session. Pour le rendre visible à tous les visiteurs, le fichier doit aussi être ajouté au site.';
+   };
+   reader.readAsDataURL(file);
+ });
+})();
+</script>
 <footer><div class="wrap">© Maroc First · Publications de l’auteur · Signature rédactionnelle : E.T</div></footer>
 </body>
 </html>
