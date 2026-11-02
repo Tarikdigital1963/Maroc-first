@@ -46,6 +46,22 @@ body[dir="rtl"]{text-align:right}body[dir="rtl"] nav{flex-direction:row-reverse}
 .book-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
 .small-note{color:var(--muted);font-size:.92rem}
 .btn-link{display:inline-block;padding:9px 13px;background:var(--gold);color:#10151d;border-radius:8px;text-decoration:none;font-weight:bold}
+
+/* Menu latéral compact pour navigation et accessibilité */
+.menu-toggle{position:fixed;top:14px;left:14px;z-index:1002;width:54px;height:54px;border-radius:50%;padding:0;background:#f0c65b;color:#10151d;border:2px solid #fff;font-size:27px;line-height:1;box-shadow:0 3px 14px #0008}
+.side-menu{position:fixed;top:0;left:0;bottom:0;z-index:1001;width:min(310px,86vw);overflow-y:auto;padding:82px 16px 24px;background:#101923;border-right:2px solid var(--gold);box-shadow:8px 0 28px #0008;transform:translateX(-110%);transition:transform .22s ease}
+.side-menu.open{transform:translateX(0)}
+.side-menu nav{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:12px 0 22px}
+.side-menu nav a{justify-content:flex-start;min-height:46px;padding:10px 12px}
+.side-menu .access-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0}
+.side-menu .access-tools button{min-height:48px;padding:8px;font-size:1.15rem}
+.menu-heading{margin:0 0 8px;color:var(--gold);font-weight:bold;font-size:1.05rem}
+.menu-backdrop{position:fixed;inset:0;background:#0009;z-index:1000;display:none}
+.menu-backdrop.open{display:block}
+body.menu-open{overflow:hidden}
+@media(min-width:900px){.side-menu{width:320px}}
+@media(prefers-reduced-motion:reduce){.side-menu{transition:none}}
+
 </style>
 </head>
 <body>
@@ -54,9 +70,17 @@ body[dir="rtl"]{text-align:right}body[dir="rtl"] nav{flex-direction:row-reverse}
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Fin Google Tag Manager (noscript) -->
 
-<header><div class="wrap">
-<div class="brand"><div><h1>MAROC FIRST</h1><div class="arabic-brand" lang="ar" dir="rtl">المغرب أولاً</div><p class="tag" data-fr="Le journal numérique trilingue · Actualité, société et analyses" data-en="The trilingual digital newspaper · News, society and analysis" data-ar="الجريدة الرقمية بثلاث لغات · أخبار ومجتمع وتحليلات">Le journal numérique bilingue · Actualité, société et analyses</p></div><div class="language-switch" aria-label="Language"><button class="lang-choice" data-lang="fr" type="button">Français</button><button class="lang-choice" data-lang="en" type="button">English</button><button class="lang-choice" data-lang="ar" type="button">العربية</button></div></div><div class="access-tools" aria-label="Accessibilité"><button type="button" class="secondary" id="text-smaller" aria-label="Réduire le texte" title="Réduire le texte">A−</button><button type="button" class="secondary" id="text-larger" aria-label="Agrandir le texte" title="Agrandir le texte">A+</button><button type="button" class="secondary" id="contrast-toggle" aria-label="Contraste renforcé" title="Contraste renforcé">◐</button></div>
+<button type="button" class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="side-menu" title="Ouvrir le menu">☰</button>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<aside class="side-menu" id="side-menu" aria-label="Menu principal" aria-hidden="true">
+<p class="menu-heading">📍 Navigation</p>
 <nav aria-label="Navigation principale"><a href="#accueil" aria-label="Accueil" title="Accueil">🏠 <span data-fr="Accueil" data-en="Home" data-ar="الرئيسية">Accueil</span></a><a href="#articles" aria-label="Articles" title="Articles">📰 <span data-fr="Articles" data-en="Articles" data-ar="المقالات">Articles</span></a><a href="#videos" aria-label="Vidéos" title="Vidéos">▶️ <span data-fr="Vidéos" data-en="Videos" data-ar="الفيديوهات">Vidéos</span></a><a href="#rss" aria-label="Actualités" title="Actualités">🌍 <span data-fr="Actualités" data-en="News feed" data-ar="آخر الأخبار">Actualités</span></a><a href="#meteo" aria-label="Météo" title="Météo">🌤️ <span data-fr="Météo" data-en="Weather" data-ar="الطقس">Météo</span></a><a href="#ebooks" aria-label="Bibliothèque" title="Bibliothèque">📚 <span data-fr="Bibliothèque" data-en="Library" data-ar="المكتبة">Bibliothèque</span></a><a href="#medias" aria-label="Autres médias" title="Autres médias">📡 <span data-fr="Médias" data-en="Media" data-ar="وسائل الإعلام">Médias</span></a><a href="#ajouter" aria-label="Ajouter un article" title="Ajouter un article">✍️ <span data-fr="Écrire" data-en="Write" data-ar="اكتب">Écrire</span></a><a href="#reservation" aria-label="Partenariats" title="Partenariats">🤝 <span data-fr="Partenariats" data-en="Partners" data-ar="الشراكات">Partenariats</span></a></nav>
+<p class="menu-heading">♿ Accessibilité</p>
+<div class="access-tools" aria-label="Accessibilité"><button type="button" class="secondary" id="text-smaller" aria-label="Réduire le texte" title="Réduire le texte">A−</button><button type="button" class="secondary" id="text-larger" aria-label="Agrandir le texte" title="Agrandir le texte">A+</button><button type="button" class="secondary" id="contrast-toggle" aria-label="Contraste renforcé" title="Contraste renforcé">◐</button></div>
+</aside>
+<header><div class="wrap">
+<div class="brand"><div><h1>MAROC FIRST</h1><div class="arabic-brand" lang="ar" dir="rtl">المغرب أولاً</div><p class="tag" data-fr="Le journal numérique trilingue · Actualité, société et analyses" data-en="The trilingual digital newspaper · News, society and analysis" data-ar="الجريدة الرقمية بثلاث لغات · أخبار ومجتمع وتحليلات">Le journal numérique bilingue · Actualité, société et analyses</p></div><div class="language-switch" aria-label="Language"><button class="lang-choice" data-lang="fr" type="button">Français</button><button class="lang-choice" data-lang="en" type="button">English</button><button class="lang-choice" data-lang="ar" type="button">العربية</button></div></div>
+
 </div></header>
 <main class="wrap" id="accueil">
 <section class="hero"><p class="eyebrow" data-fr="Le regard de la rédaction" data-en="The editorial perspective" data-ar="رؤية هيئة التحرير">Le regard de la rédaction</p><h2 data-fr="Comprendre l’actualité, au-delà des titres" data-en="Understanding the news beyond the headlines" data-ar="فهم الأخبار، أبعد من العناوين">Comprendre l’actualité, au-delà des titres</h2><p data-fr="Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés E.T." data-en="Maroc First covers Moroccan news, social issues and regional affairs. Articles are signed E.T." data-ar="ماروك فيرست مساحة للقراءة تهتم بالأخبار المغربية وقضايا المجتمع والعلاقات الإقليمية. المقالات موقعة باسم E.T.">Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés <span class="signature">E.T</span>.</p><p data-fr="Les informations doivent être vérifiées et les sources clairement indiquées avant publication." data-en="Information must be verified and sources clearly cited before publication." data-ar="يجب التحقق من المعلومات وذكر المصادر بوضوح قبل النشر.">Les informations doivent être vérifiées et les sources clairement indiquées avant publication.</p></section>
@@ -295,6 +319,31 @@ document.getElementById('book-form').addEventListener('submit',function(event){
  document.getElementById('book-status').textContent=currentLang==='en'?'Preview added for this visit only. Add the listing to the site code to publish it permanently.':currentLang==='ar'?'تمت إضافة معاينة لهذه الزيارة فقط. للنشر الدائم، أضف البطاقة إلى الموقع.':'Fiche ajoutée pour cette visite uniquement. Pour la publier durablement, il faut ajouter la fiche au code du site.';
  this.reset();
 });
+
+
+/* Menu latéral : ouverture, fermeture et navigation au clavier */
+(function(){
+ const toggle=document.getElementById('menu-toggle');
+ const panel=document.getElementById('side-menu');
+ const backdrop=document.getElementById('menu-backdrop');
+ if(!toggle||!panel||!backdrop)return;
+ function openMenu(){
+   panel.classList.add('open');backdrop.hidden=false;backdrop.classList.add('open');
+   panel.setAttribute('aria-hidden','false');toggle.setAttribute('aria-expanded','true');
+   toggle.setAttribute('aria-label','Fermer le menu');toggle.textContent='×';
+   document.body.classList.add('menu-open');
+ }
+ function closeMenu(){
+   panel.classList.remove('open');backdrop.classList.remove('open');backdrop.hidden=true;
+   panel.setAttribute('aria-hidden','true');toggle.setAttribute('aria-expanded','false');
+   toggle.setAttribute('aria-label','Ouvrir le menu');toggle.textContent='☰';
+   document.body.classList.remove('menu-open');
+ }
+ toggle.addEventListener('click',()=>panel.classList.contains('open')?closeMenu():openMenu());
+ backdrop.addEventListener('click',closeMenu);
+ panel.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',closeMenu));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open')){closeMenu();toggle.focus();}});
+})();
 
 </script>
 </body></html>
