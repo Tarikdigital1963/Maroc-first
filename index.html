@@ -348,10 +348,11 @@ form.addEventListener('submit',function(event){
  event.preventDefault();
  const proposal=buildArticleProposal();
  if(!proposal)return;
- // Chaque champ est encodé une seule fois : Gmail affiche donc le texte lisible.
- const gmailUrl='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent('qods112@gmail.com')+'&su='+encodeURIComponent(proposal.subjectText)+'&body='+encodeURIComponent(proposal.bodyText);
- publishStatus.textContent='Gmail va s’ouvrir avec l’article en texte brut. Vérifie le message puis appuie sur Envoyer. La publication attendra ton autorisation.';
- window.open(gmailUrl,'_blank','noopener,noreferrer');
+ // Ouvre l’application de messagerie installée (Gmail sur Android si configurée).
+ // Sujet et corps sont encodés chacun une seule fois.
+ const mailtoUrl='mailto:qods112@gmail.com?subject='+encodeURIComponent(proposal.subjectText)+'&body='+encodeURIComponent(proposal.bodyText);
+ publishStatus.textContent='Ouverture de votre application de messagerie. Vérifie le texte puis appuie sur Envoyer. La publication attendra ton autorisation.';
+ window.location.href=mailtoUrl;
 });
 document.getElementById('copy-article-draft').addEventListener('click',async function(){
  const proposal=buildArticleProposal();
