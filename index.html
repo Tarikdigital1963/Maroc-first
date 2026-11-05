@@ -154,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <label for="article-content" data-fr="Contenu de l’article" data-en="Article text" data-ar="محتوى المقال">Contenu de l’article</label><textarea id="article-content" required maxlength="20000" placeholder="Rédige ton article ici…"></textarea>
 <label for="article-source" data-fr="Source ou lien de référence (facultatif)" data-en="Source or reference link (optional)" data-ar="المصدر أو رابط مرجعي (اختياري)">Source ou lien de référence (facultatif)</label><input id="article-source" type="url" placeholder="https://…">
 <label for="article-signature" data-fr="Signature" data-en="Byline" data-ar="التوقيع">Signature</label><input id="article-signature" value="E.T" maxlength="60" required>
-<div class="form-actions"><button type="submit" data-fr="Envoyer la proposition à la rédaction" data-en="Send article proposal to the editor" data-ar="إرسال مقترح المقال إلى هيئة التحرير">Envoyer la proposition à la rédaction</button><button type="reset" class="secondary" data-fr="Effacer le formulaire" data-ar="مسح النموذج">Effacer le formulaire</button></div>
+<div class="form-actions"><button type="submit" data-fr="Ouvrir Gmail pour demander l’autorisation" data-en="Open Gmail to request approval" data-ar="فتح Gmail لطلب الموافقة">Ouvrir Gmail pour demander l’autorisation</button><button type="button" class="secondary" id="copy-article-draft" data-fr="Copier l’article en texte brut" data-en="Copy article as plain text" data-ar="نسخ المقال كنص عادي">Copier l’article en texte brut</button><button type="reset" class="secondary" data-fr="Effacer le formulaire" data-ar="مسح النموذج">Effacer le formulaire</button></div>
 <p id="publish-status" aria-live="polite"></p>
 </form></section>
 
@@ -330,18 +330,48 @@ function addArticleCard(article){
  const by=document.createElement('p');by.className='byline';by.textContent=(currentLang==='fr'?'Par ':currentLang==='en'?'By ':'بقلم ')+article.signature;card.appendChild(by);articleList.prepend(card);
 }
 try{const saved=JSON.parse(localStorage.getItem('marocFirstDraftArticles')||'[]');saved.forEach(addArticleCard)}catch(e){}
-form.addEventListener('submit',function(event){
- event.preventDefault();
+function buildArticleProposal(){
  const title=document.getElementById('article-title').value.trim();
  const category=document.getElementById('article-category').value;
  const content=document.getElementById('article-content').value.trim();
  const source=document.getElementById('article-source').value.trim();
  const signature=document.getElementById('article-signature').value.trim();
- if(!title||!content||!signature){publishStatus.textContent=currentLang==='fr'?'Complète le titre, le contenu et la signature.':currentLang==='en'?'Please complete the title, text and byline.':'يرجى إكمال العنوان والمحتوى والتوقيع.';return;}
- const subject=encodeURIComponent('Proposition d’article pour Maroc First : '+title);
- const body=encodeURIComponent('Bonjour Tarik,\n\nJe souhaite proposer cet article à Maroc First pour validation avant toute publication.\n\nTitre : '+title+'\nRubrique : '+category+'\nSignature : '+signature+'\nSource : '+(source||'Non renseignée')+'\n\nTexte de l’article :\n'+content+'\n\nMerci de me confirmer votre accord avant publication.');
- publishStatus.textContent='Votre application e-mail va s’ouvrir pour envoyer la proposition à qods112@gmail.com. L’article ne sera pas publié automatiquement.';
- window.location.href='mailto:qods112@gmail.com?subject='+subject+'&body='+encodeURIComponent(body);
+ if(!title||!content||!signature){
+  publishStatus.textContent=currentLang==='fr'?'Complète le titre, le contenu et la signature.':currentLang==='en'?'Please complete the title, text and byline.':'يرجى إكمال العنوان والمحتوى والتوقيع.';
+  return null;
+ }
+ const subjectText='Proposition d’article pour Maroc First : '+title;
+ const bodyText='Bonjour Tarik,\n\nJe souhaite proposer cet article à Maroc First pour validation avant toute publication.\n\nTitre : '+title+'\nRubrique : '+category+'\nSignature : '+signature+'\nSource : '+(source||'Non renseignée')+'\n\nTexte de l’article :\n'+content+'\n\nMerci de me confirmer votre accord avant publication.';
+ return {subjectText,bodyText};
+}
+form.addEventListener('submit',function(event){
+ event.preventDefault();
+ const proposal=buildArticleProposal();
+ if(!proposal)return;
+ // Chaque champ est encodé une seule fois : Gmail affiche donc le texte lisible.
+ const gmailUrl='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent('qods112@gmail.com')+'&su='+encodeURIComponent(proposal.subjectText)+'&body='+encodeURIComponent(proposal.bodyText);
+ publishStatus.textContent='Gmail va s’ouvrir avec l’article en texte brut. Vérifie le message puis appuie sur Envoyer. La publication attendra ton autorisation.';
+ window.open(gmailUrl,'_blank','noopener,noreferrer');
+});
+document.getElementById('copy-article-draft').addEventListener('click',async function(){
+ const proposal=buildArticleProposal();
+ if(!proposal)return;
+ const plainText=proposal.subjectText+'\n\n'+proposal.bodyText;
+ try{
+  await navigator.clipboard.writeText(plainText);
+  publishStatus.textContent='Article copié en texte brut. Tu peux le coller directement dans Gmail.';
+ }catch(error){
+  const temporary=document.createElement('textarea');
+  temporary.value=plainText;
+  temporary.setAttribute('readonly','');
+  temporary.style.position='fixed';
+  temporary.style.opacity='0';
+  document.body.appendChild(temporary);
+  temporary.select();
+  const copied=document.execCommand('copy');
+  temporary.remove();
+  publishStatus.textContent=copied?'Article copié en texte brut. Tu peux le coller directement dans Gmail.':'La copie automatique a échoué. Sélectionne le texte du formulaire et copie-le manuellement.';
+ }
 });
 (async function(){
  const list=document.getElementById('rss-list'),status=document.getElementById('rss-status');
