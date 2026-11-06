@@ -48,10 +48,18 @@ export default {
     const verification = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: token })
+      body: new URLSearchParams({
+        secret: env.TURNSTILE_SECRET,
+        response: token,
+        remoteip: request.headers.get("CF-Connecting-IP") || ""
+      })
     });
     const verificationResult = await verification.json();
-    if (!verificationResult.success) {
+    if (
+      !verificationResult.success ||
+      verificationResult.hostname !== "tarikdigital1963.github.io" ||
+      verificationResult.action !== "article_submit"
+    ) {
       return json({ ok: false, error: "Human verification failed" }, 403, origin);
     }
 
