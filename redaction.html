@@ -55,7 +55,7 @@ footer{text-align:center;padding:20px;color:var(--muted)}
 <div class="row"><button id="save">Enregistrer le brouillon chiffré</button><button id="export" class="secondary">Exporter le texte</button><button id="delete" class="danger">Supprimer ce brouillon</button></div>
 <p id="status" role="status"></p>
 </div>
-<div class="card"><h2>Publication</h2><p>Enregistrer ici ne publie rien sur le journal. Quand votre article est prêt, exportez-le puis ajoutez-le à la rubrique publique après relecture. Cela évite qu’un brouillon apparaisse par erreur devant les visiteurs.</p></div>
+<div class="card"><h2>Publication publique</h2><p>Votre article reste privé tant que vous n’appuyez pas sur le bouton ci-dessous. La validation envoie une demande de publication. Le brouillon chiffré reste enregistré dans votre espace privé.</p><button id="publish" type="button">Valider et envoyer pour publication publique</button><p id="publish-status" role="status"></p></div>
 </section>
 </main>
 <footer>© Maroc First · Espace de rédaction personnel</footer>
@@ -113,6 +113,21 @@ $('save').addEventListener('click',async()=>{
  if(!d.title||!d.body.trim()){setStatus('Ajoutez un titre et le texte de votre article.');return}
  const i=drafts.findIndex(x=>x.id===d.id);if(i>=0)drafts[i]=d;else drafts.unshift(d);activeId=d.id;
  try{await encryptVault();renderList();setStatus('Brouillon enregistré et chiffré sur cet appareil.')}catch(e){setStatus('Échec de l’enregistrement. Vérifiez l’espace disponible du navigateur.')}
+});
+$('publish').addEventListener('click',async()=>{
+ if(!key){$('publish-status').textContent='Déverrouillez d’abord votre espace privé.';return}
+ const d={id:activeId||crypto.randomUUID(),title:$('title').value.trim(),category:$('category').value,body:$('body').value,source:$('source').value.trim(),signature:$('signature').value.trim()||'E.T',updatedAt:new Date().toISOString()};
+ if(!d.title||!d.body.trim()){$('publish-status').textContent='Ajoutez un titre et le texte de votre article.';return}
+ if(!confirm('Confirmez-vous l’envoi de cet article pour publication publique ?'))return;
+ const i=drafts.findIndex(x=>x.id===d.id);if(i>=0)drafts[i]=d;else drafts.unshift(d);activeId=d.id;
+ const btn=$('publish');btn.disabled=true;$('publish-status').textContent='Enregistrement privé et envoi de la demande…';
+ try{
+  await encryptVault();renderList();
+  const payload=new URLSearchParams({title:d.title,body:d.body,category:d.category,source:d.source,signature:d.signature,publication_status:'pending_manual_review'});
+  await fetch('https://hooks.zapier.com/hooks/catch/27365412/49cn41p/',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload.toString()});
+  $('publish-status').textContent='Demande envoyée au point de réception. Le brouillon reste privé et chiffré ici. La publication effective dépend du Zap configuré ; elle n’est pas vérifiable depuis cette page.';
+ }catch(e){$('publish-status').textContent='Le brouillon privé est enregistré, mais l’envoi a échoué. Réessayez plus tard.'}
+ finally{btn.disabled=false}
 });
 $('export').addEventListener('click',()=>{
  const d={title:$('title').value.trim(),category:$('category').value,body:$('body').value,source:$('source').value.trim(),signature:$('signature').value.trim()||'E.T'};
