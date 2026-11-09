@@ -1,7 +1,75 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Les événements du monde et leurs conséquences pour le Maroc. | Maroc First"><title>International | Maroc First</title><style>
-:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:19px/1.7 Arial,sans-serif}a{color:#ffe08a}a:focus,button:focus,select:focus{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1100px,94%);margin:auto}header{background:#080d13;border-bottom:4px solid var(--gold);padding:24px 0}h1{font-size:clamp(2rem,7vw,3.5rem);margin:0;color:var(--gold)}header p,.muted{color:var(--muted)}nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}nav a,.btn{display:inline-block;padding:10px 13px;background:#26364a;border:1px solid var(--line);border-radius:9px;text-decoration:none;font-weight:bold}.hero,.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:22px 0}.hero{background:linear-gradient(135deg,#23364b,#151f2c)}h2{color:var(--gold)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}.card{margin:0;overflow-wrap:anywhere}.card h3{line-height:1.4}.card h3 a{text-decoration:none}.card h3 a:hover{text-decoration:underline}.weather{margin:18px 0;padding:20px;border:1px solid var(--line);border-radius:12px;background:#111b28}.weather strong{font-size:2.5rem;color:var(--gold)}label{display:block;font-weight:bold;margin:12px 0 6px}select{width:100%;max-width:400px;padding:14px;background:#0d141e;color:var(--text);border:1px solid var(--line);border-radius:9px;font:inherit}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);margin-top:30px}@media(max-width:520px){body{font-size:18px}.hero,.panel,.card{padding:16px}}
-</style></head><body><header><div class="wrap"><h1>🌍 International</h1><p>Les événements du monde et leurs conséquences pour le Maroc.</p><nav aria-label="Rubriques"><a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a><a href="immobilier.html">🏡 Immobilier</a><a href="meteo.html">🌤️ Météo</a><a href="medias.html">📺 Médias</a></nav></div></header><main class="wrap"><section class="hero"><p><strong>Maroc First</strong> · Diplomatie, géopolitique, économie mondiale et grands événements.</p><p>Une rubrique indépendante pour retrouver les informations, les dossiers et les ressources de ce domaine au même endroit.</p></section><section class="panel"><h2>Dernières actualités</h2><p id="feed-status" class="muted">Chargement des titres…</p><div id="feed-list" class="grid" aria-live="polite"></div><p class="muted">Les liens ouvrent les publications de leurs médias d’origine. Maroc First propose des résumés et analyses originaux, avec attribution des sources, sans reproduire intégralement les articles protégés.</p></section></main><footer><div class="wrap">© Maroc First · Rédaction E.T. · <a href="index.html">Retour à l’accueil</a></div></footer><script>
-(async()=>{const box=document.getElementById('feed-list'),status=document.getElementById('feed-status');const feed='https://news.google.com/rss/search?q='+encodeURIComponent("Actualités internationales")+'&hl=fr&gl=MA&ceid=MA:fr';try{const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(feed));if(!r.ok)throw Error();const xml=new DOMParser().parseFromString(await r.text(),'text/xml');const items=[...xml.querySelectorAll('item')].slice(0,12);box.replaceChildren();if(!items.length)throw Error();items.forEach(item=>{const c=document.createElement('article');c.className='card';const h=document.createElement('h3');const a=document.createElement('a');a.href=item.querySelector('link')?.textContent?.trim()||feed;a.target='_blank';a.rel='noopener';a.textContent=item.querySelector('title')?.textContent?.trim()||'Lire l’article';h.append(a);c.append(h);const date=item.querySelector('pubDate')?.textContent;if(date){const p=document.createElement('p');p.className='muted';const d=new Date(date);p.textContent=isNaN(d)?'':d.toLocaleDateString('fr-FR');c.append(p);}box.append(c);});status.textContent=items.length+' titres chargés. Les articles restent hébergés par leurs médias d’origine.';}catch(e){status.textContent='Le flux automatique est indisponible pour le moment. Consultez les sources depuis la page d’accueil ou réessayez plus tard.';}})();
-</script><script src="actualites.js" data-section="international" defer></script>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Actualités internationales : diplomatie, conflits, climat, économie mondiale et coopération. Maroc First.">
+<title>International | Maroc First</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:19px/1.7 Arial,sans-serif}a{color:#ffe08a}a:focus,button:focus{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1100px,94%);margin:auto}header{background:#080d13;border-bottom:4px solid var(--gold);padding:24px 0}h1{font-size:clamp(2rem,7vw,3.5rem);margin:0;color:var(--gold)}header p,.muted,.date{color:var(--muted)}
+nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}nav a,.btn{display:inline-block;padding:10px 13px;background:#26364a;border:1px solid var(--line);border-radius:9px;text-decoration:none;font-weight:bold}
+.hero,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:22px 0}.hero{background:linear-gradient(135deg,#23364b,#151f2c)}
+h2{color:var(--gold)}.section-title{margin:30px 0 14px;color:var(--gold);font-size:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0}
+.cover{display:block;height:205px;background:#0b1119;overflow:hidden}.cover img{display:block;width:100%;height:100%;object-fit:cover}
+.card-body{padding:18px}.card h3{font-size:1.2rem;line-height:1.4;margin:8px 0 10px}.card h3 a{text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:8px 0}.tag{display:inline-block;color:#10151d;background:var(--gold);font-size:.82rem;font-weight:bold;padding:3px 9px;border-radius:20px}
+.read{display:inline-block;margin-top:8px;font-weight:bold}.feed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.feed-card{background:#111b28;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-wrap:anywhere}.feed-card h3{font-size:1.08rem;line-height:1.4}.feed-card a{text-decoration:none}.feed-card a:hover{text-decoration:underline}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);margin-top:30px}
+@media(max-width:520px){body{font-size:18px}.hero,.panel{padding:16px}.card-body{padding:15px}.cover{height:190px}}
+</style></head>
+<body>
+<header><div class="wrap"><h1>🌍 International</h1><p>Les événements du monde et leurs conséquences pour le Maroc.</p>
+<nav aria-label="Rubriques"><a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a><a href="immobilier.html">🏡 Immobilier</a><a href="meteo.html">🌤️ Météo</a><a href="medias.html">📺 Médias</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><p><strong>Maroc First – Le monde en articles et en images.</strong></p>
+<p>Diplomatie, relations internationales, conflits, économie mondiale, climat et coopération. Les photographies sont fixes et chaque image, titre et lien de lecture ouvre la publication de la source.</p></section>
+
+<h2 class="section-title">🌐 À la une dans le monde</h2>
+<section class="grid">
+<article class="card">
+<a class="cover" href="https://www.reuters.com/sustainability/cop/cop31-open-turkey-with-climate-goals-under-pressure-war-ai-2026-11-09/" target="_blank" rel="noopener"><img src="https://public.wmo.int/sites/default/files/styles/featured_image_x1_768x512/public/2026-11/Strong-Climate-Action-and-Digital-Health-COP31-9Nov2026.jpeg?h=8a1fc1d8&itok=_dy8exxW" alt="Réunion internationale à la conférence climatique COP31 à Antalya" loading="lazy"></a>
+<div class="card-body"><span class="tag">Climat · COP31</span><p class="date">9 novembre 2026 · Reuters / Organisation météorologique mondiale</p>
+<h3><a href="https://www.reuters.com/sustainability/cop/cop31-open-turkey-with-climate-goals-under-pressure-war-ai-2026-11-09/" target="_blank" rel="noopener">COP31 s’ouvre en Turquie sous la pression des urgences climatiques et énergétiques</a></h3>
+<p>La conférence d’Antalya réunit les délégations autour de la réduction des émissions, de l’adaptation et du financement climatique. Les Nations Unies appellent à accélérer la mise en œuvre des engagements, alors que les événements météorologiques extrêmes pèsent sur les populations et les économies.</p>
+<a class="read" href="https://www.reuters.com/sustainability/cop/cop31-open-turkey-with-climate-goals-under-pressure-war-ai-2026-11-09/" target="_blank" rel="noopener">Lire l’article source ↗</a></div></article>
+
+<article class="card">
+<a class="cover" href="https://www.ochaopt.org/content/humanitarian-situation-report-heavy-rains-gaza-strip-8-november-2026" target="_blank" rel="noopener"><img src="https://www.ochaopt.org/sites/default/files/styles/phone_x1_767_/public/collaped_al_qadisiya_building.jpg?itok=6LUaWlFP" alt="Bâtiment endommagé à Gaza après les fortes pluies" loading="lazy"></a>
+<div class="card-body"><span class="tag">Proche-Orient · Humanitaire</span><p class="date">9 novembre 2026 · OCHA / Nations Unies</p>
+<h3><a href="https://www.ochaopt.org/content/humanitarian-situation-report-heavy-rains-gaza-strip-8-november-2026" target="_blank" rel="noopener">Gaza : les fortes pluies aggravent les conditions humanitaires</a></h3>
+<p>Le rapport humanitaire des Nations Unies décrit des inondations, des abris endommagés et des services essentiels perturbés. Les équipes humanitaires suivent les besoins des familles touchées et les difficultés d’accès à des hébergements sûrs.</p>
+<a class="read" href="https://www.ochaopt.org/content/humanitarian-situation-report-heavy-rains-gaza-strip-8-november-2026" target="_blank" rel="noopener">Lire le rapport de l’OCHA ↗</a></div></article>
+
+<article class="card">
+<a class="cover" href="https://unric.org/fr/onu-et-la-guerre-en-ukraine-les-principales-informations/" target="_blank" rel="noopener"><img src="https://unsdg.un.org/sites/default/files/styles/hero_divider_2xl_1x/public/2026-01/OCHA%2C%20Ximena%203.jpg?itok=BHd7--AO" alt="Personnel humanitaire des Nations Unies venant en aide à des habitants en Ukraine" loading="lazy"></a>
+<div class="card-body"><span class="tag">Europe · Ukraine</span><p class="date">9 novembre 2026 · Centre d’information des Nations Unies</p>
+<h3><a href="https://unric.org/fr/onu-et-la-guerre-en-ukraine-les-principales-informations/" target="_blank" rel="noopener">Ukraine : l’ONU suit l’évolution du conflit et ses conséquences civiles</a></h3>
+<p>Les conséquences humanitaires de la guerre restent au centre des préoccupations internationales. Les Nations Unies documentent les besoins des civils, les déplacements de population et les dommages aux infrastructures essentielles.</p>
+<a class="read" href="https://unric.org/fr/onu-et-la-guerre-en-ukraine-les-principales-informations/" target="_blank" rel="noopener">Suivre le dossier de l’ONU ↗</a></div></article>
+
+<article class="card">
+<a class="cover" href="https://www.reuters.com/world/france-launches-g7-ports-alliance-target-global-narcotics-routes-2026-11-09/" target="_blank" rel="noopener"><img src="https://fr.le360.ma/resizer/v2/SJ6XSTSGIFBXXBAUX3XISCDDBQ.jpeg?auth=6023e0819c406f89aae4c444a56b0346206140eb59d2dcd17bb1c06f6f041bcc&height=684&smart=true&width=1216" alt="Opération de contrôle dans un port maritime, image d’illustration" loading="lazy"></a>
+<div class="card-body"><span class="tag">Sécurité · Coopération</span><p class="date">9 novembre 2026 · Reuters</p>
+<h3><a href="https://www.reuters.com/world/france-launches-g7-ports-alliance-target-global-narcotics-routes-2026-11-09/" target="_blank" rel="noopener">La France lance une alliance du G7 pour lutter contre les routes mondiales du trafic de drogue</a></h3>
+<p>Le dispositif annoncé vise à renforcer le partage de renseignements et la coordination entre ports, douanes et organisations internationales afin de perturber les réseaux de trafic transnationaux.</p>
+<a class="read" href="https://www.reuters.com/world/france-launches-g7-ports-alliance-target-global-narcotics-routes-2026-11-09/" target="_blank" rel="noopener">Lire l’article Reuters ↗</a></div></article>
+
+<article class="card">
+<a class="cover" href="https://www.reuters.com/world/middle-east/trump-meet-iran-war-mediator-qatar-no-imminent-deal-seen-end-war-2026-11-09/" target="_blank" rel="noopener"><img src="https://minurso.unmissions.org/sites/default/files/styles/3_2_lg/public/2026-02/milad_visit.jpg?h=877b0d9c&itok=J5KLHugh" alt="Réunion de responsables internationaux, photographie d’illustration" loading="lazy"></a>
+<div class="card-body"><span class="tag">Moyen-Orient · Diplomatie</span><p class="date">9 novembre 2026 · Reuters</p>
+<h3><a href="https://www.reuters.com/world/middle-east/trump-meet-iran-war-mediator-qatar-no-imminent-deal-seen-end-war-2026-11-09/" target="_blank" rel="noopener">Washington et Doha poursuivent les échanges diplomatiques sur la guerre avec l’Iran</a></h3>
+<p>Le Qatar poursuit son rôle de médiateur dans les discussions visant à réduire les tensions. Les positions restent éloignées et aucune conclusion rapide n’est annoncée.</p>
+<a class="read" href="https://www.reuters.com/world/middle-east/trump-meet-iran-war-mediator-qatar-no-imminent-deal-seen-end-war-2026-11-09/" target="_blank" rel="noopener">Lire l’article Reuters ↗</a></div></article>
+</section>
+
+<section class="panel"><h2>📰 Dernières actualités internationales</h2><p id="feed-status" class="muted">Chargement des actualités et des archives…</p><div id="feed-list" class="feed-grid" aria-live="polite"></div>
+<p class="muted">Les titres et extraits sont issus des flux d’actualité. Les articles complets restent hébergés par leurs médias d’origine. Les archives sont conservées et consultables avec le bouton d’affichage des articles précédents.</p></section>
+<p class="muted">Maroc First présente des résumés originaux et attribue les sources. Les photographies fixes sont chargées depuis les sites des organismes et médias concernés ; leur disponibilité dépend de leurs serveurs et de leurs règles d’accès.</p>
+</main>
+<footer><div class="wrap">© Maroc First · Rédaction E.T. · <a href="index.html">Retour à l’accueil</a></div></footer>
+<script src="actualites.js" data-section="international" defer></script>
 </body></html>
