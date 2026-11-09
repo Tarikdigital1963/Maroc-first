@@ -19,20 +19,21 @@ function dateText(v){try{return new Date(v).toLocaleString("fr-FR",{dateStyle:"m
 fetch("./actualites.json?ts="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("archive indisponible");return r.json();}).then(data=>{
 let items=(data.sections&&data.sections[section])||[];
 if(section==="budget")items=(data.sections.economie||[]).filter(x=>/budget|impôt|fiscal|dépense|finance publique/i.test(x.title+" "+x.summary));
+items=items.slice().sort((a,b)=>new Date(b.published||0)-new Date(a.published||0));
 if(!items.length){status.textContent="Aucun article archivé pour cette rubrique pour le moment.";return;}
-let shown=24;
+let shown=8;
 function render(){
  grid.replaceChildren();
  items.slice(0,shown).forEach(item=>{
   const card=document.createElement("article");card.className="mf-daily-card";
-  if(item.image){const img=document.createElement("img");img.loading="lazy";img.src=item.image;img.alt="Image associée à l’actualité";img.onerror=()=>img.remove();if(section==="sport"&&item.url){const imageLink=document.createElement("a");imageLink.href=item.url;imageLink.target="_blank";imageLink.rel="noopener noreferrer";imageLink.setAttribute("aria-label","Ouvrir l’article : "+(item.title||"Actualité sportive"));imageLink.style.display="block";imageLink.style.cursor="pointer";imageLink.append(img);card.append(imageLink);}else{card.append(img);}}
+  if(item.image){const img=document.createElement("img");img.loading="lazy";img.src=item.image;img.alt="Image associée à l’actualité";img.onerror=()=>img.remove();if(item.url){const imageLink=document.createElement("a");imageLink.href=item.url;imageLink.target="_blank";imageLink.rel="noopener noreferrer";imageLink.setAttribute("aria-label","Ouvrir l’article : "+(item.title||"Actualité sportive"));imageLink.style.display="block";imageLink.style.cursor="pointer";imageLink.append(img);card.append(imageLink);}else{card.append(img);}}
   const title=document.createElement("h3"),link=document.createElement("a");link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=item.title;title.append(link);card.append(title);
   if(item.summary){const p=document.createElement("p");p.textContent=item.summary;card.append(p);}
   const meta=document.createElement("p");meta.className="mf-daily-meta";meta.textContent=[item.source,dateText(item.published)].filter(Boolean).join(" · ");card.append(meta);grid.append(card);
  });
  more.hidden=shown>=items.length;
 }
-more.addEventListener("click",()=>{shown+=24;render();});
+more.addEventListener("click",()=>{shown+=8;render();});
 render();
 status.textContent="Archive actualisée le "+dateText(data.updatedAt)+". Les anciens articles sont conservés. Utilisez le bouton pour consulter la suite de l’historique.";
 }).catch(()=>{status.textContent="Le chargement automatique est momentanément indisponible. Les articles déjà publiés restent conservés.";});
