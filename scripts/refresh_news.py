@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
 OUT = "actualites.json"
-MAX_PER_SECTION = 80
+MAX_PER_SECTION = None
 UA = "MarocFirstNewsBot/1.0 (+https://tarikdigital1963.github.io/)"
 QUERIES = {
  "maroc": ["Maroc actualités gouvernement société aujourd'hui", "المغرب أخبار اليوم"],
@@ -23,7 +23,7 @@ QUERIES = {
  "flash_sport": ["sport actualité urgente football résultats compétition", "أخبار رياضية عاجلة"]
 }
 def clean(s):
-    return re.sub(r"\\s+", " ", (s or "").strip())
+    return re.sub(r"\s+", " ", (s or "").strip())
 def fetch(q):
     params = urllib.parse.urlencode({"q": q, "hl":"fr", "gl":"MA", "ceid":"MA:fr"})
     url = "https://news.google.com/rss/search?" + params
@@ -71,7 +71,7 @@ for section, queries in QUERIES.items():
         except Exception as e:
             errors.append(section + ": " + str(e)[:160])
     merged=sorted(fresh+old,key=lambda x:x.get("published",""),reverse=True)
-    sections[section]=merged[:MAX_PER_SECTION]
+    sections[section]=merged if MAX_PER_SECTION is None else merged[:MAX_PER_SECTION]
 archive={"updatedAt":datetime.now(timezone.utc).isoformat(),"sections":sections,"note":"Titres et résumés issus de flux RSS publics; les articles complets restent chez leurs éditeurs.","errors":errors}
 with open(OUT,"w",encoding="utf-8") as f:
     json.dump(archive,f,ensure_ascii=False,indent=2)
