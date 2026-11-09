@@ -25,7 +25,7 @@ function render(){
  grid.replaceChildren();
  items.slice(0,shown).forEach(item=>{
   const card=document.createElement("article");card.className="mf-daily-card";
-  if(item.image){const img=document.createElement("img");img.loading="lazy";img.src=item.image;img.alt="Image associée à l’actualité";img.onerror=()=>img.remove();card.append(img);}
+  if(item.image){const img=document.createElement("img");img.loading="lazy";img.src=item.image;img.alt="Image associée à l’actualité";img.onerror=()=>img.remove();if(section==="sport"&&item.url){const imageLink=document.createElement("a");imageLink.href=item.url;imageLink.target="_blank";imageLink.rel="noopener noreferrer";imageLink.setAttribute("aria-label","Ouvrir l’article : "+(item.title||"Actualité sportive"));imageLink.style.display="block";imageLink.style.cursor="pointer";imageLink.append(img);card.append(imageLink);}else{card.append(img);}}
   const title=document.createElement("h3"),link=document.createElement("a");link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=item.title;title.append(link);card.append(title);
   if(item.summary){const p=document.createElement("p");p.textContent=item.summary;card.append(p);}
   const meta=document.createElement("p");meta.className="mf-daily-meta";meta.textContent=[item.source,dateText(item.published)].filter(Boolean).join(" · ");card.append(meta);grid.append(card);
