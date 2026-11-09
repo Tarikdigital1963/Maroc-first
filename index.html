@@ -120,6 +120,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </div></header>
 <main class="wrap" id="accueil">
+<section id="mf-latest-news" class="card" aria-labelledby="mf-latest-title"><p class="eyebrow">📰 Maroc First · Actualités en continu</p><h2 id="mf-latest-title">Les dernières actualités</h2><p id="mf-latest-status" class="small-note" aria-live="polite">Chargement des dernières publications…</p><div id="mf-latest-grid" class="grid"></div><button id="mf-latest-more" class="secondary" type="button" hidden>Voir les articles précédents</button><p class="small-note">Les nouvelles publications apparaissent en premier. Les articles précédents restent disponibles dans les archives de chaque rubrique.</p></section>
+
 <section class="hero"><p class="eyebrow" data-fr="Le regard de la rédaction" data-en="The editorial perspective" data-ar="رؤية هيئة التحرير">Le regard de la rédaction</p><h2 data-fr="Comprendre l’actualité, au-delà des titres" data-en="Understanding the news beyond the headlines" data-ar="فهم الأخبار، أبعد من العناوين">Comprendre l’actualité, au-delà des titres</h2><p data-fr="Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés E.T." data-en="Maroc First covers Moroccan news, social issues and regional affairs. Articles are signed E.T." data-ar="ماروك فيرست مساحة للقراءة تهتم بالأخبار المغربية وقضايا المجتمع والعلاقات الإقليمية. المقالات موقعة باسم E.T.">Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés <span class="signature">E.T</span>.</p><p data-fr="Les informations doivent être vérifiées et les sources clairement indiquées avant publication." data-en="Information must be verified and sources clearly cited before publication." data-ar="يجب التحقق من المعلومات وذكر المصادر بوضوح قبل النشر.">Les informations doivent être vérifiées et les sources clairement indiquées avant publication.</p></section>
 <section id="abonnement" class="card" aria-labelledby="subscribe-title" style="border:2px solid #f0c65b;background:linear-gradient(135deg,#182b3b,#202033)">
 <p class="eyebrow">📬 Restez informé</p>
@@ -508,4 +510,35 @@ document.getElementById('book-form').addEventListener('submit',function(event){
 </script>
 
 <script src="actualites.js" data-section="maroc" defer></script>
+
+<script>
+/* Actualités de la page d’accueil : nouveautés d’abord, archives conservées */
+(async function(){
+ const grid=document.getElementById('mf-latest-grid'),status=document.getElementById('mf-latest-status'),more=document.getElementById('mf-latest-more');
+ if(!grid||!status||!more)return;
+ const names={maroc:'Maroc',politique:'Politique',international:'International',economie:'Économie',societe:'Société',sport:'Sport',culture:'Culture',emploi:'Emploi',inclusion:'Inclusion',immobilier:'Immobilier',flash:'Flash',flash_sport:'Flash Sport'};
+ try{
+  const response=await fetch('actualites.json?v='+Date.now(),{cache:'no-store'});if(!response.ok)throw new Error('Archive indisponible');
+  const data=await response.json();
+  const items=Object.entries(data.sections||{}).flatMap(([section,articles])=>(articles||[]).map(item=>({...item,section}))).filter(item=>item.url&&item.title).sort((a,b)=>new Date(b.published||0)-new Date(a.published||0));
+  if(!items.length)throw new Error('Aucun article');
+  let shown=10;
+  function render(){
+   grid.replaceChildren();
+   items.slice(0,shown).forEach(item=>{
+    const card=document.createElement('article');card.className='card';
+    const label=document.createElement('p');label.className='eyebrow';label.textContent=names[item.section]||item.section;card.append(label);
+    if(item.image){const img=document.createElement('img');img.src=item.image;img.alt='Illustration de l’article';img.loading='lazy';img.style.cssText='display:block;width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:12px';img.onerror=()=>img.remove();const imageLink=document.createElement('a');imageLink.href=item.url;imageLink.target='_blank';imageLink.rel='noopener noreferrer';imageLink.append(img);card.append(imageLink);}
+    const h=document.createElement('h3'),a=document.createElement('a');a.href=item.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=item.title;h.append(a);card.append(h);
+    if(item.summary){const p=document.createElement('p');p.textContent=item.summary;card.append(p);}
+    const meta=document.createElement('p');meta.className='byline';meta.textContent=[item.source,item.published?new Date(item.published).toLocaleDateString('fr-FR'): ''].filter(Boolean).join(' · ');card.append(meta);
+    grid.append(card);
+   });
+   more.hidden=shown>=items.length;
+  }
+  more.addEventListener('click',()=>{shown+=10;render();});render();
+  status.textContent=items.length+' articles disponibles, classés du plus récent au plus ancien. Les archives sont conservées.';
+ }catch(e){status.textContent='Les actualités ne peuvent pas être chargées pour le moment. Les rubriques et leurs archives restent accessibles.';}
+})();
+</script>
 </body></html>
