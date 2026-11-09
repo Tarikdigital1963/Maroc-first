@@ -142,5 +142,7 @@ $('delete').addEventListener('click',async()=>{
 $('lock').addEventListener('click',()=>{key=null;drafts=[];activeId=null;$('workspace').classList.add('hidden');$('access').classList.remove('hidden');$('confirm-wrap').classList.add('hidden');$('access-title').textContent='Déverrouiller votre espace';$('access-status').textContent='Espace verrouillé.'});
 if(localStorage.getItem(STORAGE_KEY)){$('access-status').textContent='Votre espace existe déjà. Entrez votre phrase secrète pour le déverrouiller.'}
 </script>
+
+<script src="traduction.js" defer></script>
 </body>
 </html>
