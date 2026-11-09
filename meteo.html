@@ -18,4 +18,6 @@ async function loadHistory(){const [lat,lon]=coords();const status=document.getE
 function updateMap(){const [lat,lon]=coords();const delta=.22;const bbox=[lon-delta,lat-delta,lon+delta,lat+delta].join('%2C');document.getElementById('map').src='https://www.openstreetmap.org/export/embed.html?bbox='+bbox+'&layer=mapnik&marker='+lat+'%2C'+lon;document.getElementById('map-link').href='https://www.openstreetmap.org/?mlat='+lat+'&mlon='+lon+'#map=10/'+lat+'/'+lon;}
 function refresh(){loadWeather();loadHistory();updateMap();}city.addEventListener('change',refresh);refresh();
 </script><script src="actualites.js" data-section="societe" defer></script>
+
+<script src="traduction.js" defer></script>
 </body></html>
