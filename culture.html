@@ -1,7 +1,105 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Livres, arts, patrimoine, cinéma et expressions culturelles. | Maroc First"><title>Culture | Maroc First</title><style>
-:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:19px/1.7 Arial,sans-serif}a{color:#ffe08a}a:focus,button:focus,select:focus{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1100px,94%);margin:auto}header{background:#080d13;border-bottom:4px solid var(--gold);padding:24px 0}h1{font-size:clamp(2rem,7vw,3.5rem);margin:0;color:var(--gold)}header p,.muted{color:var(--muted)}nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}nav a,.btn{display:inline-block;padding:10px 13px;background:#26364a;border:1px solid var(--line);border-radius:9px;text-decoration:none;font-weight:bold}.hero,.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:22px 0}.hero{background:linear-gradient(135deg,#23364b,#151f2c)}h2{color:var(--gold)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}.card{margin:0;overflow-wrap:anywhere}.card h3{line-height:1.4}.card h3 a{text-decoration:none}.card h3 a:hover{text-decoration:underline}.weather{margin:18px 0;padding:20px;border:1px solid var(--line);border-radius:12px;background:#111b28}.weather strong{font-size:2.5rem;color:var(--gold)}label{display:block;font-weight:bold;margin:12px 0 6px}select{width:100%;max-width:400px;padding:14px;background:#0d141e;color:var(--text);border:1px solid var(--line);border-radius:9px;font:inherit}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);margin-top:30px}@media(max-width:520px){body{font-size:18px}.hero,.panel,.card{padding:16px}}
-</style></head><body><header><div class="wrap"><h1>🎭 Culture</h1><p>Livres, arts, patrimoine, cinéma et expressions culturelles.</p><nav aria-label="Rubriques"><a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a><a href="immobilier.html">🏡 Immobilier</a><a href="meteo.html">🌤️ Météo</a><a href="medias.html">📺 Médias</a></nav></div></header><main class="wrap"><section class="hero"><p><strong>Maroc First</strong> · Littérature, musique, cinéma, patrimoine, expositions et création contemporaine.</p><p>Une rubrique indépendante pour retrouver les informations, les dossiers et les ressources de ce domaine au même endroit.</p></section><section class="panel"><h2>Dernières actualités</h2><p id="feed-status" class="muted">Chargement des titres…</p><div id="feed-list" class="grid" aria-live="polite"></div><p class="muted">Les liens ouvrent les publications de leurs médias d’origine. Maroc First propose des résumés et analyses originaux, avec attribution des sources, sans reproduire intégralement les articles protégés.</p></section></main><footer><div class="wrap">© Maroc First · Rédaction E.T. · <a href="index.html">Retour à l’accueil</a></div></footer><script>
-(async()=>{const box=document.getElementById('feed-list'),status=document.getElementById('feed-status');const feed='https://news.google.com/rss/search?q='+encodeURIComponent("Culture Maroc")+'&hl=fr&gl=MA&ceid=MA:fr';try{const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(feed));if(!r.ok)throw Error();const xml=new DOMParser().parseFromString(await r.text(),'text/xml');const items=[...xml.querySelectorAll('item')].slice(0,12);box.replaceChildren();if(!items.length)throw Error();items.forEach(item=>{const c=document.createElement('article');c.className='card';const h=document.createElement('h3');const a=document.createElement('a');a.href=item.querySelector('link')?.textContent?.trim()||feed;a.target='_blank';a.rel='noopener';a.textContent=item.querySelector('title')?.textContent?.trim()||'Lire l’article';h.append(a);c.append(h);const date=item.querySelector('pubDate')?.textContent;if(date){const p=document.createElement('p');p.className='muted';const d=new Date(date);p.textContent=isNaN(d)?'':d.toLocaleDateString('fr-FR');c.append(p);}box.append(c);});status.textContent=items.length+' titres chargés. Les articles restent hébergés par leurs médias d’origine.';}catch(e){status.textContent='Le flux automatique est indisponible pour le moment. Consultez les sources depuis la page d’accueil ou réessayez plus tard.';}})();
-</script><script src="actualites.js" data-section="culture" defer></script>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Le magazine culturel de Maroc First : patrimoine, artisanat, musique, cinéma, littérature, festivals et talents du Maroc.">
+<title>Culture marocaine | Maroc First</title>
+<style>
+:root{color-scheme:dark;--bg:#101019;--panel:#1b1b2b;--text:#fff8ee;--muted:#d4ccda;--gold:#f6c65b;--pink:#f078a8;--teal:#55d6c2;--blue:#7ba8ff;--purple:#b69aff;--line:#49435a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#332044 0,transparent 35%),radial-gradient(ellipse at 90% 12%,#173b42 0,transparent 30%),var(--bg);color:var(--text);font:19px/1.7 Arial,sans-serif}
+a{color:#ffe29a}a:focus,button:focus{outline:3px solid var(--gold);outline-offset:4px}.wrap{width:min(1180px,94%);margin:auto}
+header{background:rgba(8,8,17,.96);border-bottom:3px solid var(--gold);padding:20px 0}
+.brandline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.brandmark{width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,#f6c65b,#ef719f,#8c72e8);font-size:32px;box-shadow:0 5px 24px #0008}
+h1{font-size:clamp(2.1rem,7vw,4rem);line-height:1.12;margin:0;color:#ffe19a;letter-spacing:.3px}header p,.muted{color:var(--muted)}
+nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}nav a,.chip{display:inline-block;padding:8px 12px;background:#28253a;border:1px solid #51465f;border-radius:999px;text-decoration:none;font-weight:bold}
+.hero{position:relative;overflow:hidden;margin:24px 0;border:1px solid #67506a;border-radius:24px;background:linear-gradient(110deg,#46274d 0%,#26344a 54%,#174b4a 100%);padding:clamp(22px,5vw,48px)}
+.hero:after{content:"✺  ✧  ❖  ✺  ✧";position:absolute;right:12px;bottom:0;font-size:clamp(2rem,7vw,4rem);letter-spacing:12px;color:#ffe29a55;animation:float 8s ease-in-out infinite}
+.eyebrow{color:#ffe29a;font-weight:bold;letter-spacing:2px;text-transform:uppercase}.hero h2{font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin:8px 0;color:#fff}.hero p{max-width:760px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn{display:inline-block;padding:11px 16px;border-radius:12px;background:#f5c85f;color:#24172a;font-weight:bold;text-decoration:none}.btn.alt{background:#29243b;color:#fff;border:1px solid #75617c}
+.ribbon{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.ribbon span{border-radius:10px;padding:7px 12px;background:#242238;border:1px solid #554961}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:35px 0 15px}.section-head h2{font-size:clamp(1.5rem,4vw,2.2rem);margin:0;color:var(--gold)}.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));gap:17px}
+.card{background:linear-gradient(160deg,#242237,#171925);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 25px #0003;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card>a:first-child{display:block;color:inherit;text-decoration:none}.card img{display:block;width:100%;height:190px;object-fit:cover;background:#29263a}.cardbody{padding:16px}.card h3{margin:4px 0 8px;font-size:1.25rem;line-height:1.35}.card p{margin:0;color:var(--muted)}.tag{display:inline-block;border-radius:999px;padding:4px 9px;font-size:.82rem;font-weight:bold;background:#47334e;color:#ffd7ee}.tag.gold{background:#4b4025;color:#ffe49c}.tag.teal{background:#1c4544;color:#a6fff0}.tag.blue{background:#263a5b;color:#c4d8ff}
+.cardlink{display:inline-block;margin-top:12px;font-weight:bold}.panel{background:#1a1a29;border:1px solid var(--line);border-radius:18px;padding:20px;margin:24px 0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.tile{padding:16px;border-radius:15px;background:linear-gradient(145deg,#302943,#1d2934);border:1px solid #51445c;text-align:center}.tile .ico{font-size:2rem;display:block}.tile strong{display:block;color:#ffe29a}
+.feed{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:13px}.feed .item{background:#202033;border:1px solid #48445b;border-radius:13px;padding:15px}.feed h3{font-size:1.08rem;line-height:1.4;margin:0 0 8px}.feed a{text-decoration:none}.feed a:hover{text-decoration:underline}
+.agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.agenda a{display:block;padding:15px;border-radius:14px;background:#222238;border:1px solid #514760;text-decoration:none}.agenda strong{display:block;color:#ffe29a}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);margin-top:36px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(max-width:520px){body{font-size:18px}.card img{height:170px}.hero{border-radius:16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brandline"><div class="brandmark" aria-hidden="true">✺</div><div><h1>Culture Maroc</h1><p>Le magazine des arts, du patrimoine et des talents du Royaume</p></div></div>
+<nav aria-label="Rubriques principales">
+<a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a><a href="immobilier.html">🏡 Immobilier</a><a href="meteo.html">🌤️ Météo</a>
+</nav></div></header>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">✦ Patrimoine vivant · Création · Transmission ✦</div>
+<h2>Le Maroc raconte mille histoires.</h2>
+<p>Des médinas aux scènes contemporaines, des maîtres-artisans aux jeunes créateurs, cette rubrique célèbre les couleurs, les voix et les savoir-faire qui font la richesse de la culture marocaine.</p>
+<div class="hero-actions"><a class="btn" href="#actualites">Lire les actualités</a><a class="btn alt" href="#patrimoine">Explorer le patrimoine</a></div>
+<div class="ribbon"><span>🧵 Artisanat</span><span>🎬 Cinéma</span><span>🎶 Musique</span><span>📚 Littérature</span><span>🖼️ Arts</span><span>🎉 Festivals</span></div>
+</section>
+
+<section aria-label="Les univers de la culture">
+<div class="section-head"><h2>Les couleurs de notre culture</h2><p>Six univers à découvrir</p></div>
+<div class="tiles">
+<div class="tile"><span class="ico">🧿</span><strong>Patrimoine</strong><span class="muted">Médinas et monuments</span></div>
+<div class="tile"><span class="ico">🪡</span><strong>Artisanat</strong><span class="muted">Zellige, tapis et broderie</span></div>
+<div class="tile"><span class="ico">🎼</span><strong>Musique</strong><span class="muted">Des traditions aux scènes</span></div>
+<div class="tile"><span class="ico">🎥</span><strong>Cinéma</strong><span class="muted">Films et talents</span></div>
+<div class="tile"><span class="ico">📖</span><strong>Littérature</strong><span class="muted">Livres et poésie</span></div>
+<div class="tile"><span class="ico">🎨</span><strong>Création</strong><span class="muted">Art et photographie</span></div>
+</div></section>
+
+<section id="patrimoine">
+<div class="section-head"><h2>Le patrimoine à l’honneur</h2><p>Des savoir-faire qui traversent les générations</p></div>
+<div class="grid">
+<article class="card"><a href="https://www.visitmorocco.com/fr" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=900&q=85" alt="Architecture et paysage marocains" loading="lazy"><div class="cardbody"><span class="tag gold">Villes et patrimoine</span><h3>Les médinas, trésors vivants du Maroc</h3><p>Découvrir les ruelles historiques, les portes sculptées, les places et les monuments qui racontent l’histoire des villes marocaines.</p><span class="cardlink">Explorer le Maroc ↗</span></div></a></article>
+<article class="card"><a href="https://ich.unesco.org/fr/etat/maroc-MA" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=85" alt="Motifs décoratifs et création artisanale" loading="lazy"><div class="cardbody"><span class="tag">Savoir-faire</span><h3>Zellige, tapis, poterie et broderie</h3><p>Un hommage aux artisans, aux gestes précis et aux motifs qui donnent au patrimoine marocain sa personnalité.</p><span class="cardlink">Patrimoine immatériel UNESCO ↗</span></div></a></article>
+<article class="card"><a href="https://www.visitmorocco.com/fr" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=900&q=85" alt="Architecture traditionnelle aux couleurs chaudes" loading="lazy"><div class="cardbody"><span class="tag teal">Traditions</span><h3>Caftan, fêtes et arts de vivre</h3><p>Les vêtements traditionnels, les célébrations familiales, la cuisine et les expressions régionales qui font vivre les traditions.</p><span class="cardlink">Découvrir les régions ↗</span></div></a></article>
+</div></section>
+
+<section>
+<div class="section-head"><h2>Scènes, sons et images</h2><p>La création marocaine d’hier et d’aujourd’hui</p></div>
+<div class="grid">
+<article class="card"><a href="https://www.ccm.ma/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1489599849927-2ee91ede2ba7?auto=format&fit=crop&w=900&q=85" alt="Salle de cinéma" loading="lazy"><div class="cardbody"><span class="tag blue">Cinéma</span><h3>Le cinéma marocain en mouvement</h3><p>Films, réalisateurs, acteurs, documentaires, tournages et actualités de la production nationale.</p><span class="cardlink">Centre cinématographique marocain ↗</span></div></a></article>
+<article class="card"><a href="https://www.mawazine.ma/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-150138.??" alt="Concert et scène musicale" loading="lazy"><div class="cardbody"><span class="tag gold">Musique</span><h3>Des rythmes gnaoua au rap marocain</h3><p>Musique amazighe, chaâbi, andalouse, hassanie, fusion et nouvelles scènes : une diversité de voix.</p><span class="cardlink">Découvrir Mawazine ↗</span></div></a></article>
+<article class="card"><a href="https://www.festival-gnaoua.net/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85" alt="Musicien sur scène" loading="lazy"><div class="cardbody"><span class="tag teal">Festivals</span><h3>Les festivals qui font vibrer le Maroc</h3><p>Essaouira, Fès, Marrakech et les scènes régionales : des rencontres entre artistes et publics.</p><span class="cardlink">Festival Gnaoua ↗</span></div></a></article>
+<article class="card"><a href="https://www.siel.ma/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=85" alt="Livres ouverts dans une bibliothèque" loading="lazy"><div class="cardbody"><span class="tag">Livres et littérature</span><h3>Les écrivains et les voix du Maroc</h3><p>Romans, poésie, littérature en arabe, amazighe et français, salons du livre et nouvelles parutions.</p><span class="cardlink">Salon international du livre ↗</span></div></a></article>
+<article class="card"><a href="https://www.museeyslparis.com/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=85" alt="Peinture exposée dans une galerie" loading="lazy"><div class="cardbody"><span class="tag blue">Arts visuels</span><h3>Peinture, photographie et design</h3><p>Expositions, artistes émergents, galeries, photographie et nouvelles formes de création.</p><span class="cardlink">Voir un musée et ses collections ↗</span></div></a></article>
+<article class="card"><a href="https://www.musee-mohammed6.com/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=900&q=85" alt="Œuvre d’art dans un espace d’exposition" loading="lazy"><div class="cardbody"><span class="tag gold">Musées</span><h3>Les musées, fenêtres sur la création</h3><p>Collections, expositions et lieux de transmission pour mieux comprendre les arts marocains.</p><span class="cardlink">Musée Mohammed VI ↗</span></div></a></article>
+</div></section>
+
+<section class="panel">
+<div class="section-head"><h2>Le Maroc culturel, région par région</h2><p>Une invitation au voyage</p></div>
+<div class="grid">
+<div class="card"><a href="https://www.visitmorocco.com/fr" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=800&q=85" alt="Architecture de Fès" loading="lazy"><div class="cardbody"><h3>Fès et le savoir-faire ancestral</h3><p>Médina, artisanat, musique andalouse et traditions du savoir.</p></div></a></div>
+<div class="card"><a href="https://www.visitmorocco.com/fr" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=85" alt="Paysage marocain" loading="lazy"><div class="cardbody"><h3>Marrakech et les arts vivants</h3><p>Places, musées, architecture, festivals et création contemporaine.</p></div></a></div>
+<div class="card"><a href="https://www.visitmorocco.com/fr" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=85" alt="Paysage côtier" loading="lazy"><div class="cardbody"><h3>Essaouira et les cultures musicales</h3><p>Patrimoine portuaire, musique gnaoua et rencontres artistiques.</p></div></a></div>
+</div></section>
+
+<section>
+<div class="section-head"><h2>Repères et institutions culturelles</h2><p>Des portes d’entrée vers les sources officielles</p></div>
+<div class="agenda">
+<a href="https://www.minculture.gov.ma/" target="_blank" rel="noopener"><strong>🏛️ Ministère de la Culture</strong><span class="muted">Patrimoine, programmes et actualités culturelles</span></a>
+<a href="https://ich.unesco.org/fr/etat/maroc-MA" target="_blank" rel="noopener"><strong>🌍 UNESCO – Maroc</strong><span class="muted">Patrimoine culturel immatériel</span></a>
+<a href="https://www.ccm.ma/" target="_blank" rel="noopener"><strong>🎬 Cinéma marocain</strong><span class="muted">Centre cinématographique marocain</span></a>
+<a href="https://www.siel.ma/" target="_blank" rel="noopener"><strong>📚 Livre et lecture</strong><span class="muted">Salon international de l’édition et du livre</span></a>
+<a href="https://www.musee-mohammed6.com/" target="_blank" rel="noopener"><strong>🖼️ Musée Mohammed VI</strong><span class="muted">Art moderne et contemporain</span></a>
+<a href="https://www.visitmorocco.com/fr" target="_blank" rel="noopener"><strong>🧭 Tourisme et patrimoine</strong><span class="muted">Découvrir les régions et les lieux culturels</span></a>
+</div></section>
+
+<section class="panel" id="actualites">
+<div class="section-head"><h2>📰 Les dernières actualités culturelles</h2><p>Flux d’actualités et archives Maroc First</p></div>
+<p id="feed-status" class="muted">Chargement des actualités…</p><div id="feed-list" class="feed" aria-live="polite"></div>
+<p class="muted">Les titres et liens renvoient aux médias d’origine. Les images de cette page sont des illustrations éditoriales et non des photographies garanties des événements cités. Les actualités automatiques affichent les contenus disponibles dans les flux et les archives.</p>
+</section>
+</main>
+<footer><div class="wrap">✺ © Maroc First · Rédaction E.T. · <a href="index.html">Retour à l’accueil</a> · <a href="#top">Haut de page</a></div></footer>
+<script src="actualites.js" data-section="culture" defer></script>
 </body></html>
