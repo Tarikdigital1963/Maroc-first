@@ -12,6 +12,12 @@ header{background:#080d13;border-bottom:4px solid var(--gold);padding:20px 0}.br
 nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}nav a,.pill{display:inline-block;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#182230;text-decoration:none;font-weight:bold}
 main{padding:24px 0}.hero,.panel,.film-card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px;margin-bottom:20px}.hero{padding:0;overflow:hidden;background:#121b27}.hero img{display:block;width:100%;height:clamp(220px,42vw,430px);object-fit:cover}.hero-copy{padding:22px}.eyebrow{color:var(--gold);font-weight:bold;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem}.hero h2{font-size:clamp(1.8rem,5vw,3rem);line-height:1.15;margin:8px 0}.muted,.status{color:var(--muted)}h2{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px}.film-card{margin:0;padding:16px}.film-card img{width:100%;height:190px;object-fit:cover;border-radius:10px}.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.film-card h3{line-height:1.3}.feed-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}.feed-list li{padding:15px;border:1px solid var(--line);border-radius:12px;background:#101923}.feed-list a{font-weight:bold;text-decoration:none}.feed-list a:hover{text-decoration:underline}.actions{display:flex;flex-wrap:wrap;gap:10px}.button{display:inline-block;background:var(--gold);color:#10151d;border-radius:8px;padding:11px 15px;font-weight:bold;text-decoration:none}.button.secondary{background:#26364a;color:var(--text);border:1px solid var(--line)}.notice{border-left:4px solid var(--gold);padding:10px 14px;background:#111923;color:var(--muted)}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}.small{font-size:.92rem}
 @media(max-width:520px){body{font-size:17px}.hero-copy,.panel{padding:16px}}
+.streaming-shortcuts{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:18px 0 22px}
+.stream-shortcut{min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 10px;border:2px solid var(--line);border-radius:14px;background:#0d141e;color:#fff;text-decoration:none;text-align:center;font-weight:800;box-shadow:0 4px 12px #0005}
+.stream-shortcut:hover,.stream-shortcut:focus{border-color:var(--gold);transform:translateY(-2px)}
+.stream-logo{font-size:1.45rem;line-height:1.2;letter-spacing:.02em}
+.stream-caption{font-size:.92rem;color:var(--muted)}
+
 </style>
 </head>
 <body>
@@ -63,6 +69,13 @@ main{padding:24px 0}.hero,.panel,.film-card{border:1px solid var(--line);border-
  <p class="eyebrow">🍿 À LA MAISON · STREAMING</p>
  <h2>Netflix, films gratuits et plateformes en français</h2>
  <p class="muted">Retrouvez ici des services officiels pour regarder des films et des séries. Les catalogues et les droits changent selon le pays et la période.</p>
+<div class="streaming-shortcuts" aria-label="Accès direct aux plateformes de films et séries">
+  <a class="stream-shortcut" href="https://www.tv5mondeplus.com/fr/films" target="_blank" rel="noopener noreferrer"><span class="stream-logo">🌍 TV5MONDE+</span><span class="stream-caption">Films gratuits en français</span></a>
+  <a class="stream-shortcut" href="https://www.netflix.com/ma-fr/" target="_blank" rel="noopener noreferrer"><span class="stream-logo">N<span style="color:#e50914">E</span>TFLIX</span><span class="stream-caption">Films et séries · abonnement</span></a>
+  <a class="stream-shortcut" href="https://www.tf1.fr/fr-ma/programmes-tv/films" target="_blank" rel="noopener noreferrer"><span class="stream-logo">📺 TF1+</span><span class="stream-caption">Programmes et films</span></a>
+  <a class="stream-shortcut" href="https://www.justwatch.com/ma" target="_blank" rel="noopener noreferrer"><span class="stream-logo">🔎 JustWatch</span><span class="stream-caption">Trouver où voir un film au Maroc</span></a>
+</div>
+<p class="notice">Touchez directement un logo pour ouvrir la plateforme. TV5MONDE+ propose une sélection gratuite ; Netflix nécessite un abonnement. La disponibilité des autres catalogues dépend des droits et du pays.</p>
  <div class="grid">
   <article class="film-card">
    <a href="https://www.netflix.com/ma-fr/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir Netflix Maroc"><img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=900&q=85" alt="Télévision et divertissement à domicile, accès Netflix" loading="lazy"></a>
