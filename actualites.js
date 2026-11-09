@@ -12,7 +12,7 @@ const sectionBox=document.createElement("section");sectionBox.className="mf-dail
 const heading=document.createElement("h2");heading.textContent=(icons[section]||"📰")+" "+(labels[section]||"Dernières actualités")+" · Articles récents";
 const status=document.createElement("p");status.className="mf-daily-status";status.textContent="Chargement des actualités archivées…";
 const grid=document.createElement("div");grid.className="mf-daily-grid";sectionBox.append(heading,status,grid);
-const footer=document.querySelector("footer");if(footer)main.insertBefore(sectionBox,footer);else main.append(sectionBox);
+const footer=document.querySelector("footer");if(footer&&footer.parentNode===main)main.insertBefore(sectionBox,footer);else main.append(sectionBox);
 function dateText(v){try{return new Date(v).toLocaleString("fr-FR",{dateStyle:"medium",timeStyle:"short"});}catch(e){return "";}}
 fetch("./actualites.json?ts="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("archive indisponible");return r.json();}).then(data=>{
 let items=(data.sections&&data.sections[section])||[];
