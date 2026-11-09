@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Suivre les dépenses du foyer et calculer son budget mensuel avec Maroc First.">
+<title>Maison & Budget | Maroc First</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:19px/1.65 Arial,sans-serif}a{color:#ffe08a}a:focus,button:focus,input:focus,select:focus{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1000px,94%);margin:auto}header{padding:24px 0;background:#080d13;border-bottom:4px solid var(--gold)}h1{font-size:clamp(2rem,7vw,3.4rem);margin:0;color:var(--gold)}header p{color:var(--muted)}nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}nav a,.btn,button{display:inline-block;padding:10px 14px;border-radius:9px;background:#26364a;color:var(--text);text-decoration:none;font-weight:bold;border:1px solid var(--line);font-size:1rem}.hero,.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:22px 0}.muted{color:var(--muted)}h2{color:var(--gold)}label{display:block;font-weight:bold;margin:12px 0 5px}input,select{width:100%;padding:13px;border-radius:8px;border:1px solid #66758a;background:#0e141d;color:var(--text);font:inherit}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}.result{font-size:1.35rem;font-weight:bold;color:var(--gold);margin-top:16px}.table{width:100%;border-collapse:collapse;margin-top:14px}.table th,.table td{padding:10px;text-align:left;border-bottom:1px solid var(--line)}.table th{color:var(--gold)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}footer{padding:20px 0;color:var(--muted);border-top:1px solid var(--line)}@media(max-width:520px){body{font-size:18px}.card,.hero{padding:16px}.table th,.table td{padding:7px;font-size:.9rem}}
+</style></head>
+<body><header><div class="wrap"><h1>🏠 Maison & Budget</h1><p>Un outil simple pour suivre les dépenses du foyer</p><nav><a href="index.html">← Accueil Maroc First</a><a href="emploi.html">💼 Emploi & Recrutement</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><h2>Garder une vue claire sur le budget</h2><p>Ajoutez vos dépenses mensuelles par catégorie. Le calcul se fait directement dans votre navigateur : les montants ne sont envoyés à aucun serveur et ne sont pas enregistrés après la fermeture ou l’actualisation de la page.</p></section>
+<section class="card"><h2>Calculateur mensuel</h2><div class="formgrid">
+<div><label for="income">Revenu mensuel (DH)</label><input id="income" type="number" min="0" step="0.01" placeholder="Ex. 6000"></div>
+<div><label for="category">Catégorie de dépense</label><select id="category"><option>Alimentation</option><option>Eau et électricité</option><option>Logement / loyer</option><option>Transport</option><option>Santé</option><option>Téléphone et Internet</option><option>Éducation</option><option>Vêtements</option><option>Loisirs</option><option>Autres dépenses</option></select></div>
+<div><label for="amount">Montant (DH)</label><input id="amount" type="number" min="0" step="0.01" placeholder="Ex. 350"></div>
+</div><div class="actions"><button id="add">Ajouter la dépense</button><button id="reset" type="button">Effacer les données</button></div>
+<p id="status" class="muted" aria-live="polite">Aucune dépense ajoutée.</p>
+<table class="table"><thead><tr><th>Catégorie</th><th>Montant (DH)</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table>
+<p class="result" id="total">Total des dépenses : 0,00 DH</p><p class="result" id="remaining">Reste du budget : non calculé</p>
+</section>
+<section class="card"><h2>Quelques repères pratiques</h2><ul><li>Notez les dépenses au fur et à mesure, même les petits achats.</li><li>Séparez les charges fixes des dépenses variables.</li><li>Prévoyez une ligne pour les dépenses imprévues.</li><li>Comparez les dépenses d’un mois à l’autre avant de décider où économiser.</li></ul><p class="muted">Cet outil sert au suivi personnel et ne constitue pas un conseil financier.</p></section>
+</main><footer><div class="wrap">Maroc First · Maison & Budget</div></footer>
+<script>
+const entries=[];const rows=document.getElementById('rows');const totalEl=document.getElementById('total');const remainingEl=document.getElementById('remaining');const statusEl=document.getElementById('status');const money=n=>Number(n).toLocaleString('fr-MA',{minimumFractionDigits:2,maximumFractionDigits:2})+' DH';
+function render(){rows.replaceChildren();entries.forEach((entry,index)=>{const tr=document.createElement('tr'),cat=document.createElement('td'),amt=document.createElement('td'),act=document.createElement('td'),btn=document.createElement('button');cat.textContent=entry.category;amt.textContent=money(entry.amount);btn.textContent='Supprimer';btn.setAttribute('aria-label','Supprimer '+entry.category);btn.addEventListener('click',()=>{entries.splice(index,1);render();});act.appendChild(btn);tr.append(cat,amt,act);rows.appendChild(tr);});const sum=entries.reduce((s,e)=>s+e.amount,0);totalEl.textContent='Total des dépenses : '+money(sum);const income=Number(document.getElementById('income').value);remainingEl.textContent=document.getElementById('income').value.trim()===''?'Reste du budget : indiquez votre revenu mensuel': 'Reste du budget : '+money(income-sum);statusEl.textContent=entries.length+' dépense(s) enregistrée(s) dans cette page.';}
+document.getElementById('add').addEventListener('click',()=>{const amount=Number(document.getElementById('amount').value);if(!Number.isFinite(amount)||amount<=0){statusEl.textContent='Saisissez un montant supérieur à zéro.';return;}entries.push({category:document.getElementById('category').value,amount});document.getElementById('amount').value='';render();});
+document.getElementById('income').addEventListener('input',render);
+document.getElementById('reset').addEventListener('click',()=>{entries.length=0;document.getElementById('income').value='';render();statusEl.textContent='Les données de cette page ont été effacées.';});
+render();
+</script></body></html>
