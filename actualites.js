@@ -11,7 +11,7 @@ const main=document.querySelector("main")||document.body;
 const sectionBox=document.createElement("section");sectionBox.className="mf-daily";
 const heading=document.createElement("h2");heading.textContent=(icons[section]||"📰")+" "+(labels[section]||"Dernières actualités")+" · Articles récents";
 const status=document.createElement("p");status.className="mf-daily-status";status.textContent="Chargement des actualités archivées…";
-const grid=document.createElement("div");grid.className="mf-daily-grid";sectionBox.append(heading,status,grid);
+const grid=document.createElement("div");grid.className="mf-daily-grid";const more=document.createElement("button");more.type="button";more.textContent="Afficher les articles précédents";more.style.cssText="margin-top:16px;padding:12px 18px;border-radius:9px;border:1px solid #66758a;background:#26364a;color:#fff;font:inherit;font-weight:bold;cursor:pointer;display:none";sectionBox.append(heading,status,grid,more);
 const footer=document.querySelector("footer");if(footer&&footer.parentNode===main)main.insertBefore(sectionBox,footer);else main.append(sectionBox);
 function dateText(v){try{return new Date(v).toLocaleString("fr-FR",{dateStyle:"medium",timeStyle:"short"});}catch(e){return "";}}
 fetch("./actualites.json?ts="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("archive indisponible");return r.json();}).then(data=>{
