@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Maroc First Cinéma : nouveautés du cinéma marocain et international, sorties, festivals, séries et bandes-annonces officielles.">
+<title>Maroc First Cinéma | Films du Maroc et du monde</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:18px/1.65 Arial,Helvetica,sans-serif}a{color:#ffe08a}a:focus,button:focus{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1120px,94%);margin:auto}
+header{background:#080d13;border-bottom:4px solid var(--gold);padding:20px 0}.brand{text-align:center}.brand a{text-decoration:none}h1{font-size:clamp(2.1rem,7vw,4.5rem);line-height:1.08;margin:0;letter-spacing:-.04em;background:linear-gradient(90deg,#f13c55,#fff,#f0c65b,#159b68);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{color:var(--muted);margin:8px 0}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}nav a,.pill{display:inline-block;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#182230;text-decoration:none;font-weight:bold}
+main{padding:24px 0}.hero,.panel,.film-card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px;margin-bottom:20px}.hero{padding:0;overflow:hidden;background:#121b27}.hero img{display:block;width:100%;height:clamp(220px,42vw,430px);object-fit:cover}.hero-copy{padding:22px}.eyebrow{color:var(--gold);font-weight:bold;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem}.hero h2{font-size:clamp(1.8rem,5vw,3rem);line-height:1.15;margin:8px 0}.muted,.status{color:var(--muted)}h2{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px}.film-card{margin:0;padding:16px}.film-card img{width:100%;height:190px;object-fit:cover;border-radius:10px}.film-card h3{line-height:1.3}.feed-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}.feed-list li{padding:15px;border:1px solid var(--line);border-radius:12px;background:#101923}.feed-list a{font-weight:bold;text-decoration:none}.feed-list a:hover{text-decoration:underline}.actions{display:flex;flex-wrap:wrap;gap:10px}.button{display:inline-block;background:var(--gold);color:#10151d;border-radius:8px;padding:11px 15px;font-weight:bold;text-decoration:none}.button.secondary{background:#26364a;color:var(--text);border:1px solid var(--line)}.notice{border-left:4px solid var(--gold);padding:10px 14px;background:#111923;color:var(--muted)}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}.small{font-size:.92rem}
+@media(max-width:520px){body{font-size:17px}.hero-copy,.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap brand">
+<a href="index.html"><h1>MAROC FIRST CINÉMA</h1></a>
+<p class="subtitle">🎬 Le grand écran marocain et international · Films, sorties, festivals et séries</p>
+<nav aria-label="Navigation cinéma">
+<a href="index.html">🏠 Accueil Maroc First</a><a href="#maroc">🇲🇦 Cinéma marocain</a><a href="#monde">🌍 International</a><a href="#sorties">🍿 Sorties & annonces</a><a href="#festivals">🏆 Festivals</a><a href="#series">📺 Séries</a>
+</nav></div></header>
+<main class="wrap">
+<section class="hero">
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=90" alt="Grande salle de cinéma face à l’écran" fetchpriority="high">
+<div class="hero-copy"><p class="eyebrow">Votre nouveau rendez-vous culturel</p><h2>Le cinéma a désormais sa place sur Maroc First</h2><p>Des productions marocaines aux grandes sorties internationales, retrouvez les actualités, les annonces, les festivals, les portraits et les bandes-annonces officielles.</p><div class="actions"><a class="button" href="#maroc">Découvrir le cinéma marocain</a><a class="button secondary" href="#monde">Explorer le cinéma mondial</a></div></div>
+</section>
+<section class="panel" id="maroc"><p class="eyebrow">🇲🇦 Fierté et créativité</p><h2>À la une du cinéma marocain</h2><p class="muted">Actualités, nouveaux projets, acteurs, réalisateurs et productions du Royaume.</p><p id="status-ma" class="status" aria-live="polite">Chargement des dernières actualités…</p><ul id="feed-ma" class="feed-list"></ul><p class="small"><a href="https://news.google.com/search?q=cin%C3%A9ma+marocain&amp;hl=fr&amp;gl=MA&amp;ceid=MA%3Afr" target="_blank" rel="noopener noreferrer">Voir davantage d’actualités sur le cinéma marocain ↗</a></p></section>
+<section class="panel" id="monde"><p class="eyebrow">🌍 Le cinéma sans frontières</p><h2>Actualités du cinéma international</h2><p class="muted">Nouveaux films, annonces de production, acteurs et réalisateurs du monde entier.</p><p id="status-world" class="status" aria-live="polite">Chargement des dernières actualités…</p><ul id="feed-world" class="feed-list"></ul><p class="small"><a href="https://news.google.com/search?q=cinema+film+new+releases&amp;hl=fr&amp;gl=MA&amp;ceid=MA%3Afr" target="_blank" rel="noopener noreferrer">Explorer les actualités internationales ↗</a></p></section>
+<section class="grid" id="sorties">
+<article class="film-card"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Bobines et pellicule de cinéma" loading="lazy"><p class="eyebrow">🍿 Sorties & annonces</p><h2>Les films prochainement à l’affiche</h2><p>Dates de sortie annoncées, premières projections et nouveautés attendues.</p><a href="https://www.allocine.fr/films/agenda/" target="_blank" rel="noopener noreferrer">Consulter l’agenda des sorties ↗</a></article>
+<article class="film-card"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Projecteur de cinéma dans une salle" loading="lazy"><p class="eyebrow">🎞️ Bandes-annonces</p><h2>Voir les bandes-annonces officielles</h2><p>Retrouvez les vidéos publiées par les distributeurs et les producteurs.</p><a href="https://www.youtube.com/results?search_query=bande+annonce+film+marocain+officielle" target="_blank" rel="noopener noreferrer">Bandes-annonces de films marocains ↗</a><br><a href="https://www.youtube.com/results?search_query=official+movie+trailers" target="_blank" rel="noopener noreferrer">Bandes-annonces internationales ↗</a></article>
+<article class="film-card" id="festivals"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Événement culturel et scène illuminée" loading="lazy"><p class="eyebrow">🏆 Festivals & rencontres</p><h2>Les grands rendez-vous du cinéma</h2><p>Festivals, sélections, prix, rencontres et événements autour du septième art.</p><a href="https://www.festivalmarrakech.info/" target="_blank" rel="noopener noreferrer">Festival international du film de Marrakech ↗</a><br><a href="https://www.festival-cannes.com/" target="_blank" rel="noopener noreferrer">Festival de Cannes ↗</a></article>
+<article class="film-card" id="series"><img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Écran de télévision dans un salon" loading="lazy"><p class="eyebrow">📺 Séries & streaming</p><h2>Les nouveautés à regarder</h2><p>Actualités des séries, documentaires et œuvres disponibles sur les plateformes.</p><a href="https://www.justwatch.com/ma" target="_blank" rel="noopener noreferrer">Rechercher où regarder légalement au Maroc ↗</a></article>
+</section>
+<section class="panel"><p class="eyebrow">⭐ À découvrir</p><h2>Les grandes histoires du cinéma</h2><p>Maroc First Cinéma mettra aussi en lumière les œuvres marquantes, les talents émergents, les métiers du cinéma et les coulisses des tournages. Les fiches de films et les critiques seront publiées avec des informations vérifiées et des liens vers les sources officielles.</p><div class="notice">Les actualités ci-dessus sont des liens vers leurs publications d’origine. Les dates de sortie, affiches et bandes-annonces peuvent évoluer : vérifiez toujours les annonces des distributeurs et des festivals.</div></section>
+</main>
+<footer><div class="wrap"><p><a href="index.html">← Retour à Maroc First</a></p><p class="small">Maroc First Cinéma · Une rubrique culturelle de Maroc First · Signature éditoriale E.T.</p></div></footer>
+<script>
+async function loadFeed(query,listId,statusId){
+ const list=document.getElementById(listId),status=document.getElementById(statusId);
+ const feed='https://news.google.com/rss/search?q='+encodeURIComponent(query)+'&hl=fr&gl=MA&ceid=MA:fr';
+ try{
+  const response=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(feed));
+  if(!response.ok)throw new Error('Flux indisponible');
+  const xml=new DOMParser().parseFromString(await response.text(),'text/xml');
+  const items=Array.from(xml.querySelectorAll('item')).slice(0,8);
+  if(!items.length)throw new Error('Aucun résultat');
+  list.replaceChildren();
+  items.forEach(item=>{
+   const li=document.createElement('li'),a=document.createElement('a');
+   a.href=item.querySelector('link')?.textContent?.trim()||feed;
+   a.textContent=item.querySelector('title')?.textContent?.trim()||'Lire l’actualité';
+   a.target='_blank';a.rel='noopener noreferrer';li.appendChild(a);list.appendChild(li);
+   const date=item.querySelector('pubDate')?.textContent;
+   if(date){const small=document.createElement('p');small.className='small muted';const parsed=new Date(date);small.textContent=isNaN(parsed)?'':parsed.toLocaleDateString('fr-FR');li.appendChild(small);}
+  });
+  status.textContent='Derniers titres récupérés depuis Google Actualités. Cliquez sur un titre pour lire la publication d’origine.';
+ }catch(error){
+  status.textContent='Le flux automatique est momentanément indisponible. Les liens de recherche ci-dessous restent accessibles.';
+  list.replaceChildren();
+ }
+}
+loadFeed('cinéma marocain film acteurs réalisateur','feed-ma','status-ma');
+loadFeed('cinema film movie latest releases international','feed-world','status-world');
+</script>
+</body>
+</html>
