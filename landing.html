@@ -90,5 +90,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.getElementById('copy-link').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(landingUrl);status.textContent='Lien copié. Collez-le dans votre publication.';}catch(e){status.textContent='Copiez ce lien : '+landingUrl;}});
 document.getElementById('share-native').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:'MAROC FIRST',text:'Découvrez Maroc First : actualités, télévision et Radio Mars en direct.',url:landingUrl});}catch(e){}}else{status.textContent='Le partage direct n’est pas disponible ici. Utilisez les boutons ou Copiez le lien.';}});
 </script>
+<script src="actualites.js" data-section="maroc" defer></script>
 </body>
 </html>
