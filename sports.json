@@ -1,4 +1,38 @@
 {
-  "updatedAt": null,
-  "articles": []
+  "updatedAt": "2026-11-09",
+  "articles": [
+    {
+      "id": "2026-11-08-as-far-demi-finales-caf",
+      "date": "2026-11-08",
+      "category": "Football féminin",
+      "source": "Confédération africaine de football (CAF)",
+      "url": "https://www.cafonline.com/caf-womens-champions-league/news/caf-women-s-champions-league-as-far-and-kawempe-advance-to-the-semi-finals/",
+      "title_fr": "L’AS FAR termine en tête et rejoint les demi-finales de la Ligue des champions féminine",
+      "title_ar": "الجيش الملكي ينهي دور المجموعات في الصدارة ويبلغ نصف نهائي دوري أبطال إفريقيا للسيدات",
+      "summary_fr": "Le club marocain a battu Ampem Darkoa du Ghana 2-0, le 8 novembre en Égypte. La capitaine Ghizlane Chebbak a ouvert le score à la 59e minute, avant que Youssoufi ne scelle le succès dans le temps additionnel (90e+6). L’AS FAR termine ainsi en tête du groupe B et affrontera Lekié Football Filles en demi-finale.",
+      "summary_ar": "فاز الفريق المغربي على أمبيم داركوا الغاني بهدفين دون رد، يوم 8 نونبر في مصر. وافتتحت القائدة غزلان الشباك التسجيل في الدقيقة 59، قبل أن تؤكد يوسوفي الانتصار في الوقت بدل الضائع (90+6). وبذلك أنهى الجيش الملكي المجموعة الثانية في الصدارة، وسيواجه ليكي فوتبول فيي في نصف النهائي."
+    },
+    {
+      "id": "2026-11-08-khadija-elmostaqim-800m-final",
+      "date": "2026-11-08",
+      "category": "Athlétisme",
+      "source": "Medi1News – MAP",
+      "url": "https://www.medi1news.com/fr/article/414930.html",
+      "title_fr": "Dakar 2026 : Khadija Elmostaqim se qualifie pour la finale du 800 m",
+      "title_ar": "داكار 2026: خديجة المستقيم تتأهل إلى نهائي سباق 800 متر",
+      "summary_fr": "La Marocaine a terminé deuxième de sa demi-finale du 800 m féminin le 8 novembre, en 2 min 14 s 10, et a décroché son billet pour la finale prévue le 9 novembre à Dakar. Selon la dépêche de la MAP relayée par Medi1News, elle a signé le deuxième meilleur temps de l’ensemble des demi-finales, derrière l’Éthiopienne Netsanet Selemon.",
+      "summary_ar": "أنهت العداءة المغربية خديجة المستقيم سباق نصف نهائي 800 متر للسيدات في المركز الثاني يوم 8 نونبر، بتوقيت دقيقتين و14 ثانية و10 أجزاء من المائة، لتضمن التأهل إلى النهائي المقرر يوم 9 نونبر في داكار. ووفق قصاصة وكالة المغرب العربي للأنباء التي نقلها موقع ميدي 1 نيوز، حققت ثاني أفضل توقيت بين جميع المتأهلات، خلف الإثيوبية نتسانيت سيليمون."
+    },
+    {
+      "id": "2026-11-08-alcaraz-rolex-paris-masters",
+      "date": "2026-11-08",
+      "category": "Tennis",
+      "source": "ATP Tour",
+      "url": "https://www.nittoatpfinals.com/en/news/alcaraz-shelton-paris-2026-final-sunday",
+      "title_fr": "Carlos Alcaraz remporte son premier Rolex Paris Masters face à Ben Shelton",
+      "title_ar": "كارلوس ألكاراز يتوج بلقب رولكس باريس ماسترز للمرة الأولى بعد فوزه على بن شيلتون",
+      "summary_fr": "L’Espagnol a battu l’Américain Ben Shelton 7-6(5), 7-5 en finale, le 8 novembre 2026, pour décrocher son neuvième titre en Masters 1000 et son premier à Paris. La rencontre a duré 1 h 57. Alcaraz a notamment effacé un break de retard dans le deuxième set avant de conclure.",
+      "summary_ar": "تغلب الإسباني كارلوس ألكاراز على الأمريكي بن شيلتون بنتيجة 7-6 (5) و7-5 في النهائي يوم 8 نونبر 2026، ليحرز لقبه التاسع في بطولات الماسترز 1000 وأول لقب له في باريس. واستغرقت المباراة ساعة و57 دقيقة، بعدما عاد ألكاراز في المجموعة الثانية عقب تأخره بكسر للإرسال."
+    }
+  ]
 }
