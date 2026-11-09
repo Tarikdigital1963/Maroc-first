@@ -1,0 +1,29 @@
+name: Actualités quotidiennes Maroc First
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daily-news-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+      - name: Construire l'archive quotidienne
+        run: python3 scripts/refresh_news.py
+      - name: Publier les nouveaux titres sans effacer les anciens
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add actualites.json
+          if git diff --cached --quiet; then
+            echo "Aucun changement dans les flux aujourd'hui."
+          else
+            git commit -m "Actualisation quotidienne des actualités"
+            git push
+          fi
