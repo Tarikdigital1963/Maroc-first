@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: "0 7 * * *"
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/refresh_news.py"
+      - ".github/workflows/actualites-quotidiennes.yml"
 permissions:
   contents: write
 concurrency:
