@@ -10,7 +10,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:18px/1.65 Arial,Helvetica,sans-serif}a{color:#ffe08a}a:focus,button:focus{outline:3px solid var(--gold);outline-offset:3px}.wrap{width:min(1120px,94%);margin:auto}
 header{background:#080d13;border-bottom:4px solid var(--gold);padding:20px 0}.brand{text-align:center}.brand a{text-decoration:none}h1{font-size:clamp(2.1rem,7vw,4.5rem);line-height:1.08;margin:0;letter-spacing:-.04em;background:linear-gradient(90deg,#f13c55,#fff,#f0c65b,#159b68);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{color:var(--muted);margin:8px 0}
 nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}nav a,.pill{display:inline-block;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#182230;text-decoration:none;font-weight:bold}
-main{padding:24px 0}.hero,.panel,.film-card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px;margin-bottom:20px}.hero{padding:0;overflow:hidden;background:#121b27}.hero img{display:block;width:100%;height:clamp(220px,42vw,430px);object-fit:cover}.hero-copy{padding:22px}.eyebrow{color:var(--gold);font-weight:bold;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem}.hero h2{font-size:clamp(1.8rem,5vw,3rem);line-height:1.15;margin:8px 0}.muted,.status{color:var(--muted)}h2{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px}.film-card{margin:0;padding:16px}.film-card img{width:100%;height:190px;object-fit:cover;border-radius:10px}.film-card h3{line-height:1.3}.feed-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}.feed-list li{padding:15px;border:1px solid var(--line);border-radius:12px;background:#101923}.feed-list a{font-weight:bold;text-decoration:none}.feed-list a:hover{text-decoration:underline}.actions{display:flex;flex-wrap:wrap;gap:10px}.button{display:inline-block;background:var(--gold);color:#10151d;border-radius:8px;padding:11px 15px;font-weight:bold;text-decoration:none}.button.secondary{background:#26364a;color:var(--text);border:1px solid var(--line)}.notice{border-left:4px solid var(--gold);padding:10px 14px;background:#111923;color:var(--muted)}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}.small{font-size:.92rem}
+main{padding:24px 0}.hero,.panel,.film-card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:20px;margin-bottom:20px}.hero{padding:0;overflow:hidden;background:#121b27}.hero img{display:block;width:100%;height:clamp(220px,42vw,430px);object-fit:cover}.hero-copy{padding:22px}.eyebrow{color:var(--gold);font-weight:bold;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem}.hero h2{font-size:clamp(1.8rem,5vw,3rem);line-height:1.15;margin:8px 0}.muted,.status{color:var(--muted)}h2{font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px}.film-card{margin:0;padding:16px}.film-card img{width:100%;height:190px;object-fit:cover;border-radius:10px}.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.film-card h3{line-height:1.3}.feed-list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}.feed-list li{padding:15px;border:1px solid var(--line);border-radius:12px;background:#101923}.feed-list a{font-weight:bold;text-decoration:none}.feed-list a:hover{text-decoration:underline}.actions{display:flex;flex-wrap:wrap;gap:10px}.button{display:inline-block;background:var(--gold);color:#10151d;border-radius:8px;padding:11px 15px;font-weight:bold;text-decoration:none}.button.secondary{background:#26364a;color:var(--text);border:1px solid var(--line)}.notice{border-left:4px solid var(--gold);padding:10px 14px;background:#111923;color:var(--muted)}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}.small{font-size:.92rem}
 @media(max-width:520px){body{font-size:17px}.hero-copy,.panel{padding:16px}}
 </style>
 </head>
@@ -30,42 +30,32 @@ main{padding:24px 0}.hero,.panel,.film-card{border:1px solid var(--line);border-
 <section class="panel" id="monde"><p class="eyebrow">🌍 Le cinéma sans frontières</p><h2>Actualités du cinéma international</h2><p class="muted">Nouveaux films, annonces de production, acteurs et réalisateurs du monde entier.</p><p id="status-world" class="status" aria-live="polite">Chargement des dernières actualités…</p><ul id="feed-world" class="feed-list"></ul><p class="small"><a href="https://news.google.com/search?q=cinema+film+new+releases&amp;hl=fr&amp;gl=MA&amp;ceid=MA%3Afr" target="_blank" rel="noopener noreferrer">Explorer les actualités internationales ↗</a></p></section>
 
 <section class="panel" id="bandes-annonces">
- <p class="eyebrow">▶️ À regarder maintenant</p>
- <h2>Bandes-annonces de films</h2>
- <p class="muted">Cliquez sur une affiche pour ouvrir la bande-annonce ou les résultats vidéo du film. Les vidéos sont hébergées par leurs éditeurs sur YouTube ou AlloCiné.</p>
+ <p class="eyebrow">▶️ VIDÉOS À REGARDER</p>
+ <h2>Bandes-annonces : lancez la vidéo ici</h2>
+ <p class="muted">Les vidéos ci-dessous sont intégrées dans la page. Appuyez directement sur Lecture pour les regarder sans passer par une simple page de liens.</p>
  <div class="grid">
   <article class="film-card">
-   <a href="https://www.youtube.com/watch?v=bM7CGep4jQI" target="_blank" rel="noopener noreferrer" aria-label="Voir la bande-annonce officielle de Everybody Loves Touda"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85" alt="Chanteuse sur scène, illustration de Everybody Loves Touda" loading="lazy"></a>
-   <p class="eyebrow">🇲🇦 Film marocain · 2024</p><h3>Everybody Loves Touda</h3><p>Un film de Nabil Ayouch avec Nisrin Erradi.</p>
-   <a class="button" href="https://www.youtube.com/watch?v=bM7CGep4jQI" target="_blank" rel="noopener noreferrer">▶ Voir la bande-annonce</a>
+   <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/bM7CGep4jQI" title="Everybody Loves Touda, bande-annonce officielle" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+   <p class="eyebrow">🇲🇦 FILM MAROCAIN</p><h3>Everybody Loves Touda</h3><p>De Nabil Ayouch, avec Nisrin Erradi. Bande-annonce officielle publiée par Ali n’ Productions.</p>
+   <a class="button" href="https://www.youtube.com/watch?v=bM7CGep4jQI" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo sur YouTube ↗</a>
   </article>
   <article class="film-card">
-   <a href="https://www.allocine.fr/video/player_gen_cmedia=19601538&cfilm=281970.html" target="_blank" rel="noopener noreferrer" aria-label="Voir la bande-annonce de Les Meutes"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Paysage urbain nocturne, illustration de Les Meutes" loading="lazy"></a>
-   <p class="eyebrow">🇲🇦 Film marocain · 2023</p><h3>Les Meutes</h3><p>Le premier long métrage de Kamal Lazraq, primé à Cannes.</p>
-   <a class="button" href="https://www.allocine.fr/video/player_gen_cmedia=19601538&cfilm=281970.html" target="_blank" rel="noopener noreferrer">▶ Voir la bande-annonce</a>
+   <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/CGkPbNkIFWQ" title="Le Bleu du Caftan, bande-annonce officielle" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+   <p class="eyebrow">🇲🇦 FILM MAROCAIN</p><h3>Le Bleu du Caftan</h3><p>De Maryam Touzani, avec Lubna Azabal et Saleh Bakri. Bande-annonce publiée par AD VITAM.</p>
+   <a class="button" href="https://www.youtube.com/watch?v=CGkPbNkIFWQ" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo sur YouTube ↗</a>
   </article>
   <article class="film-card">
-   <a href="https://www.youtube.com/results?search_query=Le+Bleu+du+Caftan+bande+annonce+officielle" target="_blank" rel="noopener noreferrer" aria-label="Rechercher la bande-annonce du Bleu du Caftan"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85" alt="Tissu bleu brodé, illustration du Bleu du Caftan" loading="lazy"></a>
-   <p class="eyebrow">🇲🇦 Cinéma marocain</p><h3>Le Bleu du Caftan</h3><p>Le film de Maryam Touzani, présenté à Cannes.</p>
-   <a class="button" href="https://www.youtube.com/results?search_query=Le+Bleu+du+Caftan+bande+annonce+officielle" target="_blank" rel="noopener noreferrer">▶ Trouver la bande-annonce</a>
+   <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/DJvrlfP5h-4" title="Haut et Fort, bande-annonce" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+   <p class="eyebrow">🇲🇦 FILM MAROCAIN</p><h3>Haut et Fort</h3><p>De Nabil Ayouch. Un film autour de la jeunesse casablancaise et de la culture hip-hop.</p>
+   <a class="button" href="https://www.youtube.com/watch?v=DJvrlfP5h-4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo sur YouTube ↗</a>
   </article>
   <article class="film-card">
-   <a href="https://www.youtube.com/results?search_query=Haut+et+Fort+Nabil+Ayouch+bande+annonce" target="_blank" rel="noopener noreferrer" aria-label="Rechercher la bande-annonce de Haut et Fort"><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=85" alt="Concert et public, illustration de Haut et Fort" loading="lazy"></a>
-   <p class="eyebrow">🇲🇦 Cinéma marocain</p><h3>Haut et Fort</h3><p>Le film musical de Nabil Ayouch.</p>
-   <a class="button" href="https://www.youtube.com/results?search_query=Haut+et+Fort+Nabil+Ayouch+bande+annonce" target="_blank" rel="noopener noreferrer">▶ Trouver la bande-annonce</a>
-  </article>
-  <article class="film-card">
-   <a href="https://www.youtube.com/results?search_query=The+Odyssey+2026+official+trailer" target="_blank" rel="noopener noreferrer" aria-label="Rechercher la bande-annonce de The Odyssey"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=900&q=85" alt="Salle de cinéma, illustration de The Odyssey" loading="lazy"></a>
-   <p class="eyebrow">🌍 Cinéma international · 2026</p><h3>The Odyssey</h3><p>Retrouvez les vidéos officielles du film de Christopher Nolan.</p>
-   <a class="button" href="https://www.youtube.com/results?search_query=The+Odyssey+2026+official+trailer" target="_blank" rel="noopener noreferrer">▶ Trouver la bande-annonce</a>
-  </article>
-  <article class="film-card">
-   <a href="https://www.youtube.com/results?search_query=Michael+2026+official+movie+trailer" target="_blank" rel="noopener noreferrer" aria-label="Rechercher la bande-annonce de Michael"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=85" alt="Microphone sur scène, illustration du film Michael" loading="lazy"></a>
-   <p class="eyebrow">🌍 Cinéma international · 2026</p><h3>Michael</h3><p>Le film consacré à Michael Jackson.</p>
-   <a class="button" href="https://www.youtube.com/results?search_query=Michael+2026+official+movie+trailer" target="_blank" rel="noopener noreferrer">▶ Trouver la bande-annonce</a>
+   <a href="https://www.allocine.fr/video/player_gen_cmedia%3D19601538%26cfilm%3D281970.html" target="_blank" rel="noopener noreferrer"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85" alt="Visuel nocturne pour le film Les Meutes" loading="lazy"></a>
+   <p class="eyebrow">🇲🇦 FILM MAROCAIN</p><h3>Les Meutes</h3><p>De Kamal Lazraq, Prix du jury Un Certain Regard à Cannes 2023.</p>
+   <a class="button" href="https://www.allocine.fr/video/player_gen_cmedia%3D19601538%26cfilm%3D281970.html" target="_blank" rel="noopener noreferrer">▶ Voir la bande-annonce sur AlloCiné ↗</a>
   </article>
  </div>
- <p class="notice">Note : les affiches de cette galerie sont des visuels d’illustration, pas les affiches officielles des films. Les liens ouvrent la vidéo confirmée lorsqu’elle est disponible, ou une recherche ciblée pour retrouver la bande-annonce officielle.</p>
+ <p class="notice">Si une vidéo ne démarre pas dans la page sur votre téléphone, utilisez le bouton situé juste dessous pour l’ouvrir directement sur YouTube ou AlloCiné.</p>
 </section>
 
 <section class="grid" id="sorties">
