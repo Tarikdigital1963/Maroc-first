@@ -19,6 +19,15 @@ input,select{width:100%;padding:12px;border-radius:9px;border:1px solid #66758a;
 .empty{padding:20px;border:1px dashed var(--gold);border-radius:12px;background:#111923}.pill{display:inline-block;padding:4px 9px;background:#26364a;border-radius:20px;font-size:.85rem}
 footer{padding:20px 0;border-top:1px solid var(--line);color:var(--muted)}
 @media(max-width:520px){body{font-size:18px}.hero,.panel{padding:16px}}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:16px;margin-top:18px}
+.gallery-grid figure{margin:0;background:#101923;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.gallery-grid figure>a{display:block;overflow:hidden}
+.gallery-grid img{display:block;width:100%;height:205px;object-fit:cover;transition:transform .2s ease}
+.gallery-grid figure>a:hover img{transform:scale(1.035)}
+.gallery-grid figcaption{padding:12px;color:var(--muted);font-size:.88rem;line-height:1.5}
+.gallery-grid figcaption strong{color:var(--text);font-size:1rem}
+.gallery-grid figcaption a{font-weight:bold}
 </style>
 </head>
 <body>
@@ -39,6 +48,22 @@ footer{padding:20px 0;border-top:1px solid var(--line);color:var(--muted)}
 </div>
 <p id="listing-status" class="muted" role="status">Chargement des annonces partenaires…</p>
 <div id="listing-grid" class="grid" aria-live="polite"></div>
+</section>
+
+<section class="panel gallery-panel" aria-labelledby="gallery-title">
+<h2 id="gallery-title">🏘️ Galerie immobilière du Maroc</h2>
+<p class="muted">Une galerie photographique fixe pour découvrir différents styles d’habitat, de maisons et de terrains au Maroc. Ces images sont illustratives : elles ne correspondent pas à des annonces à vendre.</p>
+<div class="gallery-grid">
+<figure><a href="https://commons.wikimedia.org/wiki/File:بنايات_سكنية_إسبانية_في_مدينة_العيون.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/بنايات_سكنية_إسبانية_في_مدينة_العيون.jpg?width=900" alt="Immeubles résidentiels à Laâyoune" loading="lazy"></a><figcaption><strong>Résidences à Laâyoune</strong><br>Photo : Nassima Chahboun · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:بنايات_سكنية_إسبانية_في_مدينة_العيون.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:Traditional_building_in_morocco.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Traditional_building_in_morocco.jpg?width=900" alt="Bâtiment traditionnel marocain" loading="lazy"></a><figcaption><strong>Architecture marocaine</strong><br>Photo : Omar Chemlil · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Traditional_building_in_morocco.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:House_morocco.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/House_morocco.jpg?width=900" alt="Maison au Maroc" loading="lazy"></a><figcaption><strong>Maison marocaine</strong><br>Photo : Leon petrosyan · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:House_morocco.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:Unfinished_house_in_morocco.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Unfinished_house_in_morocco.jpg?width=900" alt="Maison en construction dans la région Souss-Massa" loading="lazy"></a><figcaption><strong>Maison en construction</strong><br>Photo : Roy Egloff · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Unfinished_house_in_morocco.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:Moroccan_house.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moroccan_house.jpg?width=900" alt="Maison et jardin au Maroc" loading="lazy"></a><figcaption><strong>Maison et jardin</strong><br>Photo : Safafa · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Moroccan_house.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:P150115_17.04.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/P150115_17.04.jpg?width=900" alt="Chantier de construction d’un immeuble au Maroc" loading="lazy"></a><figcaption><strong>Chantier immobilier</strong><br>Photo : Mohamed boumhdi · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:P150115_17.04.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:Adobe_houses_%2B_cats,_Tabant_Maroc.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Adobe_houses_%2B_cats,_Tabant_Maroc.jpg?width=900" alt="Maisons en terre à Tabant au Maroc" loading="lazy"></a><figcaption><strong>Habitat traditionnel en terre</strong><br>Photo : pascal · CC BY 2.0 · <a href="https://commons.wikimedia.org/wiki/File:Adobe_houses_%2B_cats,_Tabant_Maroc.jpg">Source</a></figcaption></figure>
+<figure><a href="https://commons.wikimedia.org/wiki/File:Tangier_houses.jpg" target="_blank" rel="noopener noreferrer"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tangier_houses.jpg?width=900" alt="Maisons de Tanger vues depuis un toit" loading="lazy"></a><figcaption><strong>Maisons de Tanger</strong><br>Photo : Soumayaloulou · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Tangier_houses.jpg">Source</a></figcaption></figure>
+</div>
+<p class="credit">Crédits et licences indiqués sous chaque photo. Les images restent fixes et ne changent pas automatiquement.</p>
 </section>
 <section class="panel">
 <h2>Nos partenaires et portails</h2>
