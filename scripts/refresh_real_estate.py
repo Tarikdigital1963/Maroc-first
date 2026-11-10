@@ -36,10 +36,12 @@ def parse_feed(url):
         period=price_el.attrib.get("period","") if price_el is not None else ""
         city=txt(ad,"city")
         raw_date=txt(ad,"date") or txt(ad,"updated_at")
+        raw_type=txt(ad,"property_type").lower()
+        type_names={"apartment":"Appartement","house":"Maison","villa":"Villa","land":"Terrain","riad":"Riad","farm":"Ferme","office":"Bureau","shop":"Local commercial","commercial":"Local commercial"}
         item={
             "id":listing_id,"url":link,"title":title,"content":txt(ad,"content"),
             "type":txt(ad,"type"),"type_label":txt(ad,"type") or "Annonce partenaire",
-            "property_type":txt(ad,"property_type"),"price":price,
+            "property_type":type_names.get(raw_type,txt(ad,"property_type")),"price":price,
             "currency":"DH","rent_period":period,"city":city,
             "city_area":txt(ad,"city_area"),"agency":txt(ad,"agency") or txt(ad,"company"),
             "date":raw_date,"area":txt(ad,"floor_area") or txt(ad,"plot_area"),
@@ -72,7 +74,8 @@ for item in all_ads:
     seen.add(key)
     unique.append(item)
 priority={"Fès":0,"Meknès":1,"Khémisset":2}
-unique.sort(key=lambda x:(priority.get(x.get("city"),3),x.get("date","")),reverse=False)
+unique.sort(key=lambda x:x.get("date",""),reverse=True)
+unique.sort(key=lambda x:priority.get(x.get("city"),3))
 unique=unique[:120]
 data={"updatedAt":datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),"sourceStatus":f"{len(URLS)} flux partenaire(s) traités","listings":unique}
 with open(OUT,"w",encoding="utf-8") as f:
