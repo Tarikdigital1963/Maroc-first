@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Toutes les actualités et publications de Maroc First, classées par rubrique et par date.">
+<title>Actualités et articles | Maroc First</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C4D26CF0R3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C4D26CF0R3');</script>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:19px/1.7 Arial,Helvetica,sans-serif}a{color:#ffe08a}a:focus,button:focus{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1120px,94%);margin:auto}header{background:#080d13;border-bottom:4px solid var(--gold);padding:22px 0}h1{font-size:clamp(2rem,7vw,3.6rem);line-height:1.1;margin:0;color:var(--gold)}header p,.meta,.status{color:var(--muted)}
+nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}nav a,.button{display:inline-block;padding:10px 14px;background:#26364a;border:1px solid var(--line);border-radius:10px;text-decoration:none;font-weight:bold}
+main{padding:22px 0}.intro,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin:18px 0}.intro{background:linear-gradient(135deg,#23364b,#151f2c)}h2{color:var(--gold);font-size:clamp(1.5rem,4vw,2.1rem)}
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}.filters button{padding:10px 13px;border-radius:9px;border:1px solid var(--line);background:#26364a;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.filters button[aria-pressed=true]{background:var(--gold);color:#10151d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}.article{background:#111b28;border:1px solid var(--line);border-radius:14px;padding:16px;overflow-wrap:anywhere;min-width:0}.article img{display:block;width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:12px}.article h3{font-size:1.15rem;line-height:1.4;margin:8px 0}.article p{margin:8px 0}.meta{font-size:.9rem}.more{margin:18px 0;padding:12px 18px;border-radius:9px;border:1px solid var(--line);background:#26364a;color:#fff;font:inherit;font-weight:bold;cursor:pointer}.hidden{display:none!important}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);margin-top:30px}
+@media(max-width:520px){body{font-size:18px}.intro,.panel{padding:16px}}
+</style></head>
+<body>
+<header><div class="wrap"><h1>📰 Actualités et articles</h1><p>Maroc First · Toutes les publications réunies dans un seul espace</p>
+<nav aria-label="Navigation principale"><a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a></nav></div></header>
+<main class="wrap">
+<section class="intro"><h2>Le journal, ses actualités et ses archives</h2><p>Retrouvez ici les publications de Maroc First, les articles sportifs en français et en arabe, les dernières nouvelles et les liens vers les sources originales. Les rubriques spécialisées restent accessibles depuis les liens ci-dessus.</p></section>
+<section class="panel" aria-labelledby="archive-title"><h2 id="archive-title">Toutes les actualités</h2>
+<div class="filters" id="filters" aria-label="Filtrer par rubrique"><button type="button" data-filter="all" aria-pressed="true">Tout</button><button type="button" data-filter="maroc" aria-pressed="false">Maroc</button><button type="button" data-filter="international" aria-pressed="false">International</button><button type="button" data-filter="politique" aria-pressed="false">Politique</button><button type="button" data-filter="economie" aria-pressed="false">Économie</button><button type="button" data-filter="societe" aria-pressed="false">Société</button><button type="button" data-filter="sport" aria-pressed="false">Sport</button><button type="button" data-filter="culture" aria-pressed="false">Culture</button><button type="button" data-filter="emploi" aria-pressed="false">Emploi</button><button type="button" data-filter="inclusion" aria-pressed="false">Inclusion</button></div>
+<p id="archive-status" class="status" aria-live="polite">Chargement des articles archivés…</p><div id="archive-grid" class="grid"></div><button id="archive-more" class="more hidden" type="button">Afficher les articles précédents</button></section>
+<section class="panel"><h2>⚽ Actualités sportives en français et en arabe</h2><p id="sports-status" class="status" aria-live="polite">Chargement des articles sportifs…</p><div id="sports-grid" class="grid"></div></section>
+<section class="panel"><h2>🌐 Dernières nouvelles en direct</h2><p id="rss-status" class="status" aria-live="polite">Chargement des titres…</p><ul id="rss-list"></ul><p><a href="https://news.google.com/search?q=Maroc&amp;hl=fr&amp;gl=MA&amp;ceid=MA%3Afr" target="_blank" rel="noopener noreferrer">Ouvrir Google Actualités – Maroc ↗</a></p></section>
+<section class="panel"><h2>📝 Publications du blog Qods112</h2><p id="blog-status" class="status" aria-live="polite">Chargement du blog…</p><div id="blog-grid" class="grid"></div><p><a class="button" href="https://qods112.blogspot.com/" target="_blank" rel="noopener noreferrer">Visiter le blog complet ↗</a></p></section>
+</main><footer><div class="wrap"><strong>MAROC FIRST</strong> · <a href="index.html">Retour à l’accueil</a></div></footer>
+<script>
+(function(){
+"use strict";
+const labels={maroc:"Maroc",politique:"Politique",international:"International",economie:"Économie",societe:"Société",sport:"Sport",culture:"Culture",emploi:"Emploi",inclusion:"Inclusion",immobilier:"Immobilier",flash:"Flash infos",flash_sport:"Flash sport"};
+const grid=document.getElementById("archive-grid"),status=document.getElementById("archive-status"),more=document.getElementById("archive-more");
+let allItems=[],active="all",shown=12;
+function date(v){if(!v)return "";const d=new Date(v);return isNaN(d)? "":d.toLocaleDateString("fr-FR");}
+function render(){
+const items=allItems.filter(x=>active==="all"||x.section===active);grid.replaceChildren();
+items.slice(0,shown).forEach(item=>{
+const card=document.createElement("article");card.className="article";
+if(item.image){const img=document.createElement("img");img.src=item.image;img.alt="Illustration de l’article";img.loading="lazy";img.onerror=()=>img.remove();card.append(img);}
+const cat=document.createElement("p");cat.className="meta";cat.textContent=labels[item.section]||item.section;card.append(cat);
+const h=document.createElement("h3"),a=document.createElement("a");a.href=item.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=item.title;h.append(a);card.append(h);
+if(item.summary){const p=document.createElement("p");p.textContent=item.summary;card.append(p);}
+const m=document.createElement("p");m.className="meta";m.textContent=[item.source,date(item.published)].filter(Boolean).join(" · ");card.append(m);grid.append(card);
+});
+more.classList.toggle("hidden",items.length<=shown);status.textContent=items.length+" article(s) dans cette sélection. Les plus récents apparaissent en premier.";
+}
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.filter;shown=12;document.querySelectorAll("[data-filter]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render();}));
+more.addEventListener("click",()=>{shown+=12;render();});
+fetch("./actualites.json?ts="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Archive indisponible");return r.json();}).then(data=>{
+allItems=Object.entries(data.sections||{}).flatMap(([section,items])=>(items||[]).map(item=>({...item,section}))).filter(x=>x.url&&x.title).sort((a,b)=>new Date(b.published||0)-new Date(a.published||0));render();
+if(!allItems.length)status.textContent="Aucun article archivé pour le moment.";
+}).catch(()=>{status.textContent="Le fichier d’archives est momentanément indisponible. Les rubriques spécialisées restent accessibles.";});
+fetch("./sports.json?ts="+Date.now(),{cache:"no-store"}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+const box=document.getElementById("sports-grid"),items=Array.isArray(data.articles)?data.articles:[];
+box.replaceChildren();items.forEach(item=>{const card=document.createElement("article");card.className="article";
+const h=document.createElement("h3");h.textContent=item.title_fr||"Actualité sportive";card.append(h);
+if(item.title_ar){const ar=document.createElement("h3");ar.lang="ar";ar.dir="rtl";ar.textContent=item.title_ar;card.append(ar);}
+const dateEl=document.createElement("p");dateEl.className="meta";dateEl.textContent=[item.date,item.source].filter(Boolean).join(" · ");card.append(dateEl);
+const p=document.createElement("p");p.textContent=item.summary_fr||"";card.append(p);
+if(item.summary_ar){const ap=document.createElement("p");ap.lang="ar";ap.dir="rtl";ap.textContent=item.summary_ar;card.append(ap);}
+const a=document.createElement("a");a.href=item.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Lire la source ↗";card.append(a);box.append(card);
+});document.getElementById("sports-status").textContent=items.length+" articles sportifs disponibles.";
+}).catch(()=>{document.getElementById("sports-status").textContent="Le flux sportif est temporairement indisponible.";});
+const feed="https://news.google.com/rss/search?q=Maroc&hl=fr&gl=MA&ceid=MA:fr";
+fetch("https://api.allorigins.win/raw?url="+encodeURIComponent(feed)).then(r=>{if(!r.ok)throw Error();return r.text();}).then(raw=>{
+const xml=new DOMParser().parseFromString(raw,"text/xml"),items=Array.from(xml.querySelectorAll("item")).slice(0,10),list=document.getElementById("rss-list");list.replaceChildren();
+items.forEach(item=>{const li=document.createElement("li"),a=document.createElement("a");a.href=item.querySelector("link")?.textContent?.trim()||feed;a.target="_blank";a.rel="noopener noreferrer";a.textContent=item.querySelector("title")?.textContent?.trim()||"Lire l’actualité";li.append(a);list.append(li);});
+document.getElementById("rss-status").textContent=items.length?"Derniers titres chargés depuis Google Actualités.":"Aucun titre disponible.";
+}).catch(()=>{document.getElementById("rss-status").textContent="Le flux automatique est momentanément indisponible. Consultez Google Actualités avec le lien ci-dessus.";});
+const blog="https://qods112.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=renderMarocFirstBlog";
+window.renderMarocFirstBlog=function(data){
+const entries=data&&data.feed&&data.feed.entry?data.feed.entry:[],box=document.getElementById("blog-grid");box.replaceChildren();
+entries.forEach(entry=>{const card=document.createElement("article");card.className="article";const h=document.createElement("h3");h.textContent=entry.title&&entry.title.$t?entry.title.$t:"Publication";card.append(h);
+const raw=entry.summary&&entry.summary.$t?entry.summary.$t:entry.content&&entry.content.$t?entry.content.$t:"",tmp=document.createElement("div");tmp.innerHTML=raw;const p=document.createElement("p");p.textContent=(tmp.textContent||"").trim().slice(0,240);card.append(p);
+const link=entry.link&&entry.link.find(x=>x.rel==="alternate"&&x.type==="text/html");if(link&&link.href){const a=document.createElement("a");a.href=link.href;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Lire sur Blogger ↗";card.append(a);}box.append(card);});
+document.getElementById("blog-status").textContent=entries.length?entries.length+" publications récentes.":"Aucune publication disponible.";
+};
+const script=document.createElement("script");script.src=blog;script.onerror=()=>{document.getElementById("blog-status").textContent="Le blog est momentanément inaccessible. Utilisez le lien direct.";};document.head.append(script);
+})();
+</script></body></html>
