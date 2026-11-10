@@ -88,6 +88,22 @@ body.menu-open{overflow:hidden}
 .side-menu nav a{text-transform:uppercase;font-weight:900;letter-spacing:.025em}
 @media(prefers-reduced-motion:reduce){.mf-home-slider img{transition:none}}
 
+
+/* Navigation visuelle accessible de la page d'accueil */
+.mf-portal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,185px),1fr));gap:14px;margin-top:18px}
+.mf-portal-tile{display:flex;min-height:150px;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:18px 12px;border:2px solid #52647b;border-radius:15px;background:linear-gradient(145deg,#263c54,#111b29);color:#fff;text-align:center;text-decoration:none;box-shadow:0 4px 12px #0004;transition:transform .15s ease,border-color .15s ease}
+.mf-portal-tile:hover,.mf-portal-tile:focus{border-color:var(--gold);transform:translateY(-2px);color:#fff}
+.mf-portal-icon{font-size:2.8rem;line-height:1.15}
+.mf-portal-tile strong{font-size:1.12rem;line-height:1.3;color:#ffe08a}
+.mf-portal-tile span:last-child{font-size:.92rem;color:#f4f7fb}
+.mf-poster-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px;margin-top:18px}
+.mf-poster-tile{display:flex;min-height:175px;flex-direction:column;justify-content:center;align-items:center;gap:10px;padding:18px;border:2px solid #52647b;border-radius:15px;background:linear-gradient(145deg,#253d56,#101720);color:#fff;text-align:center;text-decoration:none}
+.mf-poster-tile:hover,.mf-poster-tile:focus{border-color:var(--gold);color:#fff}
+.mf-poster-art{display:grid;place-items:center;width:100%;min-height:78px;border-radius:10px;background:linear-gradient(120deg,#b8172b,#182230 55%,#087b4b);color:#fff;font-size:2rem;font-weight:900;letter-spacing:.04em}
+.mf-poster-tile strong{font-size:1.12rem;color:#ffe08a}
+.mf-poster-tile span:last-child{color:#f4f7fb;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.mf-portal-tile{transition:none}.mf-portal-tile:hover{transform:none}}
+
 </style>
 </head>
 <body>
@@ -166,6 +182,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <section class="hero"><p class="eyebrow" data-fr="Le regard de la rédaction" data-en="The editorial perspective" data-ar="رؤية هيئة التحرير">Le regard de la rédaction</p><h2 data-fr="Comprendre l’actualité, au-delà des titres" data-en="Understanding the news beyond the headlines" data-ar="فهم الأخبار، أبعد من العناوين">Comprendre l’actualité, au-delà des titres</h2><p data-fr="Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés E.T." data-en="Maroc First covers Moroccan news, social issues and regional affairs. Articles are signed E.T." data-ar="ماروك فيرست مساحة للقراءة تهتم بالأخبار المغربية وقضايا المجتمع والعلاقات الإقليمية. المقالات موقعة باسم E.T.">Maroc First est un espace de lecture consacré à l’actualité marocaine, aux enjeux de société et aux relations régionales. Les articles sont signés <span class="signature">E.T</span>.</p><p data-fr="Les informations doivent être vérifiées et les sources clairement indiquées avant publication." data-en="Information must be verified and sources clearly cited before publication." data-ar="يجب التحقق من المعلومات وذكر المصادر بوضوح قبل النشر.">Les informations doivent être vérifiées et les sources clairement indiquées avant publication.</p></section>
+
+
+<section id="acces-visuels" class="card" aria-labelledby="acces-visuels-title">
+ <p class="eyebrow">🧭 Maroc First · Navigation facile</p>
+ <h2 id="acces-visuels-title">Accès rapides : choisissez une rubrique</h2>
+ <p>Des affiches simples à toucher ou à cliquer pour accéder directement aux principales rubriques du journal.</p>
+ <div class="mf-portal-grid">
+  <a class="mf-portal-tile" href="maroc.html"><span class="mf-portal-icon" aria-hidden="true">🇲🇦</span><strong>Actualités du Maroc</strong><span>Lire les nouvelles</span></a>
+  <a class="mf-portal-tile" href="international.html"><span class="mf-portal-icon" aria-hidden="true">🌍</span><strong>International</strong><span>Voir le monde</span></a>
+  <a class="mf-portal-tile" href="sport.html"><span class="mf-portal-icon" aria-hidden="true">⚽</span><strong>Sport</strong><span>Résultats et actualités</span></a>
+  <a class="mf-portal-tile" href="culture.html"><span class="mf-portal-icon" aria-hidden="true">🎨</span><strong>Culture</strong><span>Découvrir la culture</span></a>
+  <a class="mf-portal-tile" href="cinema.html"><span class="mf-portal-icon" aria-hidden="true">🎬</span><strong>Cinéma</strong><span>Films et bandes-annonces</span></a>
+  <a class="mf-portal-tile" href="meteo.html"><span class="mf-portal-icon" aria-hidden="true">🌤️</span><strong>Météo</strong><span>Prévisions et cartes</span></a>
+  <a class="mf-portal-tile" href="inclusion.html"><span class="mf-portal-icon" aria-hidden="true">♿</span><strong>Handicap et inclusion</strong><span>Accessibilité et autonomie</span></a>
+  <a class="mf-portal-tile" href="medias.html"><span class="mf-portal-icon" aria-hidden="true">📺</span><strong>Médias et vidéos</strong><span>Voir les médias</span></a>
+  <a class="mf-portal-tile" href="bibliotheque.html"><span class="mf-portal-icon" aria-hidden="true">📚</span><strong>Bibliothèque</strong><span>Livres et publications</span></a>
+  <a class="mf-portal-tile" href="handicap-maroc.html"><span class="mf-portal-icon" aria-hidden="true">🤝</span><strong>Handicap Maroc</strong><span>Emploi et inclusion</span></a>
+ </div>
+</section>
+
 
 <section id="cinema-feature" class="card" aria-labelledby="cinema-feature-title">
 <p class="eyebrow">🎬 Maroc First · Nouvel espace culturel</p>
@@ -256,9 +292,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="eyebrow" data-fr="Pour aller plus loin" data-en="Explore more" data-ar="للاطلاع أكثر">Pour aller plus loin</p>
 <h2 data-fr="Autres médias d’actualité" data-en="Other news media" data-ar="وسائل إعلام إخبارية أخرى">Autres médias d’actualité</h2>
 <p data-fr="Maroc First propose également ces liens vers des médias indépendants pour élargir la veille et découvrir d’autres analyses. Les sites sont externes et ne sont pas affiliés à Maroc First." data-en="Maroc First also provides these links to other media for broader monitoring and analysis. These are external websites and are not affiliated with Maroc First." data-ar="توفر ماروك فيرست أيضًا روابط لوسائل إعلام أخرى لتوسيع المتابعة واكتشاف تحليلات مختلفة. هذه مواقع خارجية وليست تابعة لماروك فيرست.">Maroc First propose également ces liens vers des médias indépendants pour élargir la veille et découvrir d’autres analyses. Les sites sont externes et ne sont pas affiliés à Maroc First.</p>
-<div class="media-grid">
-<article class="book-card"><h3>Sahel Intelligence</h3><p data-fr="Actualités et analyses sur le Sahel et les enjeux africains." data-en="News and analysis on the Sahel and African affairs." data-ar="أخبار وتحليلات حول الساحل والقضايا الأفريقية.">Actualités et analyses sur le Sahel et les enjeux africains.</p><a class="btn-link" href="https://sahel-intelligence.com/" target="_blank" rel="noopener noreferrer">Visiter Sahel Intelligence</a></article>
-<article class="book-card"><h3>Africa Intelligence</h3><p data-fr="Informations politiques, diplomatiques et économiques sur l’Afrique." data-en="Political, diplomatic and economic intelligence on Africa." data-ar="معلومات سياسية ودبلوماسية واقتصادية عن أفريقيا.">Informations politiques, diplomatiques et économiques sur l’Afrique.</p><a class="btn-link" href="https://www.africaintelligence.fr/" target="_blank" rel="noopener noreferrer">Visiter Africa Intelligence</a></article>
+<div class="mf-poster-grid">
+<a class="mf-poster-tile" href="https://sahel-intelligence.com/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site Sahel Intelligence"><span class="mf-poster-art" aria-hidden="true">SAHEL</span><strong>Sahel Intelligence</strong><span>Actualités et analyses sur le Sahel ↗</span></a>
+<a class="mf-poster-tile" href="https://www.africaintelligence.fr/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site Africa Intelligence"><span class="mf-poster-art" aria-hidden="true">AFRICA</span><strong>Africa Intelligence</strong><span>Informations politiques et économiques ↗</span></a>
 </div></section>
 <section id="publicite" class="ad"><span class="eyebrow" data-fr="Espace publicitaire" data-en="Advertising space" data-ar="مساحة إعلانية">Espace publicitaire</span><p data-fr="Publicité Google" data-en="Google advertising" data-ar="إعلانات Google">Publicité Google</p><ins class="adsbygoogle" style="display:block;min-height:100px" data-ad-client="ca-pub-2636870050713309" data-ad-slot="2515681723" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><p><small data-fr="Les annonces s’affichent si le site et l’unité publicitaire sont validés par Google AdSense." data-en="Ads appear when the site and ad unit are approved by Google AdSense." data-ar="تظهر الإعلانات بعد موافقة Google AdSense على الموقع والوحدة الإعلانية.">Les annonces s’affichent si le site et l’unité publicitaire sont validés par Google AdSense.</small></p><p data-fr="Bannière partenaire" data-en="Partner banner" data-ar="إعلان شريك">Bannière partenaire</p><a href="https://faucetpay.io/r/8956950" target="_blank" rel="sponsored noopener noreferrer" aria-label="FaucetPay"><img src="https://creator.faucetpay.io/media/display/claim/en/large-leaderboard.png" width="970" height="90" alt="FaucetPay - Every satoshi lands in your wallet" loading="lazy"></a></section>
 </main>
@@ -269,14 +305,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="eyebrow">📺 Maroc First</p>
 <h2 data-fr="Télévisions marocaines en direct" data-en="Moroccan TV channels live" data-ar="القنوات التلفزية المغربية المباشرة">Télévisions marocaines en direct</h2>
 <p data-fr="Retrouve les chaînes marocaines sur leurs lecteurs officiels. Les flux restent hébergés par les diffuseurs ; si une chaîne ne se lance pas ici, ouvre son site officiel." data-en="Watch Moroccan channels through their official players. Streams remain hosted by broadcasters; if a channel does not play here, open its official website." data-ar="شاهد القنوات المغربية عبر منصاتها الرسمية. إذا لم تعمل القناة هنا، افتح الموقع الرسمي للناشر.">Retrouve les chaînes marocaines sur leurs lecteurs officiels. Les flux restent hébergés par les diffuseurs ; si une chaîne ne se lance pas ici, ouvre son site officiel.</p>
-<div class="grid">
-<a class="video-card" href="https://snrtlive.ma/fr/al-aoula" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">📺</div><h3>Al Aoula</h3><p>Regarder sur SNRT Live ↗</p></a>
-<a class="video-card" href="https://snrtlive.ma/fr/almaghribia" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">🌍</div><h3>Al Maghribia</h3><p>Regarder sur SNRT Live ↗</p></a>
-<a class="video-card" href="https://snrtlive.ma/fr/arryadia" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">⚽</div><h3>Arryadia</h3><p>Regarder sur SNRT Live ↗</p></a>
-<a class="video-card" href="https://snrtlive.ma/fr/tamazight" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">🟢</div><h3>Tamazight</h3><p>Regarder sur SNRT Live ↗</p></a>
-<a class="video-card" href="https://snrtlive.ma/fr/athaqafia" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">📚</div><h3>Athaqafia</h3><p>Regarder sur SNRT Live ↗</p></a>
-<a class="video-card" href="https://www.medi1tv.com/" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">📰</div><h3>Medi1TV</h3><p>Site officiel ↗</p></a>
-<a class="video-card" href="https://2m.ma/" target="_blank" rel="noopener noreferrer"><div style="font-size:2.4rem">📡</div><h3>2M</h3><p>Site officiel ↗</p></a>
+<div class="mf-poster-grid">
+<a class="mf-poster-tile" href="https://snrtlive.ma/fr/al-aoula" target="_blank" rel="noopener noreferrer" aria-label="Regarder Al Aoula sur SNRT Live"><span class="mf-poster-art" aria-hidden="true">الأولى</span><strong>Al Aoula</strong><span>Regarder sur SNRT Live ↗</span></a>
+<a class="mf-poster-tile" href="https://snrtlive.ma/fr/almaghribia" target="_blank" rel="noopener noreferrer" aria-label="Regarder Al Maghribia sur SNRT Live"><span class="mf-poster-art" aria-hidden="true">🌍</span><strong>Al Maghribia</strong><span>Regarder sur SNRT Live ↗</span></a>
+<a class="mf-poster-tile" href="https://snrtlive.ma/fr/arryadia" target="_blank" rel="noopener noreferrer" aria-label="Regarder Arryadia sur SNRT Live"><span class="mf-poster-art" aria-hidden="true">⚽</span><strong>Arryadia</strong><span>Regarder sur SNRT Live ↗</span></a>
+<a class="mf-poster-tile" href="https://snrtlive.ma/fr/tamazight" target="_blank" rel="noopener noreferrer" aria-label="Regarder Tamazight sur SNRT Live"><span class="mf-poster-art" aria-hidden="true">ⵣ</span><strong>Tamazight</strong><span>Regarder sur SNRT Live ↗</span></a>
+<a class="mf-poster-tile" href="https://snrtlive.ma/fr/athaqafia" target="_blank" rel="noopener noreferrer" aria-label="Regarder Athaqafia sur SNRT Live"><span class="mf-poster-art" aria-hidden="true">📚</span><strong>Athaqafia</strong><span>Regarder sur SNRT Live ↗</span></a>
+<a class="mf-poster-tile" href="https://www.medi1tv.com/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site Medi1TV"><span class="mf-poster-art" aria-hidden="true">MEDI 1</span><strong>Medi1TV</strong><span>Site officiel ↗</span></a>
+<a class="mf-poster-tile" href="https://2m.ma/" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le site officiel de 2M"><span class="mf-poster-art" aria-hidden="true">2M</span><strong>2M</strong><span>Site officiel ↗</span></a>
 </div>
 <p class="small-note">Les liens ouvrent les sites des diffuseurs. La disponibilité du direct dépend de chaque chaîne et de la connexion.</p>
 </section>
