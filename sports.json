@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-10",
   "articles": [
+    {
+      "id": "2026-11-10-wta-finals-sabalenka-andreeva",
+      "date": "2026-11-10",
+      "category": "Tennis féminin",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sports/tennis/sabalenka-andreeva-make-winning-starts-wta-finals-2026-11-10/",
+      "title_fr": "WTA Finals : Sabalenka et Andreeva réussissent leur entrée dans le tournoi",
+      "title_ar": "نهائيات رابطة محترفات التنس: سابالينكا وأندرييفا تستهلان المنافسات بفوزين",
+      "summary_fr": "Le 9 novembre à Indian Wells, Aryna Sabalenka a battu Karolina Muchova 7-6(2), 7-5, tandis que Mirra Andreeva a dominé Elina Svitolina 6-4, 6-0. Ces deux succès ont marqué le début de leur parcours dans le groupe 2 des WTA Finals. Les résultats et les scores ont été rapportés par Reuters dans son compte rendu publié le 10 novembre.",
+      "summary_ar": "في 9 نونبر بمدينة إنديان ويلز، فازت أرينا سابالينكا على كارولينا موخوفا بنتيجة 7-6 (2) و7-5، فيما تغلبت ميرا أندرييفا على إيلينا سفيتولينا بنتيجة 6-4 و6-0. وبهذين الفوزين استهلت اللاعبتان مشوارهما في المجموعة الثانية من نهائيات رابطة محترفات التنس. ونشرت وكالة رويترز تفاصيل النتائج يوم 10 نونبر."
+    },
+    {
+      "id": "2026-11-09-dakar-2027-eleven-stages-morocco",
+      "date": "2026-11-09",
+      "category": "Rallye-raid / Sports mécaniques",
+      "source": "Organisation du Rallye Dakar",
+      "url": "https://www.dakar.com/fr/actus/2027/le-maroc-au-coeur-de-la-49e-edition-du-dakar/208418",
+      "title_fr": "Dakar 2027 : onze des douze étapes se dérouleront au Maroc",
+      "title_ar": "رالي داكار 2027: إحدى عشرة مرحلة من أصل اثنتي عشرة ستقام في المغرب",
+      "summary_fr": "Présenté à Casablanca le 9 novembre, le parcours de la 49e édition comprendra un prologue et 12 étapes sur 7 824 km. Après deux journées au Portugal, onze étapes se dérouleront au Maroc, avec des passages prévus notamment à Bouarfa, Zagora, Agadir, Smara et Marrakech. L’épreuve est programmée du 9 au 23 janvier 2027, et près de 97 % des 4 341 km de secteurs chronométrés seront parcourus sur le territoire marocain.",
+      "summary_ar": "كُشف في الدار البيضاء يوم 9 نونبر عن مسار النسخة التاسعة والأربعين من رالي داكار، الذي سيضم مرحلة تمهيدية و12 مرحلة على مسافة إجمالية تبلغ 7824 كيلومتراً. وبعد يومين في البرتغال، ستقام إحدى عشرة مرحلة في المغرب، مع المرور خصوصاً ببوعرفة وزاكورة وأكادير والسمارة ومراكش. ومن المقرر تنظيم الرالي من 9 إلى 23 يناير 2027، كما ستُجرى نحو 97 في المائة من المسافات الخاصة الموقّتة، البالغة 4341 كيلومتراً، فوق الأراضي المغربية."
+    },
+    {
+      "id": "2026-11-09-morocco-arab-beach-soccer-cup",
+      "date": "2026-11-09",
+      "category": "Beach-soccer",
+      "source": "Fédération Royale Marocaine de Football (FRMF), résultats recoupés par l’UAFA",
+      "url": "https://frmf.ma/fr/articles/article-32",
+      "title_fr": "Beach-soccer : le Maroc remporte la Coupe arabe 2026 après un succès 6-5 contre la Mauritanie",
+      "title_ar": "كرة القدم الشاطئية: المغرب يتوج بكأس العرب 2026 بعد فوزه على موريتانيا 6-5",
+      "summary_fr": "La sélection marocaine A a remporté, le 9 novembre à Port-Saïd en Égypte, la finale de la Coupe arabe de beach-soccer en battant la Mauritanie 6-5. La FRMF présente ce succès comme le premier titre du Maroc dans cette compétition. L’UAFA confirme également le score de la finale et la date de la rencontre.",
+      "summary_ar": "أحرز المنتخب المغربي الأول لكرة القدم الشاطئية لقب كأس العرب يوم 9 نونبر في مدينة بورسعيد المصرية، بعد فوزه على المنتخب الموريتاني بنتيجة 6-5 في المباراة النهائية. ووصفت الجامعة الملكية المغربية لكرة القدم هذا التتويج بأنه أول لقب للمغرب في هذه المسابقة، كما يؤكد الاتحاد العربي لكرة القدم نتيجة النهائي وتاريخ إجرائه."
+    },
     {
       "id": "2026-11-08-as-far-demi-finales-caf",
       "date": "2026-11-08",
