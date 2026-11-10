@@ -79,7 +79,7 @@ grid.innerHTML='';
 if(!filtered.length){grid.innerHTML='<div class="empty"><strong>Aucune annonce partenaire disponible pour ces critères.</strong><p class="muted">Les portails ci-dessus restent accessibles en attendant la connexion des agences partenaires.</p></div>';return;}
 filtered.forEach(x=>{
 const card=document.createElement('article');card.className='listing';
-const image=x.image?'<img src="'+safe(x.image)+'" alt="'+safe(x.title)+'" loading="lazy">':'';
+const image=x.image?'<a href="'+safe(x.url)+'" target="_blank" rel="noopener noreferrer"><img src="'+safe(x.image)+'" alt="'+safe(x.title)+'" loading="lazy"></a>':'';
 const price=x.price?'<div class="price">'+safe(x.price)+' '+safe(x.currency||'DH')+(x.rent_period?' / '+safe(x.rent_period):'')+'</div>':'<div class="price">Prix à confirmer</div>';
 const details=[x.property_type,x.area?x.area+' m²':'',x.rooms?x.rooms+' chambre(s)':'',x.bathrooms?x.bathrooms+' salle(s) de bain':''].filter(Boolean).join(' · ');
 card.innerHTML=image+'<span class="pill">'+safe(x.type_label||'Annonce partenaire')+'</span><h3>'+safe(x.title)+'</h3>'+price+'<div class="meta">📍 '+safe([x.city_area,x.city].filter(Boolean).join(', ')||'Maroc')+'</div><p>'+safe(details)+'</p><p>'+safe(x.content||'')+'</p><div class="meta">Source : '+safe(x.agency||'Partenaire')+' · '+safe(x.date||'Date non précisée')+'</div><a class="btn" href="'+safe(x.url)+'" target="_blank" rel="noopener noreferrer">Voir l’annonce originale ↗</a>';
