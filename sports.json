@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-10",
+  "updatedAt": "2026-11-11",
   "articles": [
+    {
+      "id": "2026-11-10-unaf-u17-maroc-algerie",
+      "date": "2026-11-10",
+      "category": "Football U17",
+      "source": "Fédération Royale Marocaine de Football (FRMF)",
+      "url": "https://frmf.ma/fr/articles/tournoi-unaf-u17-1ere-journee-algerie-maroc-1-0",
+      "title_fr": "UNAF U17 : le Maroc s’incline 1-0 face à l’Algérie pour son entrée en lice",
+      "title_ar": "بطولة اتحاد شمال إفريقيا لأقل من 17 سنة: المغرب ينهزم أمام الجزائر بهدف دون رد في مباراته الأولى",
+      "summary_fr": "La sélection marocaine U17, composée de joueurs nés en 2010, a perdu 1-0 contre l’Algérie le 10 novembre 2026 à Sousse, lors de la première journée du tournoi de l’UNAF qualificatif à la CAN U17 2027. Les Lionceaux retrouveront l’Égypte le 13 novembre à 17 h, toujours à Sousse.",
+      "summary_ar": "انهزم المنتخب المغربي لأقل من 17 سنة، المكوّن من لاعبين مواليد 2010، أمام نظيره الجزائري بنتيجة 0-1 يوم 10 نونبر 2026 بمدينة سوسة، في الجولة الأولى من بطولة اتحاد شمال إفريقيا المؤهلة لكأس أمم إفريقيا لهذه الفئة سنة 2027. وسيواجه أشبال الأطلس منتخب مصر يوم 13 نونبر على الساعة الخامسة مساءً، في سوسة."
+    },
+    {
+      "id": "2026-11-10-tour-faso-maroc-bdadou",
+      "date": "2026-11-10",
+      "category": "Cyclisme sur route",
+      "source": "Sport News Africa (résultats recoupés par le quotidien burkinabè Sidwaya)",
+      "url": "https://sportnewsafrica.com/actualites/tour-du-faso-le-maroc-premier-par-equipes-bdadou-deuxieme/",
+      "title_fr": "Tour du Faso 2026 : le Maroc gagne le classement par équipes, Youssef Bdadou deuxième",
+      "title_ar": "طواف بوركينا فاسو 2026: المغرب يتصدر الترتيب حسب الفرق ويوسف بدادو وصيفاً",
+      "summary_fr": "Au terme de la 10e et dernière étape, disputée le 8 novembre à Ouagadougou, la sélection marocaine a terminé première du classement par équipes. Youssef Bdadou a pris la deuxième place du classement général, à 25 secondes du Burkinabè Paul Daumont, et remporté le classement des points chauds. Azzedine Laâgab a gagné la dernière étape.",
+      "summary_ar": "في ختام المرحلة العاشرة والأخيرة، التي جرت يوم 8 نونبر في واغادوغو، تصدر المنتخب المغربي الترتيب حسب الفرق. وحل يوسف بدادو ثانياً في الترتيب العام بفارق 25 ثانية عن البوركينابي بول دومون، كما فاز بتصنيف النقاط الساخنة. وفاز عز الدين لعقاب بالمرحلة الأخيرة."
+    },
+    {
+      "id": "2026-11-10-junior-pro-taghazout-surf",
+      "date": "2026-11-10",
+      "category": "Surf",
+      "source": "Sport News Africa (annonce WSL recoupée par Le360 avec MAP)",
+      "url": "https://sportnewsafrica.com/actualites/surf-taghazout-accueille-les-juniors-du-11-au-15-novembre/",
+      "title_fr": "Junior Pro Taghazout Bay : cinq jours de surf junior à Anchor Point du 11 au 15 novembre",
+      "title_ar": "جونيور برو تاغازوت باي: خمسة أيام من منافسات الناشئين في أنكور بوينت من 11 إلى 15 نونبر",
+      "summary_fr": "Le Junior Pro Taghazout Bay est annoncé du 11 au 15 novembre 2026 à Anchor Point. L’épreuve réunit des surfeurs européens et africains de moins de 20 ans dans le cadre des Junior Qualifying Series de la World Surf League. Elle constitue la dernière étape européenne de la saison 2026 et lance le calendrier junior africain 2027.",
+      "summary_ar": "من المقرر تنظيم جونيور برو تاغازوت باي من 11 إلى 15 نونبر 2026 في موقع أنكور بوينت. وتجمع المسابقة راكبي أمواج أوروبيين وأفارقة تقل أعمارهم عن 20 سنة، ضمن السلسلة التأهيلية للناشئين التابعة لرابطة ركوب الأمواج العالمية. وتمثل المحطة الأخيرة للموسم الأوروبي لسنة 2026 وبداية برنامج الناشئين الإفريقي لسنة 2027."
+    },
     {
       "id": "2026-11-10-wta-finals-sabalenka-andreeva",
       "date": "2026-11-10",
