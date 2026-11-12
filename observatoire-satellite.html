@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Observatoire satellite de Maroc First : cartes satellite, Google Earth et imagerie Copernicus du Sahara et des régions voisines.">
+<title>Observatoire satellite | Maroc First</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:18px/1.65 Arial,Helvetica,sans-serif}
+a{color:#ffe08a}a:focus,button:focus,select:focus{outline:3px solid var(--gold);outline-offset:3px}
+header{background:#080d13;border-bottom:4px solid var(--gold);padding:20px 14px}.wrap{width:min(1100px,94%);margin:auto}
+h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.1;margin:0;color:#f0c65b;text-align:center}
+.tag{text-align:center;color:var(--muted);margin:8px 0}
+main{padding:22px 0}.panel{border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--panel);margin-bottom:18px}
+h2{font-size:clamp(1.4rem,4vw,2rem);margin-top:0}p{margin:8px 0 14px}.muted,.small-note{color:var(--muted)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+button,.button,select{display:inline-block;border:1px solid var(--line);border-radius:9px;padding:11px 14px;font:inherit;font-weight:bold}
+button,.button{background:var(--gold);color:#10151d;text-decoration:none;cursor:pointer}
+button.secondary,.button.secondary{background:#26364a;color:var(--text)}
+select{background:#0e141d;color:var(--text);min-width:min(100%,280px)}
+.map-frame{width:100%;height:clamp(340px,58vw,620px);border:1px solid var(--line);border-radius:12px;background:#080d13}
+.map-frame iframe{width:100%;height:100%;border:0;border-radius:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px}
+.info{border:1px solid var(--line);border-radius:12px;padding:14px;background:#111b28}
+.info h3{margin:0 0 6px;color:#ffe08a;font-size:1.1rem}
+.lang{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.lang button{padding:7px 11px}.lang button.active{background:#fff;color:#10151d}
+footer{padding:18px 0 30px;color:var(--muted);font-size:.9rem}
+@media(max-width:520px){body{font-size:17px}.panel{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>MAROC FIRST</h1>
+<p class="tag" data-fr="Observatoire satellite · Cartes et imagerie disponibles" data-en="Satellite observatory · Available maps and imagery" data-ar="مرصد الأقمار الصناعية · الخرائط والصور المتاحة">Observatoire satellite · Cartes et imagerie disponibles</p>
+<div class="lang" aria-label="Langue">
+<button type="button" class="active" data-lang="fr">Français</button>
+<button type="button" data-lang="en">English</button>
+<button type="button" data-lang="ar">العربية</button>
+</div>
+</div></header>
+<main class="wrap">
+<section class="panel">
+<div class="controls">
+<a class="button secondary" href="index.html" data-fr="← Retour à Maroc First" data-en="← Back to Maroc First" data-ar="← العودة إلى المغرب أولاً">← Retour à Maroc First</a>
+<a class="button" href="https://earth.google.com/web/" target="_blank" rel="noopener noreferrer" data-fr="Ouvrir Google Earth" data-en="Open Google Earth" data-ar="فتح Google Earth">Ouvrir Google Earth</a>
+<a class="button secondary" href="https://browser.dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer" data-fr="Imagerie Copernicus" data-en="Copernicus imagery" data-ar="صور كوبرنيكوس">Imagerie Copernicus</a>
+</div>
+<h2 data-fr="Explorer la région en vue satellite" data-en="Explore the region in satellite view" data-ar="استكشاف المنطقة عبر صور الأقمار الصناعية">Explorer la région en vue satellite</h2>
+<p class="muted" data-fr="Choisissez une zone pour centrer la carte. Vous pouvez zoomer et déplacer la carte directement." data-en="Choose an area to center the map. You can zoom and move the map directly." data-ar="اختر منطقة لتوسيط الخريطة. يمكنك التكبير وتحريك الخريطة مباشرة.">Choisissez une zone pour centrer la carte. Vous pouvez zoomer et déplacer la carte directement.</p>
+<div class="controls">
+<label for="area-select" data-fr="Zone à afficher :" data-en="Area to display:" data-ar="المنطقة المراد عرضها:">Zone à afficher :</label>
+<select id="area-select">
+<option value="24.0,-12.5,5" data-fr="Vue régionale : Sahara et régions voisines" data-en="Regional view: Sahara and neighboring areas" data-ar="مشهد إقليمي: الصحراء والمناطق المجاورة">Vue régionale : Sahara et régions voisines</option>
+<option value="21.37,-16.95,11">Guerguerat</option>
+<option value="21.65,-16.0,10">Bir Gandouz</option>
+<option value="27.67,-8.15,9">Tindouf</option>
+<option value="20.82,-17.06,10">La Güera</option>
+<option value="20.93,-17.03,10">Nouadhibou</option>
+</select>
+<button type="button" id="locate-button" class="secondary" data-fr="◎ Me localiser" data-en="◎ Locate me" data-ar="◎ تحديد موقعي">◎ Me localiser</button>
+</div>
+<div class="map-frame">
+<iframe id="satellite-map" title="Carte satellite interactive" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" src="https://maps.google.com/maps?q=24%2C-12.5&t=k&z=5&output=embed"></iframe>
+</div>
+<p id="map-status" class="small-note" role="status" aria-live="polite" data-fr="Carte satellite Google Maps. Les images sont celles disponibles dans le service et ne constituent pas une vidéo en direct." data-en="Google Maps satellite view. Imagery reflects what is available in the service and is not live video." data-ar="عرض الأقمار الصناعية من خرائط Google. الصور المتاحة ليست بثاً مباشراً.">Carte satellite Google Maps. Les images sont celles disponibles dans le service et ne constituent pas une vidéo en direct.</p>
+<div class="controls">
+<a id="open-map" class="button" href="https://www.google.com/maps?q=24%2C-12.5&t=k" target="_blank" rel="noopener noreferrer" data-fr="Ouvrir la carte en plein écran" data-en="Open map full screen" data-ar="فتح الخريطة بملء الشاشة">Ouvrir la carte en plein écran</a>
+</div>
+</section>
+<section class="panel">
+<h2 data-fr="Autres cartographies satellitaires" data-en="Other satellite mapping services" data-ar="خدمات أخرى للخرائط الفضائية">Autres cartographies satellitaires</h2>
+<div class="grid">
+<article class="info">
+<h3>Google Earth</h3>
+<p data-fr="Globe interactif, vues satellite et aériennes, relief et images historiques selon les zones." data-en="Interactive globe, satellite and aerial views, terrain and historical imagery where available." data-ar="كرة أرضية تفاعلية وصور فضائية وجوية وتضاريس وصور تاريخية حسب المناطق.">Globe interactif, vues satellite et aériennes, relief et images historiques selon les zones.</p>
+<a href="https://earth.google.com/web/" target="_blank" rel="noopener noreferrer" data-fr="Accéder à Google Earth ↗" data-en="Open Google Earth ↗" data-ar="الدخول إلى Google Earth ↗">Accéder à Google Earth ↗</a>
+</article>
+<article class="info">
+<h3>Google Maps · Satellite</h3>
+<p data-fr="Vue satellite interactive avec zoom, déplacement et recherche de lieux." data-en="Interactive satellite view with zoom, panning and place search." data-ar="عرض فضائي تفاعلي مع التكبير وتحريك الخريطة والبحث عن الأماكن.">Vue satellite interactive avec zoom, déplacement et recherche de lieux.</p>
+<a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" data-fr="Accéder à Google Maps ↗" data-en="Open Google Maps ↗" data-ar="الدخول إلى خرائط Google ↗">Accéder à Google Maps ↗</a>
+</article>
+<article class="info">
+<h3>Copernicus Data Space</h3>
+<p data-fr="Portail européen pour consulter les acquisitions Sentinel disponibles et leurs dates. La fréquence et le niveau de détail varient selon le satellite et la couverture nuageuse." data-en="European portal to inspect available Sentinel acquisitions and their dates. Frequency and detail vary by satellite and cloud cover." data-ar="بوابة أوروبية للاطلاع على صور Sentinel المتاحة وتواريخها. يختلف التواتر ومستوى التفاصيل حسب القمر الصناعي والغطاء السحابي.">Portail européen pour consulter les acquisitions Sentinel disponibles et leurs dates. La fréquence et le niveau de détail varient selon le satellite et la couverture nuageuse.</p>
+<a href="https://browser.dataspace.copernicus.eu/" target="_blank" rel="noopener noreferrer" data-fr="Consulter Copernicus Browser ↗" data-en="Open Copernicus Browser ↗" data-ar="فتح متصفح كوبرنيكوس ↗">Consulter Copernicus Browser ↗</a>
+</article>
+</div>
+</section>
+<section class="panel">
+<p class="small-note" data-fr="Note : les cartes affichent les images publiées par leurs fournisseurs. Elles ne permettent pas de suivre des personnes ou des véhicules en direct. La date de prise de vue doit être vérifiée dans le service cartographique concerné." data-en="Note: maps display imagery published by their providers. They do not track people or vehicles live. Check the capture date in the relevant mapping service." data-ar="ملاحظة: تعرض الخرائط الصور المنشورة من مزوديها، ولا تتيح تتبع الأشخاص أو المركبات مباشرة. يجب التحقق من تاريخ التصوير داخل الخدمة المعنية.">Note : les cartes affichent les images publiées par leurs fournisseurs. Elles ne permettent pas de suivre des personnes ou des véhicules en direct. La date de prise de vue doit être vérifiée dans le service cartographique concerné.</p>
+</section>
+</main>
+<footer class="wrap">© Maroc First</footer>
+<script>
+(function(){
+ const select=document.getElementById('area-select');
+ const map=document.getElementById('satellite-map');
+ const open=document.getElementById('open-map');
+ const status=document.getElementById('map-status');
+ const locate=document.getElementById('locate-button');
+ function setMap(value){
+  const parts=value.split(',');
+  const query=parts[0]+','+parts[1],zoom=parts[2]||'8';
+  map.src='https://maps.google.com/maps?q='+encodeURIComponent(query)+'&t=k&z='+encodeURIComponent(zoom)+'&output=embed';
+  open.href='https://www.google.com/maps?q='+encodeURIComponent(query)+'&t=k&z='+encodeURIComponent(zoom);
+ }
+ select.addEventListener('change',function(){setMap(select.value);});
+ locate.addEventListener('click',function(){
+  if(!navigator.geolocation){status.textContent='La géolocalisation n’est pas disponible sur cet appareil.';return;}
+  status.textContent='Demande de localisation…';
+  navigator.geolocation.getCurrentPosition(function(pos){
+   const value=pos.coords.latitude.toFixed(5)+','+pos.coords.longitude.toFixed(5)+',12';
+   select.value='';
+   setMap(value);
+   status.textContent='Carte centrée sur votre position. La position est utilisée uniquement dans cette page.';
+  },function(){
+   status.textContent='Localisation refusée ou indisponible. Choisissez une zone dans la liste.';
+  },{enableHighAccuracy:false,timeout:10000,maximumAge:60000});
+ });
+ const buttons=document.querySelectorAll('[data-lang]');
+ buttons.forEach(function(button){button.addEventListener('click',function(){
+  const lang=button.dataset.lang;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-lang]').forEach(function(b){b.classList.toggle('active',b===button);});
+  document.querySelectorAll('[data-fr][data-en][data-ar]').forEach(function(el){el.textContent=el.dataset[lang];});
+  const options=select.querySelectorAll('option[data-fr]');
+  options.forEach(function(option){option.textContent=option.dataset[lang];});
+ });});
+})();
+</script>
+</body>
+</html>
