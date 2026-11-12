@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Observatoire satellite de Maroc First : cartes satellite, Google Earth et imagerie Copernicus du Sahara et des régions voisines.">
 <title>Observatoire satellite | Maroc First</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <style>
 :root{color-scheme:dark;--bg:#10151d;--panel:#182230;--text:#f4f7fb;--muted:#c1ccda;--gold:#f0c65b;--line:#39485c}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:18px/1.65 Arial,Helvetica,sans-serif}
@@ -22,6 +23,9 @@ select{background:#0e141d;color:var(--text);min-width:min(100%,280px)}
 /* Les deux cartes restent dans des panneaux indépendants */
 .map-frame{display:block;width:100%;height:clamp(420px,62vw,700px);min-height:420px;border:2px solid #42536a;border-radius:14px;background:#080d13;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.28)}
 .map-frame iframe{display:block;width:100%;height:100%;border:0;border-radius:12px;background:#080d13}
+#roads-map{width:100%;height:100%;background:#10151d;border-radius:12px}
+#roads-map .leaflet-control-attribution{background:rgba(8,13,19,.88);color:#d7e0ec}
+#roads-map .leaflet-control-attribution a{color:#ffe08a}
 #road-maps{margin-top:22px}
 #road-maps .map-frame{border-color:#52677f}
 @media(max-width:520px){.map-frame{height:480px;min-height:480px}}
@@ -96,7 +100,7 @@ footer{padding:18px 0 30px;color:var(--muted);font-size:.9rem}
 </select>
 </div>
 <div class="map-frame">
-<iframe id="roads-map" title="Carte OpenStreetMap des routes, localités et infrastructures" loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=-17.5%2C19.5%2C-5.0%2C28.5&layer=mapnik&marker=24%2C-12.5"></iframe>
+<div id="roads-map" role="application" aria-label="Carte sombre des routes, localités et infrastructures"></div>
 </div>
 <p class="small-note" id="roads-status" role="status" aria-live="polite">OpenStreetMap · Réseau routier et lieux cartographiés. Les données sont contributives et peuvent comporter des lacunes.</p>
 <div class="map-tools">
@@ -131,6 +135,7 @@ footer{padding:18px 0 30px;color:var(--muted);font-size:.9rem}
 </section>
 </main>
 <footer class="wrap">© Maroc First</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 (function(){
  const select=document.getElementById('area-select');
@@ -158,20 +163,25 @@ footer{padding:18px 0 30px;color:var(--muted);font-size:.9rem}
   },{enableHighAccuracy:false,timeout:10000,maximumAge:60000});
  });
  const roadSelect=document.getElementById('road-area');
- const roadsMap=document.getElementById('roads-map');
+ const roadsElement=document.getElementById('roads-map');
  const osmOpen=document.getElementById('osm-open');
  const routeOpen=document.getElementById('route-open');
  const terrainOpen=document.getElementById('terrain-open');
+ const roadsMap=L.map(roadsElement,{scrollWheelZoom:true}).setView([24,-12.5],5);
+ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'© OpenStreetMap · © CARTO'}).addTo(roadsMap);
+ const roadsMarker=L.marker([24,-12.5]).addTo(roadsMap);
  function updateRoadMap(){
   const p=roadSelect.value.split(',');
-  const bbox=p.slice(0,4).map(Number),lat=p[4],lon=p[5],zoom=p[6];
-  const bboxText=bbox.map(function(v){return v.toFixed(4);}).join(',');
-  roadsMap.src='https://www.openstreetmap.org/export/embed.html?bbox='+encodeURIComponent(bboxText)+'&layer=mapnik&marker='+encodeURIComponent(lat+','+lon);
+  const lat=Number(p[4]),lon=Number(p[5]),zoom=Number(p[6]);
+  roadsMap.setView([lat,lon],zoom);
+  roadsMarker.setLatLng([lat,lon]);
   osmOpen.href='https://www.openstreetmap.org/#map='+zoom+'/'+lat+'/'+lon;
   routeOpen.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(lat+','+lon);
   terrainOpen.href='https://opentopomap.org/#map='+zoom+'/'+lat+'/'+lon;
+  setTimeout(function(){roadsMap.invalidateSize();},100);
  }
  roadSelect.addEventListener('change',updateRoadMap);
+ window.addEventListener('load',function(){setTimeout(function(){roadsMap.invalidateSize();},250);});
  const buttons=document.querySelectorAll('[data-lang]');
  buttons.forEach(function(button){button.addEventListener('click',function(){
   const lang=button.dataset.lang;
