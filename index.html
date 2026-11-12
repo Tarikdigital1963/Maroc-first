@@ -105,6 +105,15 @@ body.menu-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.mf-portal-tile{transition:none}.mf-portal-tile:hover{transform:none}}
 
 </style>
+
+<style id="cinema-feature-gallery-style">
+.cinema-feature-card .cinema-photo-gallery{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin:16px 0}
+.cinema-feature-card .cinema-photo-gallery a{display:block;overflow:hidden;border-radius:13px;background:#252525;min-height:150px}
+.cinema-feature-card .cinema-photo-gallery img{display:block;width:100%;height:210px;object-fit:cover;filter:brightness(1.18) saturate(1.12);transition:transform .25s ease,filter .25s ease}
+.cinema-feature-card .cinema-photo-gallery a:first-child img{height:260px}
+.cinema-feature-card .cinema-photo-gallery a:hover img{transform:scale(1.035);filter:brightness(1.25) saturate(1.18)}
+@media(max-width:650px){.cinema-feature-card .cinema-photo-gallery{grid-template-columns:1fr 1fr}.cinema-feature-card .cinema-photo-gallery a:first-child{grid-column:1/-1}.cinema-feature-card .cinema-photo-gallery img,.cinema-feature-card .cinema-photo-gallery a:first-child img{height:155px}.cinema-feature-card .cinema-photo-gallery a:first-child img{height:210px}}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -208,13 +217,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 
-<section id="cinema-feature" class="card" aria-labelledby="cinema-feature-title">
+<section id="cinema-feature" class="card cinema-feature-card" aria-labelledby="cinema-feature-title">
 <p class="eyebrow">🎬 Maroc First · Nouvel espace culturel</p>
 <h2 id="cinema-feature-title">Maroc First Cinéma : les films du Maroc et du monde</h2>
 <p>Découvrez les nouveautés du cinéma marocain et international, les annonces de sorties, les festivals, les portraits et les bandes-annonces officielles.</p>
-<a href="cinema.html" style="display:block;text-decoration:none;color:inherit">
-<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=85" alt="Salle de cinéma avec grand écran" loading="lazy" style="display:block;width:100%;max-height:340px;object-fit:cover;border-radius:12px;margin:12px 0">
-</a>
+<div class="cinema-photo-gallery" aria-label="Galerie de photos du cinéma">
+<a href="cinema.html" aria-label="Découvrir l'espace cinéma"><img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=90" alt="Grande salle de cinéma et écran lumineux" loading="lazy"></a>
+<a href="cinema.html" aria-label="Découvrir les films"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=900&q=90" alt="Caméra et tournage de cinéma" loading="lazy"></a>
+<a href="cinema.html" aria-label="Découvrir les coulisses du cinéma"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=900&q=90" alt="Projecteur et ambiance de cinéma" loading="lazy"></a>
+</div>
 <p><a class="button" href="cinema.html">🎬 Entrer dans Maroc First Cinéma</a></p>
 </section>
 
