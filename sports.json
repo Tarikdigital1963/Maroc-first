@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-11",
+  "updatedAt": "2026-11-12",
   "articles": [
+    {
+      "id": "2026-11-12-joj-dakar-futsal-maroc-afghanistan-bronze",
+      "date": "2026-11-12",
+      "category": "Futsal U18",
+      "source": "L’Opinion (contexte recoupé par SNRT News / MAP)",
+      "url": "https://lopinion.ma/fr/sport/newsroom/joj-dakar-2026-futsal--le-maroc-affronte-lafghanistan-ce-jeudi-pour-la-medaille-de-bronze_a53482?articleId=1fd2174a-c815-4f19-8362-1f58e1e8bc00",
+      "title_fr": "JOJ Dakar 2026 : le Maroc défie l’Afghanistan pour le bronze en futsal U18",
+      "title_ar": "ألعاب دكار الأولمبية للشباب 2026: المغرب يواجه أفغانستان من أجل برونزية كرة القدم داخل القاعة لأقل من 18 سنة",
+      "summary_fr": "Après sa défaite 4-2 contre l’Argentine en demi-finale, la sélection marocaine U18 dispute ce jeudi 12 novembre à 11 h GMT le match pour la troisième place face à l’Afghanistan. Menés 2-0, les Lionceaux avaient égalisé grâce à Zakariya Sarghine (27e) et Brahim Houdane (30e), avant que l’Argentine ne reprenne l’avantage en fin de rencontre. Le Maroc tentera de conclure son tournoi par une médaille.",
+      "summary_ar": "بعد هزيمته أمام الأرجنتين بنتيجة 4-2 في نصف النهائي، يخوض المنتخب المغربي لأقل من 18 سنة، اليوم الخميس 12 نونبر على الساعة 11 صباحاً بتوقيت غرينيتش، مباراة تحديد المركز الثالث أمام أفغانستان. وكان أشبال المغرب متأخرين بهدفين دون رد، قبل أن يدركوا التعادل بفضل زكرياء سرغين في الدقيقة 27 وإبراهيم هودان في الدقيقة 30، ثم استعادت الأرجنتين تقدمها في الدقائق الأخيرة. ويسعى المنتخب المغربي إلى إنهاء مشاركته بإحراز ميدالية."
+    },
+    {
+      "id": "2026-11-12-wta-finals-andreeva-sabalenka",
+      "date": "2026-11-12",
+      "category": "Tennis féminin",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sports/tennis/sabalenka-still-hopeful-reaching-wta-finals-last-four-despite-defeat-by-andreeva-2026-11-12/",
+      "title_fr": "WTA Finals : Andreeva domine Sabalenka et prend la tête du groupe 2",
+      "title_ar": "نهائيات رابطة محترفات التنس: أندرييفا تهزم سابالينكا وتتصدر المجموعة الثانية",
+      "summary_fr": "Mirra Andreeva a assuré la première place du groupe 2 des WTA Finals en battant Aryna Sabalenka 6-4, 6-0, mercredi 11 novembre à Indian Wells. La numéro 2 mondiale avait mené 4-1 dans le premier set avant de perdre onze jeux consécutifs. Sabalenka reste en course pour les demi-finales et jouera son dernier match de groupe contre Elina Svitolina, qui a battu Karolina Muchova 3-6, 6-2, 6-2.",
+      "summary_ar": "ضمنت ميرا أندرييفا صدارة المجموعة الثانية في نهائيات رابطة محترفات التنس، بعد فوزها على أرينا سابالينكا بنتيجة 6-4 و6-0، يوم الأربعاء 11 نونبر في إنديان ويلز. وكانت المصنفة الثانية عالمياً متقدمة 4-1 في المجموعة الأولى، قبل أن تخسر أحد عشر شوطاً متتالياً. ولا تزال سابالينكا تملك فرصة التأهل إلى نصف النهائي، وستواجه إيلينا سفيتولينا في مباراتها الأخيرة بالمجموعة، بعدما فازت الأخيرة على كارولينا موخوفا بنتيجة 3-6 و6-2 و6-2."
+    },
+    {
+      "id": "2026-11-11-as-far-qualifiee-finale-caf",
+      "date": "2026-11-11",
+      "category": "Football féminin",
+      "source": "Confédération africaine de football (CAF)",
+      "url": "https://www.cafonline.com/caf-womens-champions-league/news/caf-women-s-champions-league-2026-as-far-reach-final-after-victory-over-lekie-ff/",
+      "title_fr": "Ligue des champions féminine de la CAF : l’AS FAR se qualifie pour la finale",
+      "title_ar": "دوري أبطال إفريقيا للسيدات: الجيش الملكي يبلغ المباراة النهائية",
+      "summary_fr": "L’AS FAR a battu le club camerounais Lekié FF (1-0) en demi-finale, mercredi 11 novembre 2026. La capitaine Ghizlane Chebbak a inscrit l’unique but à la 48e minute. Le club marocain atteint ainsi sa quatrième finale dans la compétition et aura l’occasion de défendre son titre.",
+      "summary_ar": "فاز الجيش الملكي على نادي ليكي فوتبول فيي الكاميروني بنتيجة 1-0 في نصف النهائي، يوم الأربعاء 11 نونبر 2026. وسجلت القائدة غزلان الشباك هدف المباراة الوحيد في الدقيقة 48. وبهذا التأهل يبلغ الفريق المغربي النهائي للمرة الرابعة في تاريخ مشاركاته بالمسابقة، وسيحظى بفرصة الدفاع عن لقبه."
+    },
     {
       "id": "2026-11-10-unaf-u17-maroc-algerie",
       "date": "2026-11-10",
