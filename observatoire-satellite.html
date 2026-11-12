@@ -19,8 +19,12 @@ button,.button,select{display:inline-block;border:1px solid var(--line);border-r
 button,.button{background:var(--gold);color:#10151d;text-decoration:none;cursor:pointer}
 button.secondary,.button.secondary{background:#26364a;color:var(--text)}
 select{background:#0e141d;color:var(--text);min-width:min(100%,280px)}
-.map-frame{width:100%;height:clamp(340px,58vw,620px);border:1px solid var(--line);border-radius:12px;background:#080d13}
-.map-frame iframe{width:100%;height:100%;border:0;border-radius:12px}
+/* Les deux cartes restent dans des panneaux indépendants */
+.map-frame{display:block;width:100%;height:clamp(420px,62vw,700px);min-height:420px;border:2px solid #42536a;border-radius:14px;background:#080d13;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.map-frame iframe{display:block;width:100%;height:100%;border:0;border-radius:12px;background:#080d13}
+#road-maps{margin-top:22px}
+#road-maps .map-frame{border-color:#52677f}
+@media(max-width:520px){.map-frame{height:480px;min-height:480px}}
 .map-tools{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
 .map-tools a{display:inline-block;padding:10px 13px;border:1px solid var(--line);border-radius:9px;background:#26364a;color:var(--text);font-weight:bold;text-decoration:none}
 .map-note{border-left:4px solid var(--gold);padding:10px 13px;background:#111b28;border-radius:8px;color:var(--muted)}
