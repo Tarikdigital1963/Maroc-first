@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-12",
+  "updatedAt": "2026-11-13",
   "articles": [
+    {
+      "id": "2026-11-12-joj-dakar-maroc-bronze-futsal-u18",
+      "date": "2026-11-12",
+      "category": "Futsal U18",
+      "source": "Fédération Royale Marocaine de Football (FRMF)",
+      "url": "https://frmf.ma/fr/articles/lequipe-nationale-u18-de-futsal-remporte-la-medaille-de-bronze-aux-jeux-olympiques-de-la-jeunesse-dakar-2026",
+      "title_fr": "JOJ Dakar 2026 : le Maroc décroche le bronze en futsal U18 face à l’Afghanistan",
+      "title_ar": "ألعاب دكار الأولمبية للشباب 2026: المغرب يحرز برونزية كرة القدم داخل القاعة لأقل من 18 سنة أمام أفغانستان",
+      "summary_fr": "La sélection marocaine U18 a remporté la médaille de bronze du tournoi de futsal des JOJ Dakar 2026 en battant l’Afghanistan 2-1 lors du match de classement disputé le jeudi 12 novembre. La FRMF attribue les deux buts marocains à Ibrahim Houdane et Serar Mohamed. Cette victoire offre au Maroc la troisième place de la compétition.",
+      "summary_ar": "أحرز المنتخب المغربي لأقل من 18 سنة الميدالية البرونزية في مسابقة كرة القدم داخل القاعة ضمن ألعاب دكار الأولمبية للشباب 2026، بعد فوزه على أفغانستان بنتيجة 2-1 في مباراة الترتيب التي جرت يوم الخميس 12 نونبر. وسجل هدفي المغرب إبراهيم هودان وسرار محمد، ليحسم المنتخب المركز الثالث في المنافسة."
+    },
+    {
+      "id": "2026-11-12-maroc-u23-victoire-ethiopie-can",
+      "date": "2026-11-12",
+      "category": "Football U23",
+      "source": "Fédération Royale Marocaine de Football (FRMF)",
+      "url": "https://frmf.ma/fr/articles/23-10",
+      "title_fr": "CAN U23 2027 : le Maroc s’impose 1-0 en Éthiopie à l’aller",
+      "title_ar": "تصفيات كأس أمم إفريقيا لأقل من 23 سنة 2027: المغرب يفوز على إثيوبيا بهدف دون رد ذهاباً",
+      "summary_fr": "La sélection marocaine U23 a remporté le match aller du deuxième tour qualificatif à la CAN U23 2027 face à l’Éthiopie, sur le score de 1-0, le jeudi 12 novembre. Youness El Bahraoui a inscrit l’unique but marocain à la 27e minute. Le match retour est programmé le 17 novembre au stade Moulay El Hassan de Rabat.",
+      "summary_ar": "حقق المنتخب المغربي لأقل من 23 سنة فوزاً خارج أرضه على نظيره الإثيوبي بنتيجة 1-0، يوم الخميس 12 نونبر، في ذهاب الدور الثاني من التصفيات المؤهلة لكأس أمم إفريقيا لهذه الفئة سنة 2027. وسجل يونس البحراوي هدف الفوز في الدقيقة 27. ومن المقرر أن تقام مباراة الإياب يوم 17 نونبر بملعب مولاي الحسن في الرباط."
+    },
+    {
+      "id": "2026-11-12-wta-finals-pegula-qualifie-demi-finales",
+      "date": "2026-11-12",
+      "category": "Tennis féminin",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sports/tennis/gauff-beats-kostyuk-awaits-pegula-result-wta-finals-2026-11-12/",
+      "title_fr": "WTA Finals : Pegula sauve une balle de match et rejoint les demi-finales",
+      "title_ar": "نهائيات رابطة محترفات التنس: بيغولا تنقذ نقطة حاسمة وتبلغ نصف النهائي",
+      "summary_fr": "Jessica Pegula a battu Linda Noskova 7-6(2), 4-6, 7-5 jeudi 12 novembre à Indian Wells, après avoir sauvé une balle de match. Cette victoire lui assure une place en demi-finales et élimine sa compatriote Coco Gauff. Noskova termine en tête du groupe devant Pegula, les deux joueuses ayant conclu la phase avec deux victoires pour une défaite.",
+      "summary_ar": "فازت جيسيكا بيغولا على ليندا نوسكوفا بنتيجة 7-6 (2) و4-6 و7-5، يوم الخميس 12 نونبر في إنديان ويلز، بعدما أنقذت نقطة حاسمة للمباراة. وضمن هذا الفوز تأهلها إلى نصف النهائي وأقصى مواطنتها كوكو غوف. وأنهت نوسكوفا المجموعة في الصدارة متقدمة على بيغولا، بعدما حققت كلتاهما انتصارين مقابل هزيمة واحدة."
+    },
     {
       "id": "2026-11-12-joj-dakar-futsal-maroc-afghanistan-bronze",
       "date": "2026-11-12",
