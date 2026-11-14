@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "articles": [
+    {
+      "id": "2026-11-13-can-2027-maroc-niger-5-1",
+      "date": "2026-11-13",
+      "category": "Football - CAN 2027",
+      "source": "Fédération Royale Marocaine de Football (FRMF)",
+      "url": "https://frmf.ma/fr/articles/article-34",
+      "title_fr": "CAN 2027 : le Maroc domine le Niger 5-1 à Casablanca",
+      "title_ar": "تصفيات كأس أمم إفريقيا 2027: المغرب يهزم النيجر 5-1 في الدار البيضاء",
+      "summary_fr": "Le Maroc a battu le Niger 5-1, vendredi 13 novembre 2026, au Complexe Mohammed V de Casablanca, lors de la troisième journée du groupe A des éliminatoires de la CAN 2027. Yassir Zabiri, Achraf Hakimi (auteur d’un doublé), Youssef En-Nesyri et Ayoub Oufkir ont inscrit les cinq buts marocains ; Mohamed Abdourahmane a marqué pour le Niger. Les deux sélections se retrouveront le 17 novembre à Rabat pour la quatrième journée.",
+      "summary_ar": "فاز المنتخب المغربي على نظيره النيجري بنتيجة 5-1، يوم الجمعة 13 نونبر 2026، بالمركب الرياضي محمد الخامس في الدار البيضاء، ضمن الجولة الثالثة من المجموعة الأولى لتصفيات كأس أمم إفريقيا 2027. وسجل أهداف المغرب ياسر الزابيري وأشرف حكيمي (هدفين) ويوسف النصيري وأيوب أوفقير، فيما سجل محمد عبد الرحمن هدف النيجر. وسيلتقي المنتخبان مجدداً يوم 17 نونبر في الرباط ضمن الجولة الرابعة."
+    },
+    {
+      "id": "2026-11-13-rugby-france-afrique-du-sud-21-19",
+      "date": "2026-11-13",
+      "category": "Rugby à XV",
+      "source": "The Guardian",
+      "url": "https://www.theguardian.com/sport/2026/nov/13/france-south-africa-nations-championship-match-report",
+      "title_fr": "Nations Championship : la France bat l’Afrique du Sud 21-19 au Stade de France",
+      "title_ar": "بطولة الأمم: فرنسا تفوز على جنوب إفريقيا بنتيجة 21-19 في ملعب فرنسا",
+      "summary_fr": "Le XV de France a battu l’Afrique du Sud 21-19, vendredi 13 novembre au Stade de France, lors du Nations Championship. Les essais français ont été inscrits par Aaron Grandidier-Nkanang, Théo Attissogbe et Louis Bielle-Biarrey. Les Springboks sont revenus à deux points grâce à l’essai de Malcolm Marx, mais la transformation de Manie Libbok a échoué. Cette victoire met fin à 21 ans sans succès français à domicile contre l’Afrique du Sud.",
+      "summary_ar": "فاز منتخب فرنسا للرجبي على جنوب إفريقيا بنتيجة 21-19، يوم الجمعة 13 نونبر في ملعب فرنسا، ضمن بطولة الأمم. وسجل محاولات المنتخب الفرنسي آرون غرانديدي نانكانغ وتيو أتيغسوب وألوي بيل-بياري. وقلص منتخب جنوب إفريقيا الفارق بمحاولة مالكولم ماركس، غير أن ماني ليبوك أخفق في تسجيل التحويلة. ويضع هذا الفوز حداً لانتظار دام 21 عاماً لفرنسا من أجل التغلب على جنوب إفريقيا على أرضها."
+    },
+    {
+      "id": "2026-11-14-wta-finals-svitolina-sabalenka",
+      "date": "2026-11-14",
+      "category": "Tennis féminin",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sports/tennis/svitolina-stuns-sabalenka-reach-wta-finals-semis-2026-11-14/",
+      "title_fr": "WTA Finals : Svitolina élimine Sabalenka et rejoint les demi-finales",
+      "title_ar": "نهائيات رابطة محترفات التنس: سفيتولينا تقصي سابالينكا وتبلغ نصف النهائي",
+      "summary_fr": "L’Ukrainienne Elina Svitolina a éliminé Aryna Sabalenka en trois sets (6-3, 3-6, 6-1), vendredi 13 novembre, lors de la phase de groupes du WTA Finals à Indian Wells. Elle a ainsi décroché sa place en demi-finales et doit affronter Linda Noskova samedi pour une place en finale. Cette défaite met fin au parcours de Sabalenka dans le tournoi.",
+      "summary_ar": "أقصت الأوكرانية إلينا سفيتولينا البيلاروسية أرينا سابالينكا بمجموعتين مقابل مجموعة واحدة (6-3 و3-6 و6-1)، يوم الجمعة 13 نونبر، خلال دور المجموعات في نهائيات رابطة محترفات التنس بمدينة إنديان ويلز. وبهذا الفوز ضمنت سفيتولينا مكانها في نصف النهائي، حيث ستواجه ليندا نوسكوفا يوم السبت من أجل بطاقة التأهل إلى النهائي. وأنهت هذه الهزيمة مشاركة سابالينكا في البطولة."
+    },
     {
       "id": "2026-11-12-joj-dakar-maroc-bronze-futsal-u18",
       "date": "2026-11-12",
