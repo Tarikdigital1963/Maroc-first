@@ -44,7 +44,7 @@ def fetch(q):
                 image=child.attrib.get("url","")
                 if image: break
         if not image:
-            match=re.search(r'<img\\b[^>]*\\bsrc=["\\']([^"\\']+)',html.unescape(desc),re.I)
+            match=re.search(r"""<img\\b[^>]*\\bsrc=["']([^"']+)""",html.unescape(desc),re.I)
             if match:
                 candidate=html.unescape(match.group(1)).strip()
                 if candidate.startswith("https://") and not any(x in candidate.lower() for x in ("logo","favicon","sprite","avatar","icon","tracking")):
