@@ -16,7 +16,7 @@ nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:18px}
 main{padding:28px 0}.intro,.tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
 .eyebrow{color:var(--gold);font-weight:bold;text-transform:uppercase;letter-spacing:.07em;font-size:.9rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
-.tile{margin:0;display:flex;flex-direction:column;gap:8px;min-height:220px}
+.tile{margin:0;display:flex;flex-direction:column;gap:8px;min-height:220px;overflow:hidden}.tile img{display:block;width:calc(100% + 44px);height:190px;object-fit:cover;margin:-22px -22px 8px;border-bottom:2px solid var(--gold)}
 .tile .icon{font-size:2.6rem}.tile h2{margin:0;font-size:1.45rem}.tile p{color:var(--muted);flex:1}
 .button{background:var(--gold);color:#10151d;border:0;text-align:center}
 footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);margin-top:30px}
@@ -38,10 +38,10 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);margin
 <p>Retrouvez ici les espaces consacrés à la découverte culturelle, aux livres et aux publications numériques, ainsi qu’à la préparation de vos articles. Ces rubriques sont séparées de la page d’accueil pour laisser toute sa place à l’actualité.</p>
 </section>
 <div class="grid">
-<section class="tile"><span class="icon" aria-hidden="true">🎭</span><h2>Espace culture</h2><p>Découvrez les contenus, dossiers et actualités consacrés à la culture.</p><a class="button" href="culture.html">Accéder à l’espace culture</a></section>
-<section class="tile"><span class="icon" aria-hidden="true">📚</span><h2>Livres et e-books à télécharger</h2><p>Consultez la bibliothèque numérique, découvrez les ouvrages disponibles et accédez aux liens de lecture ou de téléchargement proposés.</p><a class="button" href="bibliotheque.html">Ouvrir la bibliothèque</a></section>
-<section class="tile"><span class="icon" aria-hidden="true">✍️</span><h2>Espace d’écriture</h2><p>Accédez à l’espace de rédaction pour préparer vos articles et retrouver vos brouillons.</p><a class="button" href="redaction.html">Ouvrir l’espace d’écriture</a></section>
-<section class="tile"><span class="icon" aria-hidden="true">🍽️</span><h2>Cuisine marocaine et internationale</h2><p>Découvrez des recettes illustrées, les ingrédients, les étapes de préparation et des vidéos de chefs.</p><a class="button" href="cuisine.html">Découvrir la cuisine</a></section>
+<section class="tile"><img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=1000&q=85" alt="Architecture et patrimoine marocains" loading="lazy"><h2>Espace culture</h2><p>Découvrez les contenus, dossiers et actualités consacrés à la culture.</p><a class="button" href="culture.html">Accéder à l’espace culture</a></section>
+<section class="tile"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1000&q=85" alt="Rayonnages de livres dans une bibliothèque" loading="lazy"><h2>Livres et e-books à télécharger</h2><p>Consultez la bibliothèque numérique, découvrez les ouvrages disponibles et accédez aux liens de lecture ou de téléchargement proposés.</p><a class="button" href="bibliotheque.html">Ouvrir la bibliothèque</a></section>
+<section class="tile"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85" alt="Carnet et stylo sur un bureau pour écrire" loading="lazy"><h2>Espace d’écriture</h2><p>Accédez à l’espace de rédaction pour préparer vos articles et retrouver vos brouillons.</p><a class="button" href="redaction.html">Ouvrir l’espace d’écriture</a></section>
+<section class="tile"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Plat de cuisine préparé et présenté sur une table" loading="lazy"><h2>Cuisine marocaine et internationale</h2><p>Découvrez des recettes illustrées, les ingrédients, les étapes de préparation et des vidéos de chefs.</p><a class="button" href="cuisine.html">Découvrir la cuisine</a></section>
 </div>
 </main>
 <footer><div class="wrap">© Maroc First · <a href="index.html">Retour à l’accueil</a></div></footer>
