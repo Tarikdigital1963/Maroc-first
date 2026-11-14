@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build a cumulative, source-linked daily news archive for Maroc First."""
-import json, os, re, time, urllib.parse, urllib.request
+import html, json, os, re, time, urllib.parse, urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -43,6 +43,12 @@ def fetch(q):
             if child.tag.endswith("thumbnail") or child.tag.endswith("content"):
                 image=child.attrib.get("url","")
                 if image: break
+        if not image:
+            match=re.search(r'<img\\b[^>]*\\bsrc=["\\']([^"\\']+)',html.unescape(desc),re.I)
+            if match:
+                candidate=html.unescape(match.group(1)).strip()
+                if candidate.startswith("https://") and not any(x in candidate.lower() for x in ("logo","favicon","sprite","avatar","icon","tracking")):
+                    image=candidate
         if not title or not link.startswith("http"): continue
         try:
             dt=parsedate_to_datetime(pub).astimezone(timezone.utc).isoformat()
@@ -104,17 +110,25 @@ for section, queries in QUERIES.items():
             errors.append(section + ": " + str(e)[:160])
     merged=sorted(fresh+old,key=lambda x:x.get("published",""),reverse=True)
     sections[section]=merged if MAX_PER_SECTION is None else merged[:MAX_PER_SECTION]
-# Récupérer progressivement les photos originales des éditeurs pour les articles récents.
+# Écarter l'image générique répétée par Google Actualités lors du précédent essai.
+GENERIC_IMAGE="https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300"
+for entries in sections.values():
+    for item in entries:
+        if item.get("image")==GENERIC_IMAGE:
+            item["image"]=""
+# Récupérer davantage de photos originales, sans réutiliser une image identique partout.
 from concurrent.futures import ThreadPoolExecutor
+seen_images={item.get("image") for entries in sections.values() for item in entries if item.get("image")}
 image_candidates=[]
 for section, entries in sections.items():
     missing=[item for item in sorted(entries,key=lambda x:x.get("published",""),reverse=True)
              if not item.get("image") and item.get("url","").startswith("http")]
-    image_candidates.extend(missing[:3])
-with ThreadPoolExecutor(max_workers=8) as pool:
+    image_candidates.extend(missing[:12])
+with ThreadPoolExecutor(max_workers=12) as pool:
     for item, image_url in zip(image_candidates,pool.map(lambda x: article_image(x["url"]),image_candidates)):
-        if image_url:
+        if image_url and image_url not in seen_images and image_url != GENERIC_IMAGE:
             item["image"]=image_url
+            seen_images.add(image_url)
 
 archive={"updatedAt":datetime.now(timezone.utc).isoformat(),"sections":sections,"note":"Titres et résumés issus de flux RSS publics; les articles complets restent chez leurs éditeurs.","errors":errors}
 with open(OUT,"w",encoding="utf-8") as f:
