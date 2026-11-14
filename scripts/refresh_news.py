@@ -53,6 +53,38 @@ def fetch(q):
         items.append({"title":title,"url":link,"published":dt,"source":source or "Google Actualités","summary":summary[:420],"image":image if image.startswith("https://") else ""})
     return items
 
+
+def article_image(url):
+    """Resolve a news link and extract the publisher's real Open Graph image."""
+    from html.parser import HTMLParser
+    class MetaParser(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.images=[]
+        def handle_starttag(self, tag, attrs):
+            a=dict(attrs)
+            if tag.lower()=="meta":
+                key=(a.get("property") or a.get("name") or "").lower()
+                if key in ("og:image","og:image:url","twitter:image","twitter:image:src"):
+                    self.images.append(a.get("content",""))
+            elif tag.lower()=="link" and "image_src" in (a.get("rel") or "").lower():
+                self.images.append(a.get("href",""))
+    try:
+        req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; MarocFirstNewsBot/1.0)"})
+        with urllib.request.urlopen(req,timeout=7) as response:
+            final_url=response.geturl()
+            if "html" not in response.headers.get("Content-Type","").lower(): return ""
+            raw=response.read(900000).decode("utf-8","ignore")
+        parser=MetaParser()
+        parser.feed(raw)
+        for candidate in parser.images:
+            candidate=urllib.parse.urljoin(final_url,clean(candidate))
+            if candidate.startswith("https://") and not any(x in candidate.lower() for x in ("logo","favicon","sprite","avatar","icon","tracking")):
+                return candidate
+    except Exception:
+        return ""
+    return ""
+
 try:
     with open(OUT, encoding="utf-8") as f: archive=json.load(f)
 except Exception:
@@ -72,6 +104,18 @@ for section, queries in QUERIES.items():
             errors.append(section + ": " + str(e)[:160])
     merged=sorted(fresh+old,key=lambda x:x.get("published",""),reverse=True)
     sections[section]=merged if MAX_PER_SECTION is None else merged[:MAX_PER_SECTION]
+# Récupérer progressivement les photos originales des éditeurs pour les articles récents.
+from concurrent.futures import ThreadPoolExecutor
+image_candidates=[]
+for section, entries in sections.items():
+    missing=[item for item in sorted(entries,key=lambda x:x.get("published",""),reverse=True)
+             if not item.get("image") and item.get("url","").startswith("http")]
+    image_candidates.extend(missing[:3])
+with ThreadPoolExecutor(max_workers=8) as pool:
+    for item, image_url in zip(image_candidates,pool.map(lambda x: article_image(x["url"]),image_candidates)):
+        if image_url:
+            item["image"]=image_url
+
 archive={"updatedAt":datetime.now(timezone.utc).isoformat(),"sections":sections,"note":"Titres et résumés issus de flux RSS publics; les articles complets restent chez leurs éditeurs.","errors":errors}
 with open(OUT,"w",encoding="utf-8") as f:
     json.dump(archive,f,ensure_ascii=False,indent=2)
