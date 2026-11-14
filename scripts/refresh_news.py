@@ -16,16 +16,16 @@ QUERIES = {
  "societe": ["Maroc société éducation santé environnement villes", "المغرب مجتمع تعليم صحة بيئة"],
  "sport": ["sport Maroc football Botola équipe nationale athlétisme tennis", "الرياضة المغرب كرة القدم"],
  "culture": ["Maroc culture cinéma musique livres patrimoine", "المغرب الثقافة السينما"],
- "emploi": ["Maroc emploi recrutement formation travail", "المغرب التشغيل فرص العمل"],
- "inclusion": ["Maroc handicap inclusion accessibilité droits personnes handicapées", "المغرب الإعاقة الإدماج"],
- "immobilier": ["Maroc immobilier logement urbanisme construction", "المغرب العقار السكن"],
+ "emploi": ["offres emploi recrutement concours Maroc travail embauche when:7d", "Maroc emploi recrutement formation travail when:7d", "وظائف المغرب مباريات التوظيف فرص العمل when:7d"],
+ "inclusion": ["Maroc handicap inclusion accessibilité droits personnes handicapées when:7d", "emploi personnes handicapées Maroc recrutement accessibilité when:7d", "المغرب الإعاقة الإدماج تشغيل الأشخاص في وضعية إعاقة when:7d"],
+ "immobilier": ["Maroc immobilier logement urbanisme construction when:7d", "offres immobilières logement location vente Maroc when:7d", "المغرب العقار السكن بيع كراء when:7d"],
  "flash": ["Maroc actualité urgente dernière minute OR breaking news", "أخبار عاجلة المغرب"],
  "flash_sport": ["sport actualité urgente football résultats compétition", "أخبار رياضية عاجلة"]
 }
 def clean(s):
     return re.sub(r"\s+", " ", (s or "").strip())
 def fetch(q):
-    params = urllib.parse.urlencode({"q": q, "hl":"fr", "gl":"MA", "ceid":"MA:fr"})
+    params = urllib.parse.urlencode({"q": q if "when:" in q else q + " when:7d", "hl":"fr", "gl":"MA", "ceid":"MA:fr"})
     url = "https://news.google.com/rss/search?" + params
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=25) as response:
