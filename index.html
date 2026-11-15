@@ -116,6 +116,24 @@ body.menu-open{overflow:hidden}
 .cinema-feature-card .cinema-photo-gallery a:hover img{transform:scale(1.035);filter:brightness(1.25) saturate(1.18)}
 @media(max-width:650px){.cinema-feature-card .cinema-photo-gallery{grid-template-columns:1fr 1fr}.cinema-feature-card .cinema-photo-gallery a:first-child{grid-column:1/-1}.cinema-feature-card .cinema-photo-gallery img,.cinema-feature-card .cinema-photo-gallery a:first-child img{height:155px}.cinema-feature-card .cinema-photo-gallery a:first-child img{height:210px}}
 </style>
+
+<style id="mf-player-carousel-style">
+.mf-player-carousel{width:min(100% - 28px,620px);margin:18px auto 22px;padding:12px;border:1px solid var(--line);border-radius:15px;background:var(--panel);box-shadow:0 8px 24px #0005;z-index:850}
+.mf-player-carousel h2{font-size:1.12rem;line-height:1.3;margin:0 0 10px;color:var(--gold);text-align:center}
+.mf-player-carousel .mf-player-frame{position:relative;overflow:hidden;border-radius:11px;background:#080d13;aspect-ratio:4/3}
+.mf-player-carousel img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition:opacity .45s ease}
+.mf-player-carousel img.is-changing{opacity:.15}
+.mf-player-carousel .mf-player-caption{padding:9px 4px 3px;text-align:center}
+.mf-player-carousel .mf-player-caption strong{display:block;color:var(--text);font-size:1rem}
+.mf-player-carousel .mf-player-caption small{display:block;color:var(--muted);font-size:.76rem;line-height:1.35;margin-top:3px}
+.mf-player-carousel .mf-player-controls{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:9px}
+.mf-player-carousel .mf-player-controls button{min-width:42px;padding:8px 11px}
+.mf-player-carousel .mf-player-counter{min-width:48px;text-align:center;color:var(--muted);font-size:.85rem}
+@media(min-width:1600px){.mf-player-carousel{position:fixed;right:18px;top:145px;width:220px;margin:0;padding:10px}}
+@media(min-width:1600px){.mf-player-carousel .mf-player-frame{aspect-ratio:3/4}.mf-player-carousel h2{font-size:1rem}.mf-player-carousel .mf-player-caption strong{font-size:.92rem}}
+@media(prefers-reduced-motion:reduce){.mf-player-carousel img{transition:none}}
+</style>
+
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -164,6 +182,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="brand"><div><h1>MAROC FIRST</h1><div class="arabic-brand" lang="ar" dir="rtl">المغرب أولاً</div><p class="tag" data-fr="Le journal numérique trilingue · Actualité, société et analyses" data-en="The trilingual digital newspaper · News, society and analysis" data-ar="الجريدة الرقمية بثلاث لغات · أخبار ومجتمع وتحليلات">Le journal numérique bilingue · Actualité, société et analyses</p></div><div class="language-switch" aria-label="Language"><button class="lang-choice" data-lang="fr" type="button">Français</button><button class="lang-choice" data-lang="en" type="button">English</button><button class="lang-choice" data-lang="ar" type="button">العربية</button></div></div>
 
 </div></header>
+
+<aside class="mf-player-carousel" id="mf-player-carousel" aria-label="Galerie automatique des joueurs marocains">
+ <h2>⚽ Joueurs du Maroc</h2>
+ <div class="mf-player-frame">
+  <a id="mf-player-photo-link" href="https://commons.wikimedia.org/wiki/File:Achraf_Hakimi_France_v_Morocco_9_July_2026-140.jpg" target="_blank" rel="noopener noreferrer">
+   <img id="mf-player-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Achraf_Hakimi_France_v_Morocco_9_July_2026-140.jpg?width=900" alt="Achraf Hakimi pendant France-Maroc en 2026" loading="lazy">
+  </a>
+ </div>
+ <div class="mf-player-caption">
+  <strong id="mf-player-name">Achraf Hakimi</strong>
+  <small id="mf-player-credit">Photo : Bryan Berlin / WikiPortraits · CC BY-SA 4.0</small>
+ </div>
+ <div class="mf-player-controls">
+  <button type="button" class="secondary" id="mf-player-prev" aria-label="Photo précédente">❮</button>
+  <span class="mf-player-counter" id="mf-player-counter" aria-live="polite">1 / 4</span>
+  <button type="button" class="secondary" id="mf-player-next" aria-label="Photo suivante">❯</button>
+  <button type="button" class="secondary" id="mf-player-pause" aria-label="Mettre le diaporama en pause">Ⅱ</button>
+ </div>
+</aside>
+
 <main class="wrap" id="accueil">
 <section id="handicap" class="card" aria-labelledby="handicap-title">
 <p class="eyebrow" data-fr="Dossier spécial · Société" data-en="Special feature · Society" data-ar="ملف خاص · المجتمع">Dossier spécial · Société</p>
@@ -581,6 +619,47 @@ updateLocationMap();
  slider.addEventListener('mouseleave',start);
  slider.addEventListener('focusin',stop);
  slider.addEventListener('focusout',start);
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+ show(0);start();
+})();
+</script>
+
+
+<script id="mf-player-carousel-script">
+(function(){
+ const panel=document.getElementById('mf-player-carousel');
+ if(!panel)return;
+ const img=document.getElementById('mf-player-photo');
+ const name=document.getElementById('mf-player-name');
+ const link=document.getElementById('mf-player-photo-link');
+ const counter=document.getElementById('mf-player-counter');
+ const pause=document.getElementById('mf-player-pause');
+ const slides=[
+  {name:'Achraf Hakimi',file:'Achraf_Hakimi_France_v_Morocco_9_July_2026-140.jpg',alt:'Achraf Hakimi pendant France-Maroc en 2026'},
+  {name:'Brahim Díaz',file:'Brahim_Diaz_France_v_Morocco_9_July_2026-035.jpg',alt:'Brahim Díaz pendant France-Maroc en 2026'},
+  {name:'Yassine Bounou',file:'Yassine_Bounou_France_v_Morocco_9_July_2026-076.jpg',alt:'Yassine Bounou pendant France-Maroc en 2026'},
+  {name:'Noussair Mazraoui',file:'Noussair_Mazraoui_France_v_Morocco_9_July_2026-125.jpg',alt:'Noussair Mazraoui pendant France-Maroc en 2026'}
+ ];
+ let index=0,timer=null,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function show(n){
+  index=(n+slides.length)%slides.length;
+  const item=slides[index];
+  img.classList.add('is-changing');
+  const nextSrc='https://commons.wikimedia.org/wiki/Special:FilePath/'+item.file+'?width=900';
+  const preload=new Image();
+  preload.onload=function(){img.src=nextSrc;img.alt=item.alt;name.textContent=item.name;link.href='https://commons.wikimedia.org/wiki/File:'+item.file.replaceAll('_',' ');counter.textContent=(index+1)+' / '+slides.length;img.classList.remove('is-changing');};
+  preload.onerror=function(){img.classList.remove('is-changing');name.textContent=item.name+' · photo indisponible';};
+  preload.src=nextSrc;
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;}}
+ function start(){stop();if(!paused)timer=setInterval(()=>show(index+1),6000);pause.textContent=paused?'▶':'Ⅱ';pause.setAttribute('aria-label',paused?'Reprendre le diaporama':'Mettre le diaporama en pause');}
+ document.getElementById('mf-player-prev').addEventListener('click',()=>{show(index-1);start();});
+ document.getElementById('mf-player-next').addEventListener('click',()=>{show(index+1);start();});
+ pause.addEventListener('click',()=>{paused=!paused;start();});
+ panel.addEventListener('mouseenter',stop);
+ panel.addEventListener('mouseleave',start);
+ panel.addEventListener('focusin',stop);
+ panel.addEventListener('focusout',start);
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
  show(0);start();
 })();
