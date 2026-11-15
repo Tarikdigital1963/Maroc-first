@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "articles": [
+    {
+      "id": "2026-11-14-wta-finals-andreeva-svitolina-finale",
+      "date": "2026-11-14",
+      "category": "Tennis féminin",
+      "source": "WTA (site officiel)",
+      "url": "https://www.wtatennis.com/news/4609127/mirra-andreeva-vs-elina-svitolina-wta-finals-2026-indian-wells-championships-everything-to-know",
+      "title_fr": "WTA Finals : Andreeva et Svitolina se retrouvent pour le titre après les demi-finales",
+      "title_ar": "نهائيات رابطة محترفات التنس: أندرييفا وسفيتولينا تتواجهان على اللقب بعد بلوغ النهائي",
+      "summary_fr": "Mirra Andreeva s'est qualifiée pour la finale en battant Jessica Pegula 6-3, 6-4. Elina Svitolina l'a rejointe après un succès 6-2, 6-1 contre Linda Noskova. La finale du dimanche 15 novembre opposera ainsi deux joueuses aux parcours contrastés : Andreeva reste invaincue dans le tournoi, tandis que Svitolina atteint la finale des WTA Finals pour la troisième fois de sa carrière.",
+      "summary_ar": "بلغت ميرا أندرييفا النهائي بعد فوزها على جيسيكا بيغولا بنتيجة 6-3 و6-4، ثم لحقت بها إلينا سفيتولينا إثر تغلبها على ليندا نوسكوفا بنتيجة 6-2 و6-1. وستجمع المباراة النهائية يوم الأحد 15 نونبر اللاعبتين، حيث تدخل أندرييفا النهائي دون هزيمة في البطولة، فيما تبلغ سفيتولينا نهائي بطولة ختام الموسم للمرة الثالثة في مسيرتها."
+    },
+    {
+      "id": "2026-11-14-joj-dakar-maroc-bilan-quatre-medailles",
+      "date": "2026-11-14",
+      "category": "JOJ Dakar 2026 / Sports marocains",
+      "source": "SNRT News (Idriss Naim)",
+      "url": "https://snrtnews.com/article/joj-dakar-2026-le-maroc-termine-sa-participation-avec-quatre-medailles-162338",
+      "title_fr": "JOJ Dakar 2026 : le Maroc clôture sa participation avec quatre médailles",
+      "title_ar": "ألعاب دكار الأولمبية للشباب 2026: المغرب ينهي مشاركته بأربع ميداليات",
+      "summary_fr": "La délégation marocaine a terminé les Jeux olympiques de la jeunesse Dakar 2026 avec quatre médailles officiellement comptabilisées : une en argent et trois en bronze. Ces podiums ont été obtenus en athlétisme, en taekwondo et en futsal. Le Maroc a terminé à la 66e place du classement mondial. Le bronze remporté par le cavalier Ghali Bougja avec l'équipe continentale africaine en saut d'obstacles n'entre pas dans le total national.",
+      "summary_ar": "أنهت البعثة الرياضية المغربية مشاركتها في ألعاب دكار الأولمبية للشباب 2026 بأربع ميداليات محتسبة رسمياً: فضية واحدة وثلاث برونزيات. وجاءت هذه الميداليات في ألعاب القوى والتايكواندو وكرة القدم داخل القاعة. واحتل المغرب المركز 66 في الترتيب العالمي. ولا يشمل هذا الرصيد الميدالية البرونزية التي أحرزها الفارس غالي بوجة ضمن الفريق القاري الإفريقي في قفز الحواجز، لأنها لا تدخل في ترتيب المغرب الوطني."
+    },
+    {
+      "id": "2026-11-14-ski-levi-emma-aicher-premiere-victoire-slalom",
+      "date": "2026-11-14",
+      "category": "Ski alpin",
+      "source": "FIS (Fédération internationale de ski et de snowboard)",
+      "url": "https://beta.fis-ski.com/alpine-skiing/news/2026-27/-a-good-birthday-present-aicher-wins-first-world-cup-slalom",
+      "title_fr": "Ski alpin : Emma Aicher remporte son premier slalom de Coupe du monde à Levi",
+      "title_ar": "التزلج الألبي: إيما آيشر تحرز أول فوز لها في سباق التعرج ضمن كأس العالم في ليفي",
+      "summary_fr": "L'Allemande Emma Aicher a remporté le slalom féminin de Levi, en Finlande, le 14 novembre, avec un temps cumulé de 1 min 52 s 62. Elle devance l'Albanaise Lara Colturi de 0,43 seconde et l'Autrichienne Katharina Truppe de 0,50 seconde. Il s'agit de son premier succès en slalom en Coupe du monde et de sa sixième victoire sur le circuit.",
+      "summary_ar": "فازت الألمانية إيما آيشر بسباق التعرج للسيدات في ليفي بفنلندا يوم 14 نونبر، بعدما سجلت زمناً إجمالياً قدره دقيقة و52 ثانية و62 جزءاً من المائة. وتقدمت على الألبانية لارا كولتوري بفارق 0.43 ثانية، وعلى النمساوية كاتارينا تروبيه بفارق 0.50 ثانية. وهذا أول فوز لآيشر في سباق التعرج ضمن كأس العالم، والسادس لها في منافسات كأس العالم إجمالاً."
+    },
     {
       "id": "2026-11-13-can-2027-maroc-niger-5-1",
       "date": "2026-11-13",
