@@ -156,45 +156,52 @@
  const panel=document.getElementById('mf-player-carousel');if(!panel)return;
  const img=document.getElementById('mf-player-photo'),name=document.getElementById('mf-player-name'),link=document.getElementById('mf-player-photo-link'),counter=document.getElementById('mf-player-counter'),pause=document.getElementById('mf-player-pause'),credit=document.getElementById('mf-player-credit');
  const slides=[
-  {name:"Ahmed Faras",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ahmed%20Faras%20M%C3%A9xico%2070.png?width=1000",url:"https://commons.wikimedia.org/wiki/File:Ahmed_Faras_M%C3%A9xico_70.png",alt:"Portrait de Ahmed Faras"},
-  {name:"Driss Bamous",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Driss%20Bamous%20M%C3%A9xico%2070.png?width=1000",url:"https://commons.wikimedia.org/wiki/File:Driss_Bamous_M%C3%A9xico_70.png",alt:"Portrait de Driss Bamous"},
-  {name:"Allal Benkassou",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Allal%20Benkassou%20M%C3%A9xico%2070.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Allal_Benkassou_M%C3%A9xico_70.jpg",alt:"Portrait de Allal Benkassou"},
-  {name:"Kacem Slimani",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Kacem%20Slimani%20M%C3%A9xico%2070.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Kacem_Slimani_M%C3%A9xico_70.jpg",alt:"Portrait de Kacem Slimani"},
-  {name:"Merry Krimau",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Merry%20Krimau%20en%201974.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Merry_Krimau_en_1974.jpg",alt:"Portrait de Merry Krimau"},
-  {name:"Aziz Bouderbala",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Aziz%20Bouderbala%2C%20Lalla%20plus%20-%20Feb%2012%2C%202018.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Aziz_Bouderbala%2C_Lalla_plus_-_Feb_12%2C_2018.jpg",alt:"Portrait de Aziz Bouderbala"},
-  {name:"Mustapha Hadji",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mustapha%20Hadji.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Mustapha_Hadji.jpg",alt:"Portrait de Mustapha Hadji"},
-  {name:"Noureddine Naybet",src:"https://commons.wikimedia.org/wiki/Special:FilePath/%D9%86%D9%88%D8%B1%20%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%86%D9%8A%D8%A8%D8%AA.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:%D9%86%D9%88%D8%B1_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D9%86%D9%8A%D8%A8%D8%AA.jpg",alt:"Portrait de Noureddine Naybet"},
-  {name:"Achraf Hakimi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Achraf%20Hakimi%20France%20v%20Morocco%209%20July%202026-145.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Achraf_Hakimi_France_v_Morocco_9_July_2026-145.jpg",alt:"Portrait de Achraf Hakimi"},
-  {name:"Larbi Benbarek",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Larbi%20Benbarek%20-%202.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Larbi_Benbarek_-_2.jpg",alt:"Portrait de Larbi Benbarek"},
-  {name:"Saïd Ghandi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Said%20Ghandi%20M%C3%A9xico%2070.png?width=1000",url:"https://commons.wikimedia.org/wiki/File:Said_Ghandi_M%C3%A9xico_70.png",alt:"Portrait de Saïd Ghandi"},
-  {name:"Abdallah Lamrani",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Abdallah%20Lamrani%20M%C3%A9xico%2070.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Abdallah_Lamrani_M%C3%A9xico_70.jpg",alt:"Portrait de Abdallah Lamrani"},
-  {name:"Boujemaa Benkhrif",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Boujemaa%20Benkhrif%20M%C3%A9xico%2070.png?width=1000",url:"https://commons.wikimedia.org/wiki/File:Boujemaa_Benkhrif_M%C3%A9xico_70.png",alt:"Portrait de Boujemaa Benkhrif"},
-  {name:"Maouhoub Ghazouani",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Maouhoub%20Ghazouani.png?width=1000",url:"https://commons.wikimedia.org/wiki/File:Maouhoub_Ghazouani.png",alt:"Portrait de Maouhoub Ghazouani"},
-  {name:"Mohammed El Filali",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mohammed%20El%20Filali%20M%C3%A9xico%2070.png?width=1000",url:"https://commons.wikimedia.org/wiki/File:Mohammed_El_Filali_M%C3%A9xico_70.png",alt:"Portrait de Mohammed El Filali"},
-  {name:"Mohammed Mahroufi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mohammed%20Mahroufi%20M%C3%A9xico%2070.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Mohammed_Mahroufi_M%C3%A9xico_70.jpg",alt:"Portrait de Mohammed Mahroufi"},
-  {name:"Moulay Khanousi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Moulay%20Khanousi%20M%C3%A9xico%2070.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Moulay_Khanousi_M%C3%A9xico_70.jpg",alt:"Portrait de Moulay Khanousi"},
-  {name:"Hassan Nader",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Hassan%20Nader.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Hassan_Nader.jpg",alt:"Portrait de Hassan Nader"},
-  {name:"Badou Zaki",src:"https://commons.wikimedia.org/wiki/Special:FilePath/7.31.21EzzakiBadouByLuigiNovi1.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:7.31.21EzzakiBadouByLuigiNovi1.jpg",alt:"Portrait de Badou Zaki"},
-  {name:"Hakim Ziyech",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Por-Mar%20(14).jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Por-Mar_(14).jpg",alt:"Portrait de Hakim Ziyech"},
-  {name:"Medhi Benatia",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Medhi%20Benatia.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Medhi_Benatia.jpg",alt:"Portrait de Medhi Benatia"},
-  {name:"Yassine Bounou",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Bounou.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Bounou.jpg",alt:"Portrait de Yassine Bounou"},
-  {name:"Hicham Aboucherouane",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Hicham%20Eboucherouane%20(1).jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Hicham_Eboucherouane_(1).jpg",alt:"Portrait de Hicham Aboucherouane"},
-  {name:"Houssine Kharja",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Houssine%20Kharja%202009.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Houssine_Kharja_2009.jpg",alt:"Portrait de Houssine Kharja"},
-  {name:"Romain Saïss",src:"https://commons.wikimedia.org/wiki/Special:FilePath/RomainSaiss.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:RomainSaiss.jpg",alt:"Portrait de Romain Saïss"},
-  {name:"Azzedine Ounahi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ounahi.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Ounahi.jpg",alt:"Portrait de Azzedine Ounahi"},
-  {name:"Noussair Mazraoui",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mazraoui.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Mazraoui.jpg",alt:"Portrait de Noussair Mazraoui"},
-  {name:"Youssef En-Nesyri",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ennesyri.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Ennesyri.jpg",alt:"Portrait de Youssef En-Nesyri"},
-  {name:"Soufiane Rahimi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Soufiane%20Rahimi%20France%20v%20Morocco%209%20July%202026-214.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Soufiane_Rahimi_France_v_Morocco_9_July_2026-214.jpg",alt:"Portrait de Soufiane Rahimi"},
-  {name:"Nayef Aguerd",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Aguerd.jpg?width=1000",url:"https://commons.wikimedia.org/wiki/File:Aguerd.jpg",alt:"Portrait de Nayef Aguerd"}
+  {name:"Ahmed Faras",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ahmed%20Faras%20M%C3%A9xico%2070.png",url:"https://commons.wikimedia.org/wiki/File:Ahmed_Faras_M%C3%A9xico_70.png",alt:"Portrait de Ahmed Faras"},
+  {name:"Driss Bamous",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Driss%20Bamous%20M%C3%A9xico%2070.png",url:"https://commons.wikimedia.org/wiki/File:Driss_Bamous_M%C3%A9xico_70.png",alt:"Portrait de Driss Bamous"},
+  {name:"Allal Benkassou",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Allal%20Benkassou%20M%C3%A9xico%2070.jpg",url:"https://commons.wikimedia.org/wiki/File:Allal_Benkassou_M%C3%A9xico_70.jpg",alt:"Portrait de Allal Benkassou"},
+  {name:"Kacem Slimani",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Kacem%20Slimani%20M%C3%A9xico%2070.jpg",url:"https://commons.wikimedia.org/wiki/File:Kacem_Slimani_M%C3%A9xico_70.jpg",alt:"Portrait de Kacem Slimani"},
+  {name:"Merry Krimau",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Merry%20Krimau%20en%201974.jpg",url:"https://commons.wikimedia.org/wiki/File:Merry_Krimau_en_1974.jpg",alt:"Portrait de Merry Krimau"},
+  {name:"Aziz Bouderbala",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Aziz%20Bouderbala%2C%20Lalla%20plus%20-%20Feb%2012%2C%202018.jpg",url:"https://commons.wikimedia.org/wiki/File:Aziz_Bouderbala%2C_Lalla_plus_-_Feb_12%2C_2018.jpg",alt:"Portrait de Aziz Bouderbala"},
+  {name:"Mustapha Hadji",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mustapha%20Hadji.jpg",url:"https://commons.wikimedia.org/wiki/File:Mustapha_Hadji.jpg",alt:"Portrait de Mustapha Hadji"},
+  {name:"Noureddine Naybet",src:"https://commons.wikimedia.org/wiki/Special:FilePath/%D9%86%D9%88%D8%B1%20%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%86%D9%8A%D8%A8%D8%AA.jpg",url:"https://commons.wikimedia.org/wiki/File:%D9%86%D9%88%D8%B1_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D9%86%D9%8A%D8%A8%D8%AA.jpg",alt:"Portrait de Noureddine Naybet"},
+  {name:"Achraf Hakimi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Achraf%20Hakimi%20France%20v%20Morocco%209%20July%202026-145.jpg",url:"https://commons.wikimedia.org/wiki/File:Achraf_Hakimi_France_v_Morocco_9_July_2026-145.jpg",alt:"Portrait de Achraf Hakimi"},
+  {name:"Larbi Benbarek",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Larbi%20Benbarek%20-%202.jpg",url:"https://commons.wikimedia.org/wiki/File:Larbi_Benbarek_-_2.jpg",alt:"Portrait de Larbi Benbarek"},
+  {name:"Saïd Ghandi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Said%20Ghandi%20M%C3%A9xico%2070.png",url:"https://commons.wikimedia.org/wiki/File:Said_Ghandi_M%C3%A9xico_70.png",alt:"Portrait de Saïd Ghandi"},
+  {name:"Abdallah Lamrani",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Abdallah%20Lamrani%20M%C3%A9xico%2070.jpg",url:"https://commons.wikimedia.org/wiki/File:Abdallah_Lamrani_M%C3%A9xico_70.jpg",alt:"Portrait de Abdallah Lamrani"},
+  {name:"Boujemaa Benkhrif",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Boujemaa%20Benkhrif%20M%C3%A9xico%2070.png",url:"https://commons.wikimedia.org/wiki/File:Boujemaa_Benkhrif_M%C3%A9xico_70.png",alt:"Portrait de Boujemaa Benkhrif"},
+  {name:"Maouhoub Ghazouani",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Maouhoub%20Ghazouani.png",url:"https://commons.wikimedia.org/wiki/File:Maouhoub_Ghazouani.png",alt:"Portrait de Maouhoub Ghazouani"},
+  {name:"Mohammed El Filali",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mohammed%20El%20Filali%20M%C3%A9xico%2070.png",url:"https://commons.wikimedia.org/wiki/File:Mohammed_El_Filali_M%C3%A9xico_70.png",alt:"Portrait de Mohammed El Filali"},
+  {name:"Mohammed Mahroufi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mohammed%20Mahroufi%20M%C3%A9xico%2070.jpg",url:"https://commons.wikimedia.org/wiki/File:Mohammed_Mahroufi_M%C3%A9xico_70.jpg",alt:"Portrait de Mohammed Mahroufi"},
+  {name:"Moulay Khanousi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Moulay%20Khanousi%20M%C3%A9xico%2070.jpg",url:"https://commons.wikimedia.org/wiki/File:Moulay_Khanousi_M%C3%A9xico_70.jpg",alt:"Portrait de Moulay Khanousi"},
+  {name:"Hassan Nader",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Hassan%20Nader.jpg",url:"https://commons.wikimedia.org/wiki/File:Hassan_Nader.jpg",alt:"Portrait de Hassan Nader"},
+  {name:"Badou Zaki",src:"https://commons.wikimedia.org/wiki/Special:FilePath/7.31.21EzzakiBadouByLuigiNovi1.jpg",url:"https://commons.wikimedia.org/wiki/File:7.31.21EzzakiBadouByLuigiNovi1.jpg",alt:"Portrait de Badou Zaki"},
+  {name:"Hakim Ziyech",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Por-Mar%20(14).jpg",url:"https://commons.wikimedia.org/wiki/File:Por-Mar_(14).jpg",alt:"Portrait de Hakim Ziyech"},
+  {name:"Medhi Benatia",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Medhi%20Benatia.jpg",url:"https://commons.wikimedia.org/wiki/File:Medhi_Benatia.jpg",alt:"Portrait de Medhi Benatia"},
+  {name:"Yassine Bounou",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Bounou.jpg",url:"https://commons.wikimedia.org/wiki/File:Bounou.jpg",alt:"Portrait de Yassine Bounou"},
+  {name:"Hicham Aboucherouane",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Hicham%20Eboucherouane%20(1).jpg",url:"https://commons.wikimedia.org/wiki/File:Hicham_Eboucherouane_(1).jpg",alt:"Portrait de Hicham Aboucherouane"},
+  {name:"Houssine Kharja",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Houssine%20Kharja%202009.jpg",url:"https://commons.wikimedia.org/wiki/File:Houssine_Kharja_2009.jpg",alt:"Portrait de Houssine Kharja"},
+  {name:"Romain Saïss",src:"https://commons.wikimedia.org/wiki/Special:FilePath/RomainSaiss.jpg",url:"https://commons.wikimedia.org/wiki/File:RomainSaiss.jpg",alt:"Portrait de Romain Saïss"},
+  {name:"Azzedine Ounahi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ounahi.jpg",url:"https://commons.wikimedia.org/wiki/File:Ounahi.jpg",alt:"Portrait de Azzedine Ounahi"},
+  {name:"Noussair Mazraoui",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Mazraoui.jpg",url:"https://commons.wikimedia.org/wiki/File:Mazraoui.jpg",alt:"Portrait de Noussair Mazraoui"},
+  {name:"Youssef En-Nesyri",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Ennesyri.jpg",url:"https://commons.wikimedia.org/wiki/File:Ennesyri.jpg",alt:"Portrait de Youssef En-Nesyri"},
+  {name:"Soufiane Rahimi",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Soufiane%20Rahimi%20France%20v%20Morocco%209%20July%202026-214.jpg",url:"https://commons.wikimedia.org/wiki/File:Soufiane_Rahimi_France_v_Morocco_9_July_2026-214.jpg",alt:"Portrait de Soufiane Rahimi"},
+  {name:"Nayef Aguerd",src:"https://commons.wikimedia.org/wiki/Special:FilePath/Aguerd.jpg",url:"https://commons.wikimedia.org/wiki/File:Aguerd.jpg",alt:"Portrait de Nayef Aguerd"}
  ];
- let index=0,timer=null,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches,serial=0;
- function source(file){return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=1000';}
+ let index=0,timer=null,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  function show(next){
-  index=(next+slides.length)%slides.length;const item=slides[index],ticket=++serial,src=source(item.file);img.classList.add('is-changing');
-  const preloader=new Image();
-  preloader.onload=function(){if(ticket!==serial)return;img.src=src;img.alt=item.alt;name.textContent=item.name;link.href='https://commons.wikimedia.org/wiki/File:'+item.file;credit.textContent='Photo : Wikimedia Commons · ouvrir la source pour les détails';counter.textContent=(index+1)+' / '+slides.length;img.classList.remove('is-changing');};
-  preloader.onerror=function(){if(ticket!==serial)return;img.src='https://placehold.co/1200x675/101923/f0c65b?text='+encodeURIComponent(item.name);img.alt='Illustration de remplacement pour '+item.name;name.textContent=item.name;link.href='https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search='+encodeURIComponent(item.name);credit.textContent='Photo indisponible · rechercher une image sur Wikimedia Commons';counter.textContent=(index+1)+' / '+slides.length;img.classList.remove('is-changing');};
-  preloader.src=src;
+  index=(next+slides.length)%slides.length;
+  const item=slides[index];
+  img.onerror=function(){
+   img.onerror=null;
+   img.src='https://placehold.co/900x506/101923/f0c65b?text='+encodeURIComponent(item.name);
+   credit.textContent='Photographie indisponible pour le moment · ouvrir la source Wikimedia';
+  };
+  img.onload=function(){credit.textContent='Photo : Wikimedia Commons · ouvrir la source pour les détails';};
+  img.alt=item.alt;
+  img.src=item.src;
+  name.textContent=item.name;
+  link.href=item.url;
+  counter.textContent=(index+1)+' / '+slides.length;
  }
  function stop(){if(timer){clearInterval(timer);timer=null;}}
  function start(){stop();if(!paused&&!document.hidden)timer=setInterval(()=>show(index+1),7000);pause.textContent=paused?'▶ Reprendre':'Ⅱ Pause';pause.setAttribute('aria-label',paused?'Reprendre le diaporama':'Mettre le diaporama en pause');}
@@ -202,7 +209,8 @@
  document.getElementById('mf-player-next').addEventListener('click',()=>{show(index+1);start();});
  pause.addEventListener('click',()=>{paused=!paused;start();});
  panel.addEventListener('mouseenter',stop);panel.addEventListener('mouseleave',start);panel.addEventListener('focusin',stop);panel.addEventListener('focusout',start);
- document.addEventListener('visibilitychange',()=>document.hidden?stop():start());show(0);start();
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+ show(0);start();
 })();
 </script>
 </body></html>
