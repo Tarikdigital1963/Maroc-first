@@ -21,7 +21,26 @@
 @keyframes legends-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:520px){.legend-card{flex-basis:136px;width:136px}.legend-card img{height:136px}.legends-strip{margin:18px 0}}
 @media(prefers-reduced-motion:reduce){.legends-track{animation:none;overflow-x:auto}}
-</style></head><body><header><div class="wrap"><h1>⚽ Sport</h1><p>Les résultats, les compétitions et les athlètes marocains et internationaux.</p><nav aria-label="Rubriques"><a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="flash.html">🚨 Flash عربي</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a><a href="immobilier.html">🏡 Immobilier</a><a href="meteo.html">🌤️ Météo</a><a href="medias.html">📺 Médias</a></nav></div></header><main class="wrap"><section class="hero"><p><strong>Maroc First</strong> · Football, athlétisme, tennis, sports collectifs, compétitions et portraits d’athlètes.</p><p>Une rubrique indépendante pour retrouver les informations, les dossiers et les ressources de ce domaine au même endroit.</p></section>
+</style><style id="mf-player-carousel-style">
+.player-showcase{margin:22px 0;padding:16px;border:1px solid var(--line);border-radius:16px;background:#101923;box-shadow:0 8px 24px #0005}
+.player-showcase h2{margin:0 0 6px;color:var(--gold);font-size:1.25rem}.player-showcase>p{margin:0 0 12px;color:var(--muted)}
+.player-showcase .player-frame{position:relative;overflow:hidden;border-radius:12px;background:#080d13;aspect-ratio:16/9;max-height:440px}
+.player-showcase .player-frame img{display:block;width:100%;height:100%;object-fit:contain;opacity:1;transition:opacity .3s ease}
+.player-showcase .player-frame img.is-changing{opacity:.15}.player-showcase .player-caption{padding:10px 4px 2px;text-align:center}
+.player-showcase .player-caption strong{display:block;color:var(--text);font-size:1.08rem}.player-showcase .player-caption small{display:block;color:var(--muted);font-size:.8rem;margin-top:4px}
+.player-showcase .player-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px}
+.player-showcase .player-controls button{min-width:44px;min-height:42px;padding:8px 12px}.player-showcase .player-counter{min-width:50px;text-align:center;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.player-showcase .player-frame img{transition:none}}
+</style>
+</head><body><header><div class="wrap"><h1>⚽ Sport</h1><p>Les résultats, les compétitions et les athlètes marocains et internationaux.</p><nav aria-label="Rubriques"><a href="index.html">🏠 Accueil</a><a href="maroc.html">🇲🇦 Maroc</a><a href="international.html">🌍 International</a><a href="politique.html">🏛️ Politique</a><a href="economie.html">💰 Économie</a><a href="societe.html">👥 Société</a><a href="sport.html">⚽ Sport</a><a href="flash.html">🚨 Flash عربي</a><a href="culture.html">🎭 Culture</a><a href="emploi.html">💼 Emploi</a><a href="inclusion.html">♿ Inclusion</a><a href="immobilier.html">🏡 Immobilier</a><a href="meteo.html">🌤️ Météo</a><a href="medias.html">📺 Médias</a></nav></div></header><main class="wrap"><section class="hero"><p><strong>Maroc First</strong> · Football, athlétisme, tennis, sports collectifs, compétitions et portraits d’athlètes.</p><p>Une rubrique indépendante pour retrouver les informations, les dossiers et les ressources de ce domaine au même endroit.</p></section>
+<section class="player-showcase" id="mf-player-carousel" aria-label="Diaporama automatique des joueurs marocains">
+<h2>🇲🇦 Les Lions de l’Atlas en images</h2><p>Portraits des joueurs marocains · les photos changent automatiquement en boucle</p>
+<div class="player-frame"><a id="mf-player-photo-link" href="https://commons.wikimedia.org/wiki/File:Achraf_Hakimi_France_v_Morocco_9_July_2026-145.jpg" target="_blank" rel="noopener noreferrer">
+<img id="mf-player-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Achraf%20Hakimi%20France%20v%20Morocco%209%20July%202026-145.jpg?width=1000" alt="Achraf Hakimi, joueur de l’équipe nationale du Maroc" fetchpriority="high"></a></div>
+<div class="player-caption"><strong id="mf-player-name">Achraf Hakimi</strong><small id="mf-player-credit">Photo : Wikimedia Commons · ouvrir la source pour les détails</small></div>
+<div class="player-controls"><button type="button" id="mf-player-prev" aria-label="Photo précédente">❮</button><span class="player-counter" id="mf-player-counter" aria-live="polite">1 / 4</span><button type="button" id="mf-player-next" aria-label="Photo suivante">❯</button><button type="button" id="mf-player-pause" aria-label="Mettre le diaporama en pause">Ⅱ Pause</button></div>
+</section>
+
 <section class="stadium-gallery" aria-label="Galerie des stades marocains">
   <div class="stadium-gallery-head"><p class="gallery-kicker">🇲🇦 Le Maroc du football</p><h2>10 stades marocains à découvrir</h2><p>De Benslimane à Tanger, Rabat, Casablanca, Fès, Agadir et d’autres villes : découvrez les stades du Royaume.</p></div>
   <div class="stadium-slider" id="stadium-slider">
@@ -132,4 +151,31 @@
 <script src="actualites.js" data-section="sport" defer></script>
 
 <script src="traduction.js" defer></script>
+<script id="mf-player-carousel-script">
+(function(){
+ const panel=document.getElementById('mf-player-carousel');if(!panel)return;
+ const img=document.getElementById('mf-player-photo'),name=document.getElementById('mf-player-name'),link=document.getElementById('mf-player-photo-link'),counter=document.getElementById('mf-player-counter'),pause=document.getElementById('mf-player-pause'),credit=document.getElementById('mf-player-credit');
+ const slides=[
+ {name:'Achraf Hakimi',file:'Achraf_Hakimi_France_v_Morocco_9_July_2026-145.jpg',alt:'Achraf Hakimi, joueur de l’équipe nationale du Maroc'},
+ {name:'Yassine Bounou',file:'Bounou.jpg',alt:'Yassine Bounou, gardien de but marocain'},
+ {name:'Noussair Mazraoui',file:'Mazraoui.jpg',alt:'Noussair Mazraoui, joueur de l’équipe nationale du Maroc'},
+ {name:'Youssef En-Nesyri',file:'Ennesyri.jpg',alt:'Youssef En-Nesyri, joueur de l’équipe nationale du Maroc'}];
+ let index=0,timer=null,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches,serial=0;
+ function source(file){return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=1000';}
+ function show(next){
+  index=(next+slides.length)%slides.length;const item=slides[index],ticket=++serial,src=source(item.file);img.classList.add('is-changing');
+  const preloader=new Image();
+  preloader.onload=function(){if(ticket!==serial)return;img.src=src;img.alt=item.alt;name.textContent=item.name;link.href='https://commons.wikimedia.org/wiki/File:'+item.file;credit.textContent='Photo : Wikimedia Commons · ouvrir la source pour les détails';counter.textContent=(index+1)+' / '+slides.length;img.classList.remove('is-changing');};
+  preloader.onerror=function(){if(ticket!==serial)return;img.src='https://placehold.co/1200x675/101923/f0c65b?text='+encodeURIComponent(item.name);img.alt='Illustration de remplacement pour '+item.name;name.textContent=item.name;link.href='https://commons.wikimedia.org/wiki/Special:MediaSearch?type=image&search='+encodeURIComponent(item.name);credit.textContent='Photo indisponible · rechercher une image sur Wikimedia Commons';counter.textContent=(index+1)+' / '+slides.length;img.classList.remove('is-changing');};
+  preloader.src=src;
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;}}
+ function start(){stop();if(!paused&&!document.hidden)timer=setInterval(()=>show(index+1),7000);pause.textContent=paused?'▶ Reprendre':'Ⅱ Pause';pause.setAttribute('aria-label',paused?'Reprendre le diaporama':'Mettre le diaporama en pause');}
+ document.getElementById('mf-player-prev').addEventListener('click',()=>{show(index-1);start();});
+ document.getElementById('mf-player-next').addEventListener('click',()=>{show(index+1);start();});
+ pause.addEventListener('click',()=>{paused=!paused;start();});
+ panel.addEventListener('mouseenter',stop);panel.addEventListener('mouseleave',start);panel.addEventListener('focusin',stop);panel.addEventListener('focusout',start);
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());show(0);start();
+})();
+</script>
 </body></html>
