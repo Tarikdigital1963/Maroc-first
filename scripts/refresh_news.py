@@ -1,139 +1,417 @@
+
 #!/usr/bin/env python3
 """Build a cumulative, source-linked daily news archive for Maroc First."""
-import html, json, os, re, time, urllib.parse, urllib.request
+
+import html
+import json
+import os
+import re
+import time
+import urllib.parse
+import urllib.request
 import xml.etree.ElementTree as ET
+
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
 OUT = "actualites.json"
 MAX_PER_SECTION = None
 UA = "MarocFirstNewsBot/1.0 (+https://tarikdigital1963.github.io/)"
+
 QUERIES = {
- "maroc": ["Maroc actualités gouvernement société aujourd'hui", "المغرب أخبار اليوم"],
- "politique": ["Maroc politique gouvernement parlement diplomatie", "المغرب السياسة الحكومة البرلمان"],
- "international": ["actualité internationale monde ONU diplomatie aujourd'hui", "أخبار العالم اليوم الأمم المتحدة"],
- "economie": ["Maroc économie entreprises marchés emploi budget", "المغرب الاقتصاد المقاولات"],
- "societe": ["Maroc société éducation santé environnement villes", "المغرب مجتمع تعليم صحة بيئة"],
- "sport": ["sport Maroc football Botola équipe nationale athlétisme tennis", "الرياضة المغرب كرة القدم"],
- "culture": ["Maroc culture cinéma musique livres patrimoine", "المغرب الثقافة السينما"],
- "emploi": ["offres emploi recrutement concours Maroc travail embauche when:7d", "Maroc emploi recrutement formation travail when:7d", "وظائف المغرب مباريات التوظيف فرص العمل when:7d"],
- "inclusion": ["Maroc handicap inclusion accessibilité droits personnes handicapées when:7d", "emploi personnes handicapées Maroc recrutement accessibilité when:7d", "المغرب الإعاقة الإدماج تشغيل الأشخاص في وضعية إعاقة when:7d"],
- "immobilier": ["Maroc immobilier logement urbanisme construction when:7d", "offres immobilières logement location vente Maroc when:7d", "المغرب العقار السكن بيع كراء when:7d"],
- "flash": ["Maroc actualité urgente dernière minute OR breaking news", "أخبار عاجلة المغرب"],
- "flash_sport": ["sport actualité urgente football résultats compétition", "أخبار رياضية عاجلة"]
+    "maroc": [
+        "Maroc actualités gouvernement société aujourd'hui",
+        "المغرب أخبار اليوم"
+    ],
+    "politique": [
+        "Maroc politique gouvernement parlement diplomatie",
+        "المغرب السياسة الحكومة البرلمان"
+    ],
+    "international": [
+        "actualité internationale monde ONU diplomatie aujourd'hui",
+        "أخبار العالم اليوم الأمم المتحدة"
+    ],
+    "economie": [
+        "Maroc économie entreprises marchés emploi budget",
+        "المغرب الاقتصاد المقاولات"
+    ],
+    "societe": [
+        "Maroc société éducation santé environnement villes",
+        "المغرب مجتمع تعليم صحة بيئة"
+    ],
+    "sport": [
+        "sport Maroc football Botola équipe nationale athlétisme tennis",
+        "الرياضة المغرب كرة القدم"
+    ],
+    "culture": [
+        "Maroc culture cinéma musique livres patrimoine",
+        "المغرب الثقافة السينما"
+    ],
+    "emploi": [
+        "offres emploi recrutement concours Maroc travail embauche when:7d",
+        "Maroc emploi recrutement formation travail when:7d",
+        "وظائف المغرب مباريات التوظيف فرص العمل when:7d"
+    ],
+    "inclusion": [
+        "Maroc handicap inclusion accessibilité droits personnes handicapées when:7d",
+        "emploi personnes handicapées Maroc recrutement accessibilité when:7d",
+        "المغرب الإعاقة الإدماج تشغيل الأشخاص في وضعية إعاقة when:7d"
+    ],
+    "immobilier": [
+        "Maroc immobilier logement urbanisme construction when:7d",
+        "offres immobilières logement location vente Maroc when:7d",
+        "المغرب العقار السكن بيع كراء when:7d"
+    ],
+    "flash": [
+        "Maroc actualité urgente dernière minute OR breaking news",
+        "أخبار عاجلة المغرب"
+    ],
+    "flash_sport": [
+        "sport actualité urgente football résultats compétition",
+        "أخبار رياضية عاجلة"
+    ]
 }
+
+
 def clean(s):
     return re.sub(r"\s+", " ", (s or "").strip())
+
+
 def fetch(q):
-    params = urllib.parse.urlencode({"q": q if "when:" in q else q + " when:7d", "hl":"fr", "gl":"MA", "ceid":"MA:fr"})
+    params = urllib.parse.urlencode({
+        "q": q if "when:" in q else q + " when:7d",
+        "hl": "fr",
+        "gl": "MA",
+        "ceid": "MA:fr"
+    })
+
     url = "https://news.google.com/rss/search?" + params
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": UA}
+    )
+
     with urllib.request.urlopen(req, timeout=25) as response:
         root = ET.fromstring(response.read())
-    items=[]
+
+    items = []
+
     for node in root.findall(".//item"):
-        title=clean(node.findtext("title"))
-        link=clean(node.findtext("link"))
-        desc=clean(node.findtext("description"))
-        source_node=node.find("source")
-        source=clean(source_node.text if source_node is not None else "")
-        pub=clean(node.findtext("pubDate"))
-        image=""
+        title = clean(node.findtext("title"))
+        link = clean(node.findtext("link"))
+        desc = clean(node.findtext("description"))
+
+        source_node = node.find("source")
+        source = clean(
+            source_node.text if source_node is not None else ""
+        )
+
+        pub = clean(node.findtext("pubDate"))
+        image = ""
+
         for child in list(node):
             if child.tag.endswith("thumbnail") or child.tag.endswith("content"):
-                image=child.attrib.get("url","")
-                if image: break
+                image = child.attrib.get("url", "")
+                if image:
+                    break
+
+        # Extraction de l'image depuis la description RSS.
         if not image:
-            match=re.search(r"""<img\b[^>]*\bsrc=["']([^"']+)""",html.unescape(desc),re.I)
+            match = re.search(
+                r"""<img\b[^>]*\bsrc\s*=\s*["']([^"']+)["']""",
+                html.unescape(desc),
+                re.I
+            )
+
             if match:
-                candidate=html.unescape(match.group(1)).strip()
-                if candidate.startswith("https://") and not any(x in candidate.lower() for x in ("logo","favicon","sprite","avatar","icon","tracking")):
-                    image=candidate
-        if not title or not link.startswith("http"): continue
+                candidate = html.unescape(match.group(1)).strip()
+
+                if (
+                    candidate.startswith("https://")
+                    and not any(
+                        x in candidate.lower()
+                        for x in (
+                            "logo",
+                            "favicon",
+                            "sprite",
+                            "avatar",
+                            "icon",
+                            "tracking"
+                        )
+                    )
+                ):
+                    image = candidate
+
+        if not title or not link.startswith("http"):
+            continue
+
         try:
-            dt=parsedate_to_datetime(pub).astimezone(timezone.utc).isoformat()
+            dt = parsedate_to_datetime(pub).astimezone(
+                timezone.utc
+            ).isoformat()
         except Exception:
-            dt=datetime.now(timezone.utc).isoformat()
-        # Google RSS descriptions can contain HTML; strip tags conservatively.
-        summary=clean(re.sub("<[^>]+>", " ", desc))
-        items.append({"title":title,"url":link,"published":dt,"source":source or "Google Actualités","summary":summary[:420],"image":image if image.startswith("https://") else ""})
+            dt = datetime.now(timezone.utc).isoformat()
+
+        summary = clean(re.sub("<[^>]+>", " ", desc))
+
+        items.append({
+            "title": title,
+            "url": link,
+            "published": dt,
+            "source": source or "Google Actualités",
+            "summary": summary[:420],
+            "image": image if image.startswith("https://") else ""
+        })
+
     return items
 
 
 def article_image(url):
     """Resolve a news link and extract the publisher's real Open Graph image."""
+
     from html.parser import HTMLParser
+
     class MetaParser(HTMLParser):
+
         def __init__(self):
             super().__init__()
-            self.images=[]
+            self.images = []
+
         def handle_starttag(self, tag, attrs):
-            a=dict(attrs)
-            if tag.lower()=="meta":
-                key=(a.get("property") or a.get("name") or "").lower()
-                if key in ("og:image","og:image:url","twitter:image","twitter:image:src"):
-                    self.images.append(a.get("content",""))
-            elif tag.lower()=="link" and "image_src" in (a.get("rel") or "").lower():
-                self.images.append(a.get("href",""))
+            a = dict(attrs)
+
+            if tag.lower() == "meta":
+                key = (
+                    a.get("property")
+                    or a.get("name")
+                    or ""
+                ).lower()
+
+                if key in (
+                    "og:image",
+                    "og:image:url",
+                    "twitter:image",
+                    "twitter:image:src"
+                ):
+                    self.images.append(a.get("content", ""))
+
+            elif tag.lower() == "link":
+                if "image_src" in (a.get("rel") or "").lower():
+                    self.images.append(a.get("href", ""))
+
     try:
-        req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; MarocFirstNewsBot/1.0)"})
-        with urllib.request.urlopen(req,timeout=7) as response:
-            final_url=response.geturl()
-            if "html" not in response.headers.get("Content-Type","").lower(): return ""
-            raw=response.read(900000).decode("utf-8","ignore")
-        parser=MetaParser()
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (compatible; MarocFirstNewsBot/1.0)"
+            }
+        )
+
+        with urllib.request.urlopen(req, timeout=7) as response:
+            final_url = response.geturl()
+
+            if "html" not in response.headers.get(
+                "Content-Type", ""
+            ).lower():
+                return ""
+
+            raw = response.read(900000).decode(
+                "utf-8",
+                "ignore"
+            )
+
+        parser = MetaParser()
         parser.feed(raw)
+
         for candidate in parser.images:
-            candidate=urllib.parse.urljoin(final_url,clean(candidate))
-            if candidate.startswith("https://") and not any(x in candidate.lower() for x in ("logo","favicon","sprite","avatar","icon","tracking")):
+            candidate = urllib.parse.urljoin(
+                final_url,
+                clean(candidate)
+            )
+
+            if (
+                candidate.startswith("https://")
+                and not any(
+                    x in candidate.lower()
+                    for x in (
+                        "logo",
+                        "favicon",
+                        "sprite",
+                        "avatar",
+                        "icon",
+                        "tracking"
+                    )
+                )
+            ):
                 return candidate
+
     except Exception:
         return ""
+
     return ""
 
+
+# Chargement de l'ancienne archive.
 try:
-    with open(OUT, encoding="utf-8") as f: archive=json.load(f)
+    with open(OUT, encoding="utf-8") as f:
+        archive = json.load(f)
+
 except Exception:
-    archive={"updatedAt":"","sections":{}}
-sections=archive.get("sections",{})
-errors=[]
+    archive = {
+        "updatedAt": "",
+        "sections": {}
+    }
+
+
+sections = archive.get("sections", {})
+errors = []
+
+
+# Collecte des actualités dans les différentes rubriques.
 for section, queries in QUERIES.items():
-    old=sections.get(section,[])
-    known={x.get("url") for x in old}
-    fresh=[]
+
+    old = sections.get(section, [])
+    known = {
+        x.get("url")
+        for x in old
+    }
+
+    fresh = []
+
     for query in queries:
+
         try:
             for item in fetch(query):
+
                 if item["url"] not in known:
-                    known.add(item["url"]); fresh.append(item)
+                    known.add(item["url"])
+                    fresh.append(item)
+
         except Exception as e:
-            errors.append(section + ": " + str(e)[:160])
-    merged=sorted(fresh+old,key=lambda x:x.get("published",""),reverse=True)
-    sections[section]=merged if MAX_PER_SECTION is None else merged[:MAX_PER_SECTION]
-# Écarter l'image générique répétée par Google Actualités lors du précédent essai.
-GENERIC_IMAGE="https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300"
+            errors.append(
+                section + ": " + str(e)[:160]
+            )
+
+    merged = sorted(
+        fresh + old,
+        key=lambda x: x.get("published", ""),
+        reverse=True
+    )
+
+    sections[section] = (
+        merged
+        if MAX_PER_SECTION is None
+        else merged[:MAX_PER_SECTION]
+    )
+
+
+# Suppression de l'image générique répétée par Google Actualités.
+GENERIC_IMAGE = (
+    "https://lh3.googleusercontent.com/"
+    "J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300"
+)
+
 for entries in sections.values():
     for item in entries:
-        if item.get("image")==GENERIC_IMAGE:
-            item["image"]=""
-# Récupérer davantage de photos originales, sans réutiliser une image identique partout.
+
+        if item.get("image") == GENERIC_IMAGE:
+            item["image"] = ""
+
+
+# Recherche de photos originales chez les éditeurs.
 from concurrent.futures import ThreadPoolExecutor
-seen_images={item.get("image") for entries in sections.values() for item in entries if item.get("image")}
-image_candidates=[]
+
+seen_images = {
+    item.get("image")
+    for entries in sections.values()
+    for item in entries
+    if item.get("image")
+}
+
+image_candidates = []
+
 for section, entries in sections.items():
-    missing=[item for item in sorted(entries,key=lambda x:x.get("published",""),reverse=True)
-             if not item.get("image") and item.get("url","").startswith("http")]
+
+    missing = [
+        item
+        for item in sorted(
+            entries,
+            key=lambda x: x.get("published", ""),
+            reverse=True
+        )
+        if (
+            not item.get("image")
+            and item.get("url", "").startswith("http")
+        )
+    ]
+
     image_candidates.extend(missing[:12])
+
+
 with ThreadPoolExecutor(max_workers=12) as pool:
-    for item, image_url in zip(image_candidates,pool.map(lambda x: article_image(x["url"]),image_candidates)):
-        if image_url and image_url not in seen_images and image_url != GENERIC_IMAGE:
-            item["image"]=image_url
+
+    results = pool.map(
+        lambda x: article_image(x["url"]),
+        image_candidates
+    )
+
+    for item, image_url in zip(image_candidates, results):
+
+        if (
+            image_url
+            and image_url not in seen_images
+            and image_url != GENERIC_IMAGE
+        ):
+            item["image"] = image_url
             seen_images.add(image_url)
 
-archive={"updatedAt":datetime.now(timezone.utc).isoformat(),"sections":sections,"note":"Titres et résumés issus de flux RSS publics; les articles complets restent chez leurs éditeurs.","errors":errors}
-with open(OUT,"w",encoding="utf-8") as f:
-    json.dump(archive,f,ensure_ascii=False,indent=2)
-print("Sections:", {k:len(v) for k,v in sections.items()})
-print("New entries:", sum(len([x for x in sections[k] if x.get("published","") >= archive["updatedAt"][:10]]) for k in sections))
+
+# Construction de l'archive finale.
+archive = {
+    "updatedAt": datetime.now(timezone.utc).isoformat(),
+    "sections": sections,
+    "note": (
+        "Titres et résumés issus de flux RSS publics; "
+        "les articles complets restent chez leurs éditeurs."
+    ),
+    "errors": errors
+}
+
+
+# Enregistrement du fichier JSON.
+with open(OUT, "w", encoding="utf-8") as f:
+    json.dump(
+        archive,
+        f,
+        ensure_ascii=False,
+        indent=2
+    )
+
+
+# Résultats de la collecte.
+print(
+    "Sections:",
+    {
+        k: len(v)
+        for k, v in sections.items()
+    }
+)
+
+print(
+    "New entries:",
+    sum(
+        len([
+            x
+            for x in sections[k]
+            if x.get("published", "") >= archive["updatedAt"][:10]
+        ])
+        for k in sections
+    )
+)
+
+
+# Protection contre une archive vide.
 if not any(sections.values()):
-    raise SystemExit("No news items retrieved; refusing to publish an empty archive.")
+    raise SystemExit(
+        "No news items retrieved; refusing to publish an empty archive."
+    )
