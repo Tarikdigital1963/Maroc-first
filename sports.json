@@ -1,6 +1,39 @@
 {
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "articles": [
+    {
+      "id": "2026-11-15-as-far-troisieme-titre-caf",
+      "date": "2026-11-15",
+      "category": "Football féminin",
+      "source": "Confédération africaine de football (CAF)",
+      "url": "https://www.cafonline.com/fr/ligue-des-champions-feminine/infos/ligue-des-champions-feminine-l-as-far-entre-dans-l-histoire-et-conserve-son-titre/",
+      "title_fr": "Ligue des champions féminine : l’AS FAR décroche un troisième titre historique",
+      "title_ar": "دوري أبطال إفريقيا للسيدات: الجيش الملكي يحرز لقبه الثالث في إنجاز تاريخي",
+      "summary_fr": "L’AS FAR a remporté la Ligue des champions féminine de la CAF 2026 en battant Mamelodi Sundowns 3-1, le 15 novembre à Ismaïlia, en Égypte. Imane Touriss a signé un doublé aux 23e et 77e minutes, tandis que Hiba Youssifi a inscrit le deuxième but marocain à la 38e minute. Après ses sacres de 2022 et 2025, le club de Rabat atteint trois titres et devient le premier à conserver la couronne deux saisons de suite.",
+      "summary_ar": "توج الجيش الملكي بلقب دوري أبطال إفريقيا للسيدات 2026، بعد فوزه على ماميلودي صنداونز الجنوب إفريقي بنتيجة 3-1، يوم 15 نونبر بمدينة الإسماعيلية في مصر. وسجلت إيمان توريس هدفين في الدقيقتين 23 و77، وأضافت هبة يوسف الهدف المغربي الثاني في الدقيقة 38. وبعد لقبي 2022 و2025، رفع الفريق الرباطي رصيده إلى ثلاثة ألقاب، وأصبح أول نادٍ يحتفظ باللقب لموسمين متتاليين."
+    },
+    {
+      "id": "2026-11-15-maroc-football-amputes-uruguay-4-1",
+      "date": "2026-11-15",
+      "category": "Football pour amputés",
+      "source": "MAP (via SNRT News)",
+      "url": "https://snrtnews.com/article/mondial-des-amputes-le-maroc-frappe-fort-dentree-face-a-luruguay-162350",
+      "title_fr": "Mondial de football pour amputés : le Maroc réussit son entrée avec une victoire 4-1 contre l’Uruguay",
+      "title_ar": "كأس العالم لكرة القدم للمبتورين: المغرب يستهل المنافسات بفوز 4-1 على الأوروغواي",
+      "summary_fr": "La sélection marocaine de football pour amputés a lancé sa Coupe du monde 2026 par une victoire 4-1 contre l’Uruguay, dans le groupe E, à San Juan de los Lagos au Mexique. Selon la dépêche de la MAP publiée par SNRT News le 15 novembre, les Marocains menaient 2-0 à la pause grâce à deux buts inscrits aux 12e et 17e minutes, avant d’ajouter deux réalisations aux 34e et 41e minutes. L’Uruguay a réduit l’écart à la 44e minute.",
+      "summary_ar": "استهل المنتخب المغربي لكرة القدم للمبتورين مشاركته في كأس العالم 2026 بفوز على الأوروغواي بنتيجة 4-1، ضمن منافسات المجموعة الخامسة بمدينة سان خوان دي لوس لاغوس في المكسيك. ووفق قصاصة وكالة المغرب العربي للأنباء التي نشرها موقع SNRT News يوم 15 نونبر، أنهى المغرب الشوط الأول متقدماً بهدفين سجلا في الدقيقتين 12 و17، ثم أضاف هدفين في الدقيقتين 34 و41، قبل أن يقلص منتخب الأوروغواي الفارق في الدقيقة 44."
+    },
+    {
+      "id": "2026-11-15-wta-finals-andreeva-titre-debut",
+      "date": "2026-11-15",
+      "category": "Tennis féminin",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/sports/tennis/unbeaten-andreeva-captures-wta-finals-crown-debut-2026-11-15/",
+      "title_fr": "WTA Finals : Mirra Andreeva remporte le titre dès sa première participation",
+      "title_ar": "نهائيات رابطة محترفات التنس: ميرا أندرييفا تحرز اللقب في أول مشاركة لها",
+      "summary_fr": "La Russe Mirra Andreeva a remporté les WTA Finals le 15 novembre à Indian Wells en battant l’Ukrainienne Elina Svitolina 7-5, 6-3 en finale. À 19 ans, elle termine le tournoi sans défaite et sans perdre le moindre set, avec cinq victoires en cinq rencontres. Cette victoire lui offre son premier sacre dans le tournoi de fin de saison, dès sa première participation.",
+      "summary_ar": "أحرزت الروسية ميرا أندرييفا لقب نهائيات رابطة محترفات التنس يوم 15 نونبر في إنديان ويلز، بعد فوزها على الأوكرانية إيلينا سفيتولينا بنتيجة 7-5 و6-3 في المباراة النهائية. وأنهت اللاعبة البالغة 19 عاماً البطولة دون هزيمة ودون خسارة أي مجموعة، بعدما حققت خمسة انتصارات في خمس مباريات. ويعد هذا أول تتويج لها في البطولة الختامية للموسم، وذلك في أول مشاركة لها."
+    },
     {
       "id": "2026-11-14-wta-finals-andreeva-svitolina-finale",
       "date": "2026-11-14",
