@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<meta name="description" content="Regarder Arryadia en direct depuis la plateforme officielle SNRT Live, dans un lecteur grand format.">
+<title>FIRST MAROC · TNT Arryadia Home cinéma</title>
+<style>
+:root{color-scheme:dark;--bg:#080b10;--panel:#141c27;--text:#f5f7fa;--muted:#c3cedb;--gold:#f0c65b;--line:#39485c}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#1a2a3d 0,#080b10 58%);color:var(--text);font:18px/1.6 Arial,Helvetica,sans-serif;min-height:100vh}
+a{color:#ffe08a}
+a:focus,button:focus{outline:3px solid var(--gold);outline-offset:4px}
+.wrap{width:min(1500px,96%);margin:auto}
+header{padding:18px 0 12px;text-align:center}
+.brand{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:900;letter-spacing:.04em;color:#fff}
+.brand span{color:var(--gold)}
+.subtitle{color:var(--muted);margin:4px 0 14px}
+.top-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px 0 22px}
+.button,button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 17px;border:1px solid var(--gold);border-radius:10px;background:var(--gold);color:#10151d;text-decoration:none;font-weight:800;font-size:1rem;cursor:pointer}
+.button.secondary,button.secondary{background:#1b2939;color:#fff;border-color:#52647b}
+.cinema-shell{padding:clamp(12px,2vw,24px);border:1px solid #53647a;border-radius:20px;background:linear-gradient(145deg,#172536,#090e15);box-shadow:0 20px 70px #000b}
+.screen-label{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 12px}
+.screen-label h1{font-size:clamp(1.25rem,3vw,2rem);margin:0}
+.live-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid #9c3030;border-radius:999px;background:#351719;color:#fff;font-size:.9rem;font-weight:800}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#ff4c4c;box-shadow:0 0 12px #ff4c4c}
+.player-frame{width:100%;aspect-ratio:16/9;min-height:220px;max-height:78vh;background:#000;border:3px solid #26384d;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px #000,0 12px 35px #0009}
+.player-frame iframe{display:block;width:100%;height:100%;border:0;background:#000}
+.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0 4px}
+.info{margin:20px 0 0;padding:15px 17px;border-left:4px solid var(--gold);border-radius:8px;background:#111a25;color:var(--muted)}
+.info strong{color:#fff}
+footer{text-align:center;color:var(--muted);padding:24px 12px 32px;font-size:.92rem}
+@media(max-width:600px){body{font-size:16px}.wrap{width:96%}.player-frame{min-height:220px;border-width:2px}.screen-label{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header class="wrap">
+<div class="brand">FIRST <span>MAROC</span> · SPORT TV</div>
+<p class="subtitle">Votre espace Home cinéma · Arryadia en direct</p>
+<div class="top-actions">
+<a class="button secondary" href="index.html">← Retour à FIRST MAROC</a>
+<a class="button secondary" href="https://snrtlive.ma/fr/arryadia" target="_blank" rel="noopener noreferrer">Ouvrir sur SNRT Live ↗</a>
+</div>
+</header>
+<main class="wrap">
+<section class="cinema-shell" aria-labelledby="screen-title">
+<div class="screen-label">
+<h1 id="screen-title">📺 Arryadia · Grand écran</h1>
+<span class="live-tag"><span class="live-dot" aria-hidden="true"></span> FLUX OFFICIEL SNRT</span>
+</div>
+<div class="player-frame" id="player-frame">
+<iframe
+ src="https://snrt.player.easybroadcast.io/events/73_arryadia_k2tgcj0"
+ title="Arryadia en direct · lecteur officiel SNRT"
+ allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+ allowfullscreen
+ referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+<div class="controls">
+<button type="button" id="fullscreen-button">⛶ Plein écran</button>
+<a class="button secondary" href="https://snrtlive.ma/fr/arryadia" target="_blank" rel="noopener noreferrer">▶ Ouvrir le direct officiel</a>
+</div>
+<p class="info"><strong>Information sur la diffusion :</strong> ce lecteur intègre le flux numérique officiel Arryadia proposé par SNRT Live. Il ne capte pas directement le signal hertzien d'une antenne TNT. La réception TNT terrestre nécessite un téléviseur ou un récepteur compatible et une antenne.</p>
+</section>
+</main>
+<footer>FIRST MAROC · Lecteur externe fourni par la SNRT · La disponibilité du direct dépend de la plateforme officielle.</footer>
+<script>
+(function(){
+ const frame=document.getElementById('player-frame');
+ const button=document.getElementById('fullscreen-button');
+ button.addEventListener('click',function(){
+  const request=frame.requestFullscreen||frame.webkitRequestFullscreen;
+  if(request){request.call(frame).catch(function(){window.open('https://snrtlive.ma/fr/arryadia','_blank','noopener');});}
+  else{window.open('https://snrtlive.ma/fr/arryadia','_blank','noopener');}
+ });
+})();
+</script>
+</body>
+</html>
