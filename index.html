@@ -106,6 +106,26 @@ body.menu-open{overflow:hidden}
 .mf-poster-tile span:last-child{color:#f4f7fb;font-size:.9rem}
 @media(prefers-reduced-motion:reduce){.mf-portal-tile{transition:none}.mf-portal-tile:hover{transform:none}}
 
+
+
+/* Maroc First : quatre bandeaux d'information sur la page d'accueil */
+.mf-live-market{margin:20px 0;padding:16px;border:1px solid var(--line);border-radius:14px;background:#0b121b;overflow:hidden}
+.mf-live-market h2{margin:0 0 12px;color:#ffe08a;font-size:clamp(1.25rem,3.5vw,1.7rem)}
+.mf-tape-block{margin:12px 0 16px;padding:10px 12px;border:1px solid #39485c;border-radius:10px;background:#111c29;overflow:hidden}
+.mf-tape-label{display:block;margin:0 0 7px;color:#ffe08a;font-size:1rem;font-weight:800;letter-spacing:.025em}
+.mf-news-window{width:100%;overflow:hidden;white-space:nowrap}
+.mf-news-track{display:flex;align-items:center;gap:34px;width:max-content;min-width:max-content;animation:mf-news-scroll 95s linear infinite}
+.mf-news-track a{display:inline-block;flex:none;color:#f4f7fb;text-decoration:none;font-size:1rem;font-weight:700;white-space:nowrap}
+.mf-news-track a:hover,.mf-news-track a:focus{color:#ffe08a;text-decoration:underline}
+.mf-news-track a::before{content:"●";color:#f0c65b;margin:0 10px}
+@keyframes mf-news-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mf-market-widget{width:100%;min-height:54px;overflow:hidden}
+.mf-market-widget tv-ticker-tape{display:block;width:100%;min-height:54px}
+.mf-market-credit{margin:4px 0 0;color:var(--muted);font-size:.82rem}
+.mf-market-credit a{color:#ffe08a}
+@media(prefers-reduced-motion:reduce){.mf-news-track{animation:none;flex-wrap:wrap;width:100%;min-width:0;white-space:normal}.mf-news-window{overflow-x:auto}.mf-news-track a{white-space:normal}}
+@media(max-width:520px){.mf-live-market{padding:12px}.mf-tape-block{padding:9px}.mf-market-widget{min-height:58px}}
+
 </style>
 
 <style id="cinema-feature-gallery-style">
@@ -204,6 +224,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <p><a class="button" href="inclusion.html" data-fr="Lire l’article en français" data-en="Read in French" data-ar="قراءة المقال بالفرنسية">Lire l’article en français</a> <a class="button" href="inclusion-ar.html" lang="ar" dir="rtl">اقرأ بالعربية</a></p>
 <p class="small-note">Photo : David290 / Wikimedia Commons · CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:A_wheelchair_beside_a_desk.jpg">Crédit et licence</a>.</p>
+
+<section class="mf-live-market" id="mf-live-information" aria-labelledby="mf-live-title">
+ <h2 id="mf-live-title">📡 Flash News &amp; marchés mondiaux</h2>
+ <div class="mf-tape-block">
+  <span class="mf-tape-label">📰 FLASH NEWS · MAROC &amp; MONDE</span>
+  <div class="mf-news-window" aria-live="polite">
+   <div class="mf-news-track" id="mf-home-flash-track"><a href="actualites.html">Chargement des dernières actualités…</a></div>
+  </div>
+ </div>
+ <div class="mf-tape-block">
+  <span class="mf-tape-label">📈 BOURSES MONDIALES · INDICES</span>
+  <div class="mf-market-widget"><tv-ticker-tape symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,XETR:DAX,EURONEXT:PX1,TVC:UKX,NIKKEI:NI225" hide-chart></tv-ticker-tape></div>
+ </div>
+ <div class="mf-tape-block">
+  <span class="mf-tape-label">💱 DEVISES INTERNATIONALES</span>
+  <div class="mf-market-widget"><tv-ticker-tape symbols="FX:EURUSD,FX:GBPUSD,FX:USDJPY,FX:USDCAD,FX:USDCHF,FX_IDC:USDMAD,FX_IDC:EURMAD" hide-chart></tv-ticker-tape></div>
+ </div>
+ <div class="mf-tape-block">
+  <span class="mf-tape-label">🛢️ PÉTROLE · COURS INTERNATIONAUX</span>
+  <div class="mf-market-widget"><tv-ticker-tape symbols="TVC:USOIL,TVC:UKOIL,NYMEX:CL1!,ICEEUR:BRN1!" hide-chart></tv-ticker-tape></div>
+ </div>
+ <p class="mf-market-credit">Actualités : flux Maroc First. Cotations financières : <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a>. La disponibilité et le délai des cours dépendent des marchés et des fournisseurs de données.</p>
+</section>
 </section>
 <section id="handicap-maroc-tribune" class="card" aria-labelledby="tarik-tribune-title" style="border:2px solid #159b68;background:linear-gradient(135deg,#182b3b,#202033)">
 <p class="eyebrow">🤝 Dossier spécial · Handicap Maroc · Tribune engagée</p>
@@ -647,6 +690,44 @@ updateLocationMap();
  panel.addEventListener('focusout',start);
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
  show(0);start();
+})();
+</script>
+
+
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+<script id="mf-home-flash-ticker">
+(function(){
+ const track=document.getElementById('mf-home-flash-track');
+ if(!track)return;
+ fetch('./actualites.json?homeflash='+Date.now(),{cache:'no-store'})
+  .then(response=>{if(!response.ok)throw new Error('Flux indisponible');return response.json();})
+  .then(data=>{
+   const items=(data.sections&&Array.isArray(data.sections.flash)?data.sections.flash:[])
+    .filter(item=>item&&item.title&&item.url)
+    .sort((a,b)=>new Date(b.published||0)-new Date(a.published||0))
+    .slice(0,24);
+   track.replaceChildren();
+   if(!items.length)throw new Error('Aucune actualité disponible');
+   items.forEach(item=>{
+    const link=document.createElement('a');
+    link.href=item.url;
+    link.target='_blank';
+    link.rel='noopener noreferrer';
+    link.textContent=(item.title||'')+(item.source?' · '+item.source:'');
+    link.dir='auto';
+    track.appendChild(link);
+   });
+   track.appendChild(track.cloneNode(true).firstElementChild||document.createElement('span'));
+   const originals=Array.from(track.children);
+   originals.forEach(node=>track.appendChild(node.cloneNode(true)));
+  })
+  .catch(()=>{
+   track.replaceChildren();
+   const link=document.createElement('a');
+   link.href='actualites.html';
+   link.textContent='Consulter les dernières actualités du Maroc et du monde sur Maroc First';
+   track.appendChild(link);
+  });
 })();
 </script>
 
