@@ -717,7 +717,6 @@ updateLocationMap();
     link.dir='auto';
     track.appendChild(link);
    });
-   track.appendChild(track.cloneNode(true).firstElementChild||document.createElement('span'));
    const originals=Array.from(track.children);
    originals.forEach(node=>track.appendChild(node.cloneNode(true)));
   })
