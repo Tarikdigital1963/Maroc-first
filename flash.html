@@ -11,56 +11,64 @@
 "use strict";
 const box=document.getElementById("feed");
 const status=document.getElementById("status");
-const seen=new Set();
 const lanes={ar:document.getElementById("ticker-ar"),fr:document.getElementById("ticker-fr")};
+const seen=new Set();
 const tickerSeen={ar:new Set(),fr:new Set()};
-function addTicker(lang,title,url){const lane=lanes[lang];if(!lane||!title||tickerSeen[lang].has(title.trim()))return;tickerSeen[lang].add(title.trim());const a=document.createElement("a");a.href=url||"#feed";a.textContent=title.trim();if(url&&url.startsWith("http")){a.target="_blank";a.rel="noopener noreferrer";}lane.append(a);}
-function finishTicker(lang,fallback){const lane=lanes[lang];if(!lane.children.length){const a=document.createElement("a");a.href="#feed";a.textContent=fallback;lane.append(a);}if(lane.children.length===1)lane.append(lane.firstElementChild.cloneNode(true));}
-function addCard(title,url,date,source){
- if(!title||!url||seen.has(title.trim()))return;
- seen.add(title.trim());
+function addTicker(lang,title,url){
+ const lane=lanes[lang],clean=(title||"").trim();
+ if(!lane||!clean||tickerSeen[lang].has(clean))return;
+ tickerSeen[lang].add(clean);
+ const a=document.createElement("a");
+ a.href=url||"#feed";a.textContent=clean;
+ if(url&&/^https?:\\/\\//i.test(url)){a.target="_blank";a.rel="noopener noreferrer";}
+ lane.append(a);
+}
+function finishTicker(lang,fallback){
+ const lane=lanes[lang];
+ if(!lane||!lane.children.length){
+  const a=document.createElement("a");a.href="#feed";a.textContent=fallback;lane?.append(a);
+ }
+ if(lane&&lane.children.length){
+  const originals=[...lane.children];
+  originals.forEach(node=>lane.append(node.cloneNode(true)));
+ }
+}
+function addCard(item){
+ const title=(item.title||"").trim(),url=(item.url||"").trim();
+ if(!title||!url||seen.has(title))return;
+ seen.add(title);
  const card=document.createElement("article");card.className="card";
  const h=document.createElement("h2"),a=document.createElement("a");
- a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=title.trim();
+ a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=title;
  h.append(a);card.append(h);
  const meta=document.createElement("p");meta.className="muted";
- meta.textContent=[source,date?new Date(date).toLocaleString("ar-MA"):""].filter(Boolean).join(" · ");
+ meta.textContent=[item.source||"Maroc First",item.published?new Date(item.published).toLocaleString("fr-MA"):""].filter(Boolean).join(" · ");
  card.append(meta);box.append(card);
 }
 try{
- const response=await fetch("./actualites.json?ts="+Date.now(),{cache:"no-store"});
- if(!response.ok)throw new Error("archive");
+ const archiveUrl=new URL("./actualites.json",document.baseURI);
+ archiveUrl.searchParams.set("ts",Date.now());
+ const response=await fetch(archiveUrl.href,{cache:"no-store"});
+ if(!response.ok)throw new Error("HTTP "+response.status);
  const data=await response.json();
- const items=Array.isArray(data.sections?.flash)?data.sections.flash.slice():[];
+ const items=Array.isArray(data?.sections?.flash)?data.sections.flash.slice():[];
  items.sort((a,b)=>new Date(b.published||0)-new Date(a.published||0));
  box.replaceChildren();
- items.slice(0,12).forEach(item=>{addCard(item.title,item.url,item.published,item.source||"Maroc First");addTicker(/[\u0600-\u06FF]/.test(item.title||"")?"ar":"fr",item.title,item.url);});
- finishTicker("ar","لا توجد عناوين عربية جديدة حالياً.");finishTicker("fr","Aucun nouveau titre français pour le moment.");
+ items.forEach(item=>{
+  const lang=/[\\u0600-\\u06FF]/.test(item.title||"")?"ar":"fr";
+  addTicker(lang,item.title,item.url);
+ });
+ items.slice(0,12).forEach(addCard);
+ finishTicker("ar","لا توجد عناوين عربية حالياً. تابع أخبار المغرب عبر المصادر.");
+ finishTicker("fr","Aucun titre français disponible pour le moment.");
  status.textContent=items.length
-  ?"تم عرض "+Math.min(items.length,12)+" عنواناً من أرشيف فلاش نيوز. آخر تحديث للأرشيف: "+(data.updatedAt||"غير محدد")+"."
-  :"لا توجد عناوين محفوظة حالياً في أرشيف فلاش نيوز.";
+  ?"Les bandeaux sont alimentés par "+items.length+" titres de l’archive Maroc First. Dernière mise à jour : "+(data.updatedAt||"non précisée")+"."
+  :"L’archive Flash News est accessible, mais elle ne contient aucun titre.";
 }catch(error){
- status.textContent="تعذر تحميل أرشيف الأخبار حالياً. يمكن استعمال روابط المصادر المباشرة أدناه.";
+ finishTicker("ar","تعذر تحميل الأرشيف. افتح مصادر الأخبار أسفل الصفحة.");
+ finishTicker("fr","Impossible de charger l’archive. Consultez les sources ci-dessous.");
+ status.textContent="Impossible de charger actualites.json : "+(error.message||"erreur inconnue")+". Vérifiez le déploiement GitHub Pages.";
 }
-// Flux Google News complémentaires en arabe et en français. L'archive locale reste le secours.
-try{
- const feeds=[{lang:"ar",q:"أخبار المغرب عاجل",hl:"ar",gl:"MA",ceid:"MA:ar"},{lang:"fr",q:"actualités Maroc dernière minute",hl:"fr",gl:"MA",ceid:"MA:fr"}];
- const results=await Promise.all(feeds.map(async feed=>{
-  const rss="https://news.google.com/rss/search?q="+encodeURIComponent(feed.q)+"&hl="+feed.hl+"&gl="+feed.gl+"&ceid="+feed.ceid;
-  const response=await fetch("https://api.allorigins.win/raw?url="+encodeURIComponent(rss));
-  if(!response.ok)throw new Error("flux indisponible");
-  const xml=new DOMParser().parseFromString(await response.text(),"text/xml");
-  return {lang:feed.lang,items:[...xml.querySelectorAll("item")].slice(0,12)};
- }));
- let added=0;
- for(const result of results){for(const item of result.items){
-  const title=item.querySelector("title")?.textContent||"",url=item.querySelector("link")?.textContent?.trim()||"";
-  if(title&&url){addTicker(result.lang,title,url);if(!seen.has(title.trim())){addCard(title,url,item.querySelector("pubDate")?.textContent,result.lang==="ar"?"Google News عربي":"Google News Français");added++;}}
- }}
- finishTicker("ar","لا توجد عناوين عربية جديدة حالياً.");finishTicker("fr","Aucun nouveau titre français pour le moment.");
- if(added)status.textContent+=" تم تحديث شريطي الأخبار بالعربية والفرنسية.";
-}catch(error){finishTicker("ar","لا توجد عناوين عربية جديدة حالياً.");finishTicker("fr","Aucun nouveau titre français pour le moment.");}
-
 })();
 </script><script src="traduction.js" defer></script>
 </body></html>
