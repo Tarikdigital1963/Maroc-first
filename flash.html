@@ -20,7 +20,7 @@ function addTicker(lang,title,url){
  tickerSeen[lang].add(clean);
  const a=document.createElement("a");
  a.href=url||"#feed";a.textContent=clean;
- if(url&&/^https?:\\/\\//i.test(url)){a.target="_blank";a.rel="noopener noreferrer";}
+ if(url&&(url.startsWith("http://")||url.startsWith("https://"))){a.target="_blank";a.rel="noopener noreferrer";}
  lane.append(a);
 }
 function finishTicker(lang,fallback){
