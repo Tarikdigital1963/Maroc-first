@@ -55,7 +55,7 @@ try{
  items.sort((a,b)=>new Date(b.published||0)-new Date(a.published||0));
  box.replaceChildren();
  items.forEach(item=>{
-  const lang=/[\\u0600-\\u06FF]/.test(item.title||"")?"ar":"fr";
+  const lang=Array.from(item.title||"").some(ch=>{const n=ch.charCodeAt(0);return n>=0x0600&&n<=0x06FF;})?"ar":"fr";
   addTicker(lang,item.title,item.url);
  });
  items.slice(0,12).forEach(addCard);
