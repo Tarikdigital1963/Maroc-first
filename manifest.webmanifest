@@ -1,0 +1,21 @@
+{
+  "id": "/Maroc-first/",
+  "name": "Maroc First",
+  "short_name": "Maroc First",
+  "description": "Journal numérique marocain trilingue",
+  "lang": "fr",
+  "start_url": "/Maroc-first/",
+  "scope": "/Maroc-first/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#10151d",
+  "theme_color": "#b8172b",
+  "icons": [
+    {
+      "src": "/Maroc-first/icons/maroc-first.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
