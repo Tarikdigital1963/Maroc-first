@@ -253,6 +253,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  </div>
  <p class="mf-market-credit">Actualités : flux Maroc First. Cotations financières : <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a>. La disponibilité et le délai des cours dépendent des marchés et des fournisseurs de données.</p>
 </section>
+
+<!-- Publicité partenaire Shopify : bannière visible directement dans le HTML -->
+<style id="mf-shopify-home-style">
+#mf-shopify-promo{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(180px,.75fr);align-items:center;gap:18px;margin:22px 0 26px;padding:clamp(18px,3vw,30px);border:2px solid #f0c65b;border-radius:20px;background:radial-gradient(circle at 82% 15%,#ffe8a0 0,#f7b94c 18%,transparent 42%),linear-gradient(125deg,#8e1728 0%,#173b5b 55%,#087b4b 100%);box-shadow:0 12px 30px #0006;color:#fff}
+#mf-shopify-promo:before,#mf-shopify-promo:after{content:"";position:absolute;z-index:-1;border-radius:50%;background:#ffffff20;animation:mf-xmas-drift 8s ease-in-out infinite}
+#mf-shopify-promo:before{width:170px;height:170px;right:20%;top:-100px}
+#mf-shopify-promo:after{width:100px;height:100px;left:8%;bottom:-65px;animation-delay:-4s}
+#mf-shopify-promo .mf-promo-copy{position:relative;z-index:2}
+#mf-shopify-promo .mf-promo-kicker{display:inline-block;margin:0 0 8px;padding:5px 11px;border-radius:99px;background:#fff2;color:#fff;font-size:.82rem;font-weight:900;letter-spacing:.05em}
+#mf-shopify-promo h2{margin:0 0 8px;color:#fff;font-size:clamp(1.5rem,4vw,2.35rem);line-height:1.15;text-shadow:0 3px 10px #002b3b}
+#mf-shopify-promo p{margin:0 0 15px;color:#fff;font-weight:600}
+#mf-shopify-promo .mf-promo-cta{display:inline-flex;align-items:center;gap:9px;padding:12px 17px;border:2px solid #fff;border-radius:12px;background:#ffe08a;color:#182230;font-weight:900;text-decoration:none;box-shadow:0 5px 0 #9b6826}
+#mf-shopify-promo .mf-promo-scene{position:relative;display:flex;align-items:center;justify-content:center;min-height:145px;gap:5px}
+#mf-shopify-promo .mf-promo-person{font-size:clamp(3.8rem,9vw,6.5rem);filter:drop-shadow(0 9px 5px #002b3b66);animation:mf-xmas-bob 4.8s ease-in-out infinite}
+#mf-shopify-promo .mf-promo-person:nth-child(2){animation-delay:-2.4s}
+#mf-shopify-promo .mf-promo-float{position:absolute;font-size:clamp(1.5rem,3vw,2.3rem);animation:mf-xmas-drift 6s ease-in-out infinite}
+#mf-shopify-promo .mf-promo-float.a{top:2%;left:14%}
+#mf-shopify-promo .mf-promo-float.b{top:4%;right:8%;animation-delay:-2s}
+#mf-shopify-promo .mf-promo-float.c{bottom:0;left:42%;animation-delay:-3.5s}
+#mf-shopify-promo .mf-promo-note{display:block;margin-top:9px;color:#fff;font-size:.8rem}
+@keyframes mf-xmas-bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}
+@keyframes mf-xmas-drift{0%,100%{transform:translate3d(0,0,0) rotate(-5deg)}50%{transform:translate3d(7px,-10px,0) rotate(7deg)}}
+@media(max-width:650px){#mf-shopify-promo{grid-template-columns:1fr;text-align:center;padding:18px 15px;gap:5px}#mf-shopify-promo .mf-promo-scene{min-height:105px;grid-row:1}#mf-shopify-promo .mf-promo-person{font-size:4.6rem}}
+@media(prefers-reduced-motion:reduce){#mf-shopify-promo:before,#mf-shopify-promo:after,#mf-shopify-promo .mf-promo-person,#mf-shopify-promo .mf-promo-float{animation:none!important}}
+</style>
+<section id="mf-shopify-promo" class="card" aria-label="Publicité de la boutique Shopify">
+ <div class="mf-promo-copy">
+  <span class="mf-promo-kicker">🎄 MAROC FIRST · SÉLECTION DES FÊTES</span>
+  <h2>Préparez les fêtes et découvrez nos idées cadeaux</h2>
+  <p>Accessoires, décorations lumineuses, gadgets et trouvailles pour la saison. Découvrez la sélection proposée dans notre boutique en ligne.</p>
+  <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="sponsored noopener noreferrer">🛍️ VISITER LA BOUTIQUE SHOPIFY</a>
+  <small class="mf-promo-note">Boutique partenaire · Les produits, prix et disponibilités sont indiqués sur la boutique.</small>
+ </div>
+ <div class="mf-promo-scene" aria-hidden="true">
+  <span class="mf-promo-float a">✨</span><span class="mf-promo-float b">🎁</span><span class="mf-promo-float c">❄️</span>
+  <span class="mf-promo-person">🧑🏻‍🎄</span><span class="mf-promo-person">🎅🏻</span>
+ </div>
+</section>
 </section>
 <section id="handicap-maroc-tribune" class="card" aria-labelledby="tarik-tribune-title" style="border:2px solid #159b68;background:linear-gradient(135deg,#182b3b,#202033)">
 <p class="eyebrow">🤝 Dossier spécial · Handicap Maroc · Tribune engagée</p>
@@ -314,7 +352,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p data-fr="Choisis une ville pour consulter les conditions météo actuelles et les prévisions des prochains jours." data-en="Choose a city to see current weather conditions and the forecast for the next days." data-ar="اختر مدينة للاطلاع على حالة الطقس الحالية وتوقعات الأيام المقبلة.">Choisis une ville pour consulter les conditions météo actuelles et les prévisions des prochains jours.</p>
 <label for="weather-city" data-fr="Ville" data-en="City" data-ar="المدينة">Ville</label>
 <select id="weather-city" class="field-control">
-<optgroup label="Maroc"><option value="33.9716,-6.8498">Rabat</option><option value="33.895,-5.5547">Khémisset</option><option value="33.5731,-7.5898">Casablanca</option><option value="34.0331,-5.0003">Fès</option><option value="31.6295,-7.9811">Marrakech</option><option value="35.7595,-5.834">Tanger</option><option value="34.0209,-6.8416">Salé</option><option value="30.4278,-9.5981">Agadir</option><option value="33.2316,-8.5007">El Jadida</option><option value="34.2610,-6.5802">Kénitra</option><option value="33.8935,-5.5473">Meknès</option><option value="34.6814,-1.9086">Oujda</option><option value="30.9335,-6.9370">Ouarzazate</option><option value="23.6848,-15.9570">Dakhla</option></optgroup><optgroup label="Monde"><option value="48.8566,2.3522">Paris</option><option value="40.7128,-74.0060">New York</option><option value="51.5072,-0.1276">Londres</option><option value="34.0522,-118.2437">Los Angeles</option><option value="35.6762,139.6503">Tokyo</option><option value="25.2048,55.2708">Dubaï</option><option value="41.0082,28.9784">Istanbul</option><option value="-33.8688,151.2093">Sydney</option><option value="-23.5505,-46.6333">São Paulo</option><option value="30.0444,31.2357">Le Caire</option></optgroup>
+<optgroup label="Maroc"><option value="33.9716,-6.8498">Rabat</option><option value="33.895,-5.5547" selected>Khémisset</option><option value="33.5731,-7.5898">Casablanca</option><option value="34.0331,-5.0003">Fès</option><option value="31.6295,-7.9811">Marrakech</option><option value="35.7595,-5.834">Tanger</option><option value="34.0209,-6.8416">Salé</option><option value="30.4278,-9.5981">Agadir</option><option value="33.2316,-8.5007">El Jadida</option><option value="34.2610,-6.5802">Kénitra</option><option value="33.8935,-5.5473">Meknès</option><option value="34.6814,-1.9086">Oujda</option><option value="30.9335,-6.9370">Ouarzazate</option><option value="23.6848,-15.9570">Dakhla</option></optgroup><optgroup label="Monde"><option value="48.8566,2.3522">Paris</option><option value="40.7128,-74.0060">New York</option><option value="51.5072,-0.1276">Londres</option><option value="34.0522,-118.2437">Los Angeles</option><option value="35.6762,139.6503">Tokyo</option><option value="25.2048,55.2708">Dubaï</option><option value="41.0082,28.9784">Istanbul</option><option value="-33.8688,151.2093">Sydney</option><option value="-23.5505,-46.6333">São Paulo</option><option value="30.0444,31.2357">Le Caire</option></optgroup>
 </select>
 <div class="weather-grid" aria-live="polite">
 <div class="weather-panel"><div data-fr="Conditions actuelles" data-en="Current conditions" data-ar="الحالة الحالية">Conditions actuelles</div><div id="weather-current" class="weather-value">--°C</div><div id="weather-description" class="weather-status">Chargement…</div></div>
@@ -491,7 +529,7 @@ async function loadWeather(){
  desc.textContent=currentLang==='en'?'Loading…':currentLang==='ar'?'جارٍ التحميل…':'Chargement…';
  try{
   const url='https://api.open-meteo.com/v1/forecast?latitude='+coords[0]+'&longitude='+coords[1]+'&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=3&timezone=auto';
-  const response=await fetch(url);if(!response.ok)throw new Error('Weather unavailable');
+  const response=await fetch(url+'&_='+Date.now(),{cache:'no-store'});if(!response.ok)throw new Error('Weather unavailable');
   const data=await response.json(),c=data.current,d=data.daily;
   current.textContent=Math.round(c.temperature_2m)+'°C';
   desc.textContent=weatherText(c.weather_code)+(c.apparent_temperature!=null?' · '+(currentLang==='ar'?'المحسوس ':currentLang==='en'?'Feels like ':'Ressenti ')+Math.round(c.apparent_temperature)+'°C':'');
@@ -510,6 +548,7 @@ function updateLocationMap(){
 document.getElementById('weather-city').addEventListener('change',()=>{loadWeather();updateLocationMap();});
 loadWeather();
 updateLocationMap();
+setInterval(loadWeather,15*60*1000);
 
 /* Menu latéral : ouverture, fermeture et navigation au clavier */
 (function(){
@@ -708,8 +747,10 @@ updateLocationMap();
  fetch('./actualites.json?homeflash='+Date.now(),{cache:'no-store'})
   .then(response=>{if(!response.ok)throw new Error('Flux indisponible');return response.json();})
   .then(data=>{
-   const items=(data.sections&&Array.isArray(data.sections.flash)?data.sections.flash:[])
-    .filter(item=>item&&item.title&&item.url&&Number.isFinite(Date.parse(item.published||''))&&Date.parse(item.published)>=Date.now()-14*24*60*60*1000)
+   const sourceSections=['flash','maroc','politique','economie','societe','sport','international'];
+    const combined=sourceSections.flatMap(section=>Array.isArray(data.sections?.[section])?data.sections[section]:[]);
+    const items=combined
+    .filter(item=>item&&item.title&&item.url&&Number.isFinite(Date.parse(item.published||''))&&Date.parse(item.published)>=Date.now()-7*24*60*60*1000)
     .sort((a,b)=>new Date(b.published)-new Date(a.published))
     .filter((item,index,all)=>all.findIndex(other=>other.title.trim().toLowerCase()===item.title.trim().toLowerCase())===index)
     .slice(0,24);
@@ -773,5 +814,5 @@ updateLocationMap();
 })();
 </script>
 
-<script src="promo-shopify.js" defer></script>
+<script src="promo-shopify.js?v=20261126-2" defer></script>
 </body></html>
