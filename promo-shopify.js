@@ -44,14 +44,14 @@
     banner.setAttribute("aria-label", "Publicité de la boutique Shopify");
     banner.innerHTML = `
       <div class="mf-promo-copy">
-        <span class="mf-promo-kicker">☀️ SHOPPING • ÉTÉ • BONNES TROUVAILLES</span>
-        <h2>Un été plein de belles trouvailles !</h2>
-        <p>Découvrez des accessoires, des idées cadeaux et des nouveautés dans notre boutique en ligne.</p>
-        <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ DÉCOUVRIR LA BOUTIQUE</a>
+        <span class="mf-promo-kicker">🎄 SÉLECTION DES FÊTES • IDÉES CADEAUX</span>
+        <h2>Préparez les fêtes avec nos belles trouvailles !</h2>
+        <p>Découvrez des décorations lumineuses, des accessoires et des idées cadeaux dans notre boutique en ligne.</p>
+        <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ DÉCBOUTIQUE SHOPIFY</a>
         <small class="mf-promo-note">Votre boutique en ligne vous attend !</small>
       </div>
       <div class="mf-promo-scene" aria-hidden="true">
-        <span class="mf-promo-float a">🕶️</span><span class="mf-promo-float b">🎁</span><span class="mf-promo-float c">🌴</span>
+        <span class="mf-promo-float a">✨</span><span class="mf-promo-float b">🎁</span><span class="mf-promo-float c">❄️</span>
         <span class="mf-promo-person">👧🏻</span><span class="mf-promo-person">🧑🏻</span>
       </div>`;
     const main = document.querySelector("main");
