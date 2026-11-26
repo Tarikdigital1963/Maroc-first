@@ -11,7 +11,7 @@
     #mf-shopify-promo .mf-promo-kicker{display:inline-block;margin:0 0 8px;padding:5px 11px;border-radius:99px;background:#fff2;color:#fff;font-size:.82rem;font-weight:900;letter-spacing:.06em}
     #mf-shopify-promo h2{margin:0 0 8px;color:#fff;font-size:clamp(1.55rem,4vw,2.45rem);line-height:1.12;text-shadow:0 3px 10px #002b3b}
     #mf-shopify-promo p{margin:0 0 15px;color:#f4fbff;font-weight:600}
-    #mf-shopify-promo .mf-promo-cta{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:2px solid #fff;border-radius:12px;background:#ffe08a;color:#182230;font-weight:900;text-decoration:none;box-shadow:0 5px 0 #9b6826;cursor:not-allowed}
+    #mf-shopify-promo .mf-promo-cta{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:2px solid #fff;border-radius:12px;background:#ffe08a;color:#182230;font-weight:900;text-decoration:none;box-shadow:0 5px 0 #9b6826;cursor:pointer}
     #mf-shopify-promo .mf-promo-cta[aria-disabled=true]{opacity:.96}
     #mf-shopify-promo .mf-promo-scene{position:relative;display:flex;align-items:center;justify-content:center;min-height:165px;gap:4px}
     #mf-shopify-promo .mf-promo-person{font-size:clamp(4.2rem,10vw,7rem);filter:drop-shadow(0 9px 5px #002b3b66);animation:mf-promo-bob 4.8s ease-in-out infinite;transform-origin:50% 80%}
@@ -21,7 +21,7 @@
     #mf-shopify-promo .mf-promo-float.b{top:7%;right:8%;animation-delay:-2s}
     #mf-shopify-promo .mf-promo-float.c{bottom:2%;left:42%;animation-delay:-3.5s}
     #mf-shopify-promo .mf-promo-note{display:block;margin-top:9px;color:#e4f7ff;font-size:.78rem}
-    .mf-shopify-float{position:fixed;z-index:850;left:14px;bottom:16px;display:flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid #ffe08a;border-radius:999px;background:linear-gradient(135deg,#087e91,#163c64);color:#fff;font:700 14px/1.2 Arial,sans-serif;box-shadow:0 5px 18px #0008;pointer-events:none}
+    .mf-shopify-float{position:fixed;z-index:850;left:14px;bottom:16px;display:flex;align-items:center;gap:8px;padding:9px 13px;border:1px solid #ffe08a;border-radius:999px;background:linear-gradient(135deg,#087e91,#163c64);color:#fff;font:700 14px/1.2 Arial,sans-serif;box-shadow:0 5px 18px #0008;cursor:pointer;text-decoration:none}
     .mf-shopify-float .mf-float-icons{font-size:1.3rem;letter-spacing:2px}
     .mf-shopify-float .mf-float-icons span{display:inline-block;animation:mf-promo-bob 4.5s ease-in-out infinite}
     .mf-shopify-float .mf-float-icons span:nth-child(2){animation-delay:-1.5s}
@@ -47,8 +47,8 @@
         <span class="mf-promo-kicker">☀️ SHOPPING • ÉTÉ • BONNES TROUVAILLES</span>
         <h2>Un été plein de belles trouvailles !</h2>
         <p>Découvrez des accessoires, des idées cadeaux et des nouveautés dans notre boutique en ligne.</p>
-        <span class="mf-promo-cta" aria-disabled="true">🛍️ Boutique bientôt accessible</span>
-        <small class="mf-promo-note">Le lien direct de la boutique sera activé dès que son adresse sera ajoutée.</small>
+        <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ DÉCOUVRIR LA BOUTIQUE</a>
+        <small class="mf-promo-note">Votre boutique en ligne vous attend !</small>
       </div>
       <div class="mf-promo-scene" aria-hidden="true">
         <span class="mf-promo-float a">🕶️</span><span class="mf-promo-float b">🎁</span><span class="mf-promo-float c">🌴</span>
@@ -61,7 +61,10 @@
     const floater = document.createElement("div");
     floater.className = "mf-shopify-float";
     floater.setAttribute("aria-label", "Maroc First : publicité de la boutique Shopify");
-    floater.innerHTML = '<span class="mf-float-icons" aria-hidden="true"><span>🛍️</span><span>☀️</span><span>🎁</span></span><span>SHOPPING</span>';
+    floater.href = "https://jjacaa-ja.myshopify.com/";
+    floater.target = "_blank";
+    floater.rel = "noopener noreferrer";
+    floater.innerHTML = '<span class="mf-float-icons" aria-hidden="true"><span>🛍️</span><span>☀️</span><span>🎁</span></span><span>OUVRIR LA BOUTIQUE</span>';
     document.body.appendChild(floater);
   }
 })();
