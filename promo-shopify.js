@@ -44,9 +44,9 @@
     banner.setAttribute("aria-label", "Publicité de la boutique Shopify");
     banner.innerHTML = `
       <div class="mf-promo-copy">
-        <span class="mf-promo-kicker">🎄 SÉLECTION DES FÊTES • IDÉES CADEAUX</span>
-        <h2>Préparez les fêtes avec nos belles trouvailles !</h2>
-        <p>Découvrez des décorations lumineuses, des accessoires et des idées cadeaux dans notre boutique en ligne.</p>
+        <span class="mf-promo-kicker">🛍️ DÉCOUVREZ NOTRE BOUTIQUE EN LIGNE</span>
+        <h2>Tout ce que vous cherchez, à découvrir dans notre boutique !</h2>
+        <p>Accessoires, gadgets, décoration et idées pratiques : explorez notre sélection et trouvez les articles qui vous correspondent.</p>
         <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ DÉCBOUTIQUE SHOPIFY</a>
         <small class="mf-promo-note">Votre boutique en ligne vous attend !</small>
       </div>
