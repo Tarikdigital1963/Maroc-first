@@ -58,7 +58,7 @@
     if (main) main.insertBefore(banner, main.firstChild);
     else document.body.insertBefore(banner, document.body.firstChild);
   } else {
-    const floater = document.createElement("div");
+    const floater = document.createElement("a");
     floater.className = "mf-shopify-float";
     floater.setAttribute("aria-label", "Maroc First : publicité de la boutique Shopify");
     floater.href = "https://jjacaa-ja.myshopify.com/";
