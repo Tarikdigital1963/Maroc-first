@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#d51f35"/><stop offset="1" stop-color="#8d1025"/></linearGradient></defs>
+<rect width="512" height="512" rx="112" fill="url(#g)"/>
+<path d="M0 360h512v152H0z" fill="#087b4b"/>
+<path d="M256 105l27 83 87 0-70 51 27 83-71-51-71 51 27-83-70-51h87z" fill="none" stroke="#fff" stroke-width="18" stroke-linejoin="round"/>
+<rect x="102" y="337" width="308" height="105" rx="18" fill="#101923" stroke="#f0c65b" stroke-width="8"/>
+<text x="256" y="407" font-family="Arial,sans-serif" font-size="62" font-weight="900" text-anchor="middle" fill="#fff">MF</text>
+</svg>
