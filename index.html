@@ -139,8 +139,18 @@ body.menu-open{overflow:hidden}
 
 
 
+
+<link id="mf-pwa-manifest" rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#b8172b">
+<link rel="icon" type="image/svg+xml" href="icons/maroc-first.svg">
+<style>
+#mf-install-button{position:fixed;top:14px;right:14px;z-index:1003;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 14px;border:2px solid #fff;border-radius:12px;background:#087b4b;color:#fff;font-size:15px;font-weight:900;box-shadow:0 3px 14px #0009}
+#mf-install-button[hidden]{display:none}
+@media(max-width:520px){#mf-install-button{top:14px;right:10px;min-height:46px;padding:8px 10px;font-size:13px;max-width:170px}}
+</style>
 </head>
 <body>
+<button type="button" id="mf-install-button" aria-label="Installer Maroc First">📲 Installer Maroc First</button>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMWR6S2R"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -730,4 +740,38 @@ updateLocationMap();
 })();
 </script>
 
+
+<script id="mf-pwa-install">
+(function(){
+ const button=document.getElementById('mf-install-button');
+ if(!button)return;
+ let installPrompt=null;
+ const standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
+ if(standalone){button.hidden=true;return;}
+ window.addEventListener('beforeinstallprompt',function(event){
+   event.preventDefault();
+   installPrompt=event;
+   button.hidden=false;
+ });
+ button.addEventListener('click',async function(){
+   if(installPrompt){
+     installPrompt.prompt();
+     await installPrompt.userChoice;
+     installPrompt=null;
+     button.hidden=true;
+     return;
+   }
+   const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+   alert(isIOS
+     ? 'Pour installer Maroc First : touchez Partager, puis « Sur l’écran d’accueil ».'
+     : 'Pour installer Maroc First : ouvrez le menu ⋮ de votre navigateur, puis choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».');
+ });
+ window.addEventListener('appinstalled',function(){button.hidden=true;installPrompt=null;});
+ if('serviceWorker' in navigator){
+   window.addEventListener('load',function(){
+     navigator.serviceWorker.register('./sw.js').catch(function(error){console.error('Service worker Maroc First:',error);});
+   });
+ }
+})();
+</script>
 </body></html>
