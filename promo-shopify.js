@@ -8,8 +8,8 @@
     #mf-shopify-promo:before{width:180px;height:180px;right:20%;top:-100px}
     #mf-shopify-promo:after{width:110px;height:110px;left:8%;bottom:-65px;animation-delay:-4s}
     #mf-shopify-promo .mf-promo-copy{position:relative;z-index:2}
-    #mf-shopify-promo .mf-promo-kicker{display:inline-block;margin:0 0 8px;padding:5px 11px;border-radius:99px;background:#fff2;color:#fff;font-size:.82rem;font-weight:900;letter-spacing:.06em}
-    #mf-shopify-promo h2{margin:0 0 8px;color:#fff;font-size:clamp(1.55rem,4vw,2.45rem);line-height:1.12;text-shadow:0 3px 10px #002b3b}
+    #mf-shopify-promo .mf-promo-kicker{display:inline-block;margin:0 0 8px;padding:5px 11px;border-radius:99px;background:#ffe08a;color:#172b45;font-size:.88rem;font-weight:900;letter-spacing:.04em;box-shadow:0 2px 8px #0005}
+    #mf-shopify-promo h2{margin:0 0 8px;color:#ffe08a;font-size:clamp(1.55rem,4vw,2.45rem);line-height:1.12;text-shadow:0 3px 10px #002b3b}
     #mf-shopify-promo p{margin:0 0 15px;color:#f4fbff;font-weight:600}
     #mf-shopify-promo .mf-promo-cta{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:2px solid #fff;border-radius:12px;background:#ffe08a;color:#182230;font-weight:900;text-decoration:none;box-shadow:0 5px 0 #9b6826;cursor:pointer}
     #mf-shopify-promo .mf-promo-cta[aria-disabled=true]{opacity:.96}
@@ -47,7 +47,7 @@
         <span class="mf-promo-kicker">🛍️ DÉCOUVREZ NOTRE BOUTIQUE EN LIGNE</span>
         <h2>Tout ce que vous cherchez, à découvrir dans notre boutique !</h2>
         <p>Accessoires, gadgets, décoration et idées pratiques : explorez notre sélection et trouvez les articles qui vous correspondent.</p>
-        <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ DÉCBOUTIQUE SHOPIFY</a>
+        <a class="mf-promo-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ VISITER LA BOUTIQUE SHOPIFY</a>
         <small class="mf-promo-note">Votre boutique en ligne vous attend !</small>
       </div>
       <div class="mf-promo-scene" aria-hidden="true">
