@@ -1,4 +1,4 @@
-const CACHE_NAME = "maroc-first-v1";
+const CACHE_NAME = "maroc-first-v2";
 const CORE_FILES = [
   "/Maroc-first/",
   "/Maroc-first/index.html",
