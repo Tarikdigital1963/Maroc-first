@@ -203,6 +203,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <main class="wrap" id="accueil">
+<style>
+#mf-shopify-promo{position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:14px;margin:18px 0 24px;padding:22px;border:2px solid #f5ca68;border-radius:22px;background:linear-gradient(120deg,#075e68,#087f91 52%,#153e68);color:#fff;box-shadow:0 10px 28px #0005}
+#mf-shopify-promo h2{margin:4px 0 10px;color:#fff;font-size:clamp(1.5rem,4vw,2.4rem)}
+#mf-shopify-promo p{color:#f1fbff;margin:0 0 14px}
+#mf-shopify-promo .shop-cta{display:inline-block;padding:12px 18px;border-radius:12px;background:#ffe08a;color:#172536;font-weight:900;text-decoration:none;border:2px solid white;box-shadow:0 4px 0 #956b28}
+#mf-shopify-promo .shop-characters{font-size:clamp(3.5rem,9vw,6.5rem);text-align:center;white-space:nowrap}
+#mf-shopify-promo .shop-characters span{display:inline-block;animation:mfShopBob 4s ease-in-out infinite}
+#mf-shopify-promo .shop-characters span:nth-child(2){animation-delay:-2s}
+#mf-shopify-promo .shop-spark{position:absolute;right:12%;top:8%;font-size:2rem;animation:mfShopFloat 5s ease-in-out infinite}
+@keyframes mfShopBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-9px) rotate(3deg)}}
+@keyframes mfShopFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media(max-width:650px){#mf-shopify-promo{grid-template-columns:1fr;text-align:center;padding:17px 12px}#mf-shopify-promo .shop-characters{grid-row:1}}
+@media(prefers-reduced-motion:reduce){#mf-shopify-promo *{animation:none!important}}
+</style>
+<section id="mf-shopify-promo" aria-label="Publicité de la boutique Shopify">
+ <div><span>☀️ SHOPPING D'ÉTÉ · BONNES TROUVAILLES</span><h2>Un été plein de belles trouvailles !</h2><p>Accessoires, idées cadeaux et nouveautés vous attendent dans notre boutique en ligne.</p><a class="shop-cta" href="https://jjacaa-ja.myshopify.com/" target="_blank" rel="noopener noreferrer">🛍️ DÉCOUVRIR LA BOUTIQUE</a></div>
+ <div class="shop-characters" aria-hidden="true"><span>👧🏻</span><span>🧑🏻</span><span class="shop-spark">🎁</span>🌴</div>
+</section>
 <section id="survivalisme" class="card" aria-labelledby="survivalisme-title" style="border:2px solid #8e1728;background:linear-gradient(135deg,#35121c,#1a0c12)">
  <p class="eyebrow" style="color:#ffb8c2">🎒 NOUVELLE RUBRIQUE · PRÉPARATION 72 H</p>
  <h2 id="survivalisme-title">Survivalisme pratique : se préparer sans paniquer</h2>
